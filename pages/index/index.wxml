@@ -1,0 +1,78 @@
+<!-- index.wxml -->
+<view class="header  dis-flex">
+    <picker 
+        mode="region" 
+        wx:if="{{location.district||location.city}}" 
+        value="{{[location.province,  location.city,  location.district]}}"
+        bindchange="regionChange">
+        <view class="area text-ellipsis" >{{location.district||location.city}}</view>
+    </picker>
+    <button class="area text-ellipsis area-btn con_listbox" open-type="openSetting" bindopensetting="openSettingCallback" wx:else >定位</button>
+    <view class="search">
+        <input type="search" bindtap="bindfous_sp" disabled="true" class="search-input" placeholder="搜索您感兴趣的生活周边" />
+    </view>
+    <button class="scan-code con_listbox" bindgetuserinfo="getuserinfo" open-type="getUserInfo"><image class="img" src="https://sp.lion-mall.com/miniprogram/images/scan-code.png" ></image></button>
+</view>
+
+<view class="swiper-container">
+    <swiper 
+        class="swiper" 
+        autoplay="true" 
+        duration="{{400}}"  
+        circular="true" 
+        indicator-dots="{{true}}" 
+        indicator-color="rgba(255, 255, 255, 0.5)"
+        indicator-active-color="#e52e31">
+        <block wx:for="{{slider}}" wx:key="{{item.url}}">
+            <swiper-item>
+            <navigator url="{{'/pages/Business/Business?id='+ item.url }}&title={{item.name}}"  hover-class="diy-navigator-hover" > 
+              <image src="{{item.image}} "class="img" />
+            </navigator>  
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+<loading state="{{classif.length >= 1? false : true}}"></loading>
+
+<view class="nav">
+    <view class="item" 
+        wx:for="{{classif}}" 
+        data-id="{{item.classify_id}}" 
+        wx:key="{{item.classify_id}}"
+        wx:if="{{index < 5}}"
+    >
+      <navigator url="/pages/Deliciousfood/Deliciousfood?pid={{item.url}}&title={{item.name}}"  hover-class="diy-navigator-hover">
+        <view class="nav-icon">
+            <image class="img" src="{{item.img}}"></image>
+        </view>
+        <view class="nav-title">{{item.name}}</view>
+      </navigator>
+    </view>
+    <button wx:if="{{!location.district}}" class="area text-ellipsis area-btn con_listbox" open-type="openSetting" bindopensetting="openSettingCallback" ></button>
+</view>
+
+
+<view class="goods-container">
+
+    <view class="top-slogan"><image class="img" src="https://sp.lion-mall.com/miniprogram/images/link.png"/></view>
+    
+    <view class="goods-list">
+        <view class="relative" wx:for="{{businessList}}" wx:key="{{item.store_id}}">
+            <navigator url="{{'/pages/Business/Business?id='+ item.store_id }}"  hover-class="diy-navigator-hover">
+                <goods-item goodsItem="{{item}}"></goods-item>
+            </navigator>
+        </view>
+    </view>
+
+    <loading state="{{businessListLoadingState}}"></loading>
+    <view class="err-msg" style="{{businessList.length < 1 ? 'margin:246rpx 0;' : ''}}" wx:if="{{isShowbottomMsg}}">{{bottomMsg}}</view>
+</view>
+
+<view class="location-btn" wx:if="{{isShowLocationBtn}}" bindtap="tapGetCurrentLocation"><image src="https://sp.lion-mall.com/miniprogram/images/location.png" /></view>
+
+<!-- <view class="new-register" wx:if="{{isNewRegister}}">
+    <image class="img" src="https://sp.lion-mall.com/miniprogram/images/new-register.png"></image>
+    <view class="close" bindtap="tapCloseNewRegister"></view>
+</view> -->
+<!-- <view class="mask" wx:if="{{isNewRegister}}"></view> -->

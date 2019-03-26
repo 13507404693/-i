@@ -1,0 +1,35 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="padding40-30 pr">
+        <view>
+            <view class="bor_bt1px">
+                <view class="f_30">收货人：</view>
+                <view class="pd_t20_b30">
+                    <input class="f_32" name="name" maxlength="11" type="text" placeholder="请输入收货人姓名"></input>
+                </view>
+            </view>
+            <view class="bor_bt1px pd_top30">
+                <view class="f_30">手机号：</view>
+                <view class="pd_t20_b30">
+                    <input class="f_32" name="phone" maxlength="11" bindblur="bindblur" type="number" placeholder="请输入手机号码"></input>
+                </view>
+            </view>
+            <view class="bor_bt1px pd_top30">
+                <picker mode="region" value="{{region}}" bindchange="regionChange">
+                    <view class="f_30">所在地区：</view>
+                    <view class="f_32 pd_t20_b30">{{region}}</view>
+                </picker>
+            </view>
+            <view class="bor_bt1px pd_top30">
+                <view class="f_30">详细地址：</view>
+                <view class="f_32 pd_t20_b30">
+                    <textarea name="text" placeholder="请输入详细地址" style="width:690rpx;max-height:140rpx;"></textarea>
+                </view>
+            </view>
+            <view class="c_66 f_30 dis-flex pd_top30" bindtap="tap_atc">
+                <view class="border_radis {{ac_index?'bg_atc':''}}"></view>
+                <view class="pdleft_26">设置为默认地址</view>
+            </view>
+        </view>
+        <button class="nav" formType="submit">保存</button>
+    </view>
+</form>

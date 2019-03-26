@@ -1,0 +1,42 @@
+<view  wx:for="{{listData}}" data-index='{{index}}' bindtap='details'>  
+
+<view class='padding-30'> 
+      <view class='dis-flex pd_top20bto20'>
+          <image class="heade_logo" src="https://sp.lion-mall.com/miniprogram/images/icon-business.png" />
+          <view class="business-name c_33 f_28" data-goodsId="{{item.store_id}}">{{item.store_name}}</view>
+          <image class="heade_logoright" src="https://sp.lion-mall.com/miniprogram/images/icon-arrow.png" />
+      </view>
+</view>
+
+<view class='border_bto20'> 
+<view class='padding-30 bg_fa dis-flex flex-justify c_33 pd_top20 pd_bottom20'  wx:for="{{item.goodsList}}"  wx:for-item="index_item" > 
+        <view> 
+            <image class='phone_wh160' src='{{index_item.goods_image}}'></image>
+        </view>
+
+        <view class='phone_text f_28'>
+          <view class='mg_top10'>{{index_item.goods_name}}</view>
+          <view class='c_66 pd_top16'><label >{{index_item.spec1_name}}</label><label class='pd_left11 mg_top10'>{{index_item.spec1_value}}</label> </view>
+
+        </view>
+        
+        <view class='pd_top68 '>
+          <view class='f_26'>￥{{index_item.goods_price}}</view>
+          <view class='c_99  f_26 mg_top10' >
+            <label class='f_r'>x {{index_item.goods_num}}</label>
+        </view>
+        </view>
+</view>
+
+<view class='dis-flex padding-30 border_1fa pd_bottom20 pd_top20'>  
+  <view class='wh_30 bg_fa pd_left11'><image class='wh_30 prtop5'  src="https://sp.lion-mall.com/miniprogram/images/ic_tuikuan@2x.png"></image> </view>
+  <view  class='f_28 c_33 pd_left11'>{{item.return_type_name}} {{item.refund_state_name}}</view>
+</view>
+
+<view class='flex-right padding-30 pd_bottom20 pd_top20' > 
+    <view class='c_e5 border_e5 pd_16_15 f_28' wx:if="{{item.refund_state==1}}"  data-index='{{index}}' bindtap='details'>查看详情</view>
+        <view class='c_e5 border_e5 pd_16_15 f_28' wx:if="{{item.refund_state==3}}"  data-index='{{index}}' bindtap='details'>退款详情</view>
+</view>
+</view>
+
+</view> 

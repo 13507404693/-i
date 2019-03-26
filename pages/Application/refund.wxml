@@ -1,0 +1,86 @@
+<form bindsubmit="formSubmit" class="{{is_po==true?'pof_30':' '}}"   >
+<view > 
+
+<view class='border_bto20'> 
+
+<view class='padding-30 bg_fa dis-flex flex-justify c_33 pd_top20 pd_bottom20' > 
+        <view> 
+            <image class='phone_wh160' src="{{goodData.goods_image}}"></image>
+        </view>
+
+        <view class='phone_text f_28'>
+          <view class='pddin_top40'>{{goodData.goods_name}}</view>
+          <view class='c_66 pd_top16'><label>{{goodData.spec1_name}}</label><label class='pd_left11'>{{goodData.spec1_value}}</label> </view>
+        </view>
+
+        <view>
+         <view class='pddin_top40'><label class='c_99 pd_top68 f_26'>￥{{goodData.goods_price}}</label></view>
+          <view class='f_loat'><label class='c_99 pd_top68 f_26'>x{{goodData.goods_num}}</label></view>
+        </view>
+</view>
+</view>
+
+  <view class='f_28 c_33' >  
+    <view class='dis-flex padding-30 pd_top40bto40 border_1fa' >
+      <view class='f_28 pd_right30' wx:if="{{orderState==20}}">退款类型：</view>
+      <view class='f_28 pd_right30' wx:if="{{orderState==30}}">退货类型：</view>
+      <view class='f_28' wx:if="{{orderState==20}}">退款</view>
+      <view class='f_28 ' wx:if="{{orderState==30}}">退货</view>
+    </view>
+
+    <view class='dis-flex flex-justify padding-30 pd_top40bto40 border_1fa prs'> 
+        <view class='dis-flex'> 
+            <view class='f_28 pd_right30' wx:if="{{orderState==20}}">退款原因：</view>
+            <view class='f_28 pd_right30' wx:if="{{orderState==30}}">退货原因：</view>
+            <view  class=''>
+                <picker bindchange="bindPickerChange" name="Change" class='w_430 pos'   value="{{areaIndex}}" range="{{area}}" >
+                  <view class="picker">
+                      {{area[areaIndex]}}
+                  </view>
+                </picker>
+            </view>
+        </view>
+        <view>
+          <image class='wh_30 pr_top5' src='https://sp.lion-mall.com/miniprogram/images/blockcole@2x.png'></image>
+        </view>
+    </view>
+
+    <view class='dis-flex padding-30 pd_top40bto40 border_1fa'> 
+          <view class='f_28 w_26' wx:if="{{orderState==20}}">退款金额：</view>
+          <view class='f_28 w_26' wx:if="{{orderState==30}}">退货金额：</view>
+          <view class='dis-flex '><label class='pr_top5 c_e5'>¥</label><input class='c_e5' type='text' disabled="false" name="gooDprice" value='{{goodData.goods_price}}'></input> </view>
+    </view>
+
+    <view class='bg_f0 c_99 f_28 padding-30 pd_top40bto40'> 
+        最多可退 ¥ {{goodData.goods_price}}
+    </view>
+</view>
+
+<view class='padding-30'> 
+    <view class='f_28 c_33 pd_top30bto30' wx:if="{{orderState==20}}">退款说明</view>
+    <view class='f_28 c_33 pd_top30bto30' wx:if="{{orderState==30}}">退货说明</view>
+    <view class="pr">
+    <view class="po b20_r_20">
+      <label class="f_28 c_99">
+        {{num}} /
+        <text>150</text>
+      </label>
+    </view> 
+    <textarea adjust-position="true" bindfocus="focus" bindblur="blur"  cursor-spacing="100rpx" class="bor_1_5rpx pd_17 f_30 let1" bindinput="bindiupt"  maxlength="150"  name="textarea_text" placeholder="选填" />
+  </view>
+</view>
+
+<view class='padding-30 pd_top20' > 
+    <view class=' f_28 c_33 '>上传凭证 (上传凭证最多3张)</view>
+    <view class="image-container">
+        <upload-image bind:onSuccess="imageloadSuccess" imgNum="{{2}}"></upload-image>
+    </view > 
+
+</view> 
+<view >
+  <button formType="submit" class='btnE5'>提交</button>
+</view>
+
+</view>
+  
+</form>

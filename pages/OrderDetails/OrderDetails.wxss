@@ -1,0 +1,226 @@
+/* pages/OrderDetails/OrderDetails.wxss */
+page{
+    background: #fff;
+}
+.bar{
+    height: 14rpx;
+    background: #f0f0f0;
+}
+.order-details-container{
+    padding-bottom: 150rpx;
+}
+
+.order-state-wrap{
+    background-image: linear-gradient(90deg, 
+		#f0683e 0%, 
+		#db2c2f 100%, 
+		#e64a37 100%, 
+        #f0683e 100%);
+}
+.state-info{
+    font-size: 30rpx;
+    color: #fff;
+    padding-top: 60rpx;
+    padding-bottom: 60rpx;
+    position: relative;
+}
+.state-info::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(https://sp.lion-mall.com/miniprogram/images/bg-box-shadow.png) no-repeat center /100%;
+    width: 100%;
+    height: 11rpx;
+}
+.state-info .tips{
+    font-size: 26rpx;
+    margin-top: 18rpx;
+}
+
+.order-collectGoods-info{
+    position: relative;   
+    font-size: 28rpx;
+    color: #666;
+    padding-left: 84rpx;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx; 
+}
+.order-collectGoods-info text{
+    padding-left: 8rpx;
+}
+.order-collectGoods-info .user-info{
+    padding-bottom: 20rpx;
+}
+.icon-address{
+    position: absolute;
+    top: 55rpx;
+    left: 29rpx;
+    width: 24rpx;
+	height: 31rpx;
+}
+.order-text{
+    font-size: 28rpx;
+	color: #e52e31;
+}
+.business-info{
+    position: relative;
+    padding-bottom: 30rpx;
+}
+.business-name{
+    font-size: 28rpx;
+    color: #333;
+    padding-left: 10rpx;
+}
+.icon-business{
+    width: 32rpx;
+    height: 32rpx;
+    position: relative;
+    top: 4rpx;
+}
+
+
+.goods-info-wrap{
+    padding: 30rpx 0 0;
+}
+.goods-box{
+    position: relative;
+    padding-top: 16rpx;
+    background: #FAFAFA;
+    padding-bottom: 30rpx;
+}
+.box-style{
+    background-color: #fff;
+    border-radius: 5rpx;
+    padding: 31rpx 17rpx 30rpx;
+    overflow: hidden;
+}
+.goods-image{
+    width: 164rpx;
+	height: 162rpx;
+    border-radius: 5rpx;
+    margin-right: 20rpx;
+}
+.goods-info{
+    position: relative;
+    width:73%;
+}
+.goods-title{
+    max-width: 292rpx;
+    font-size: 28rpx;
+	letter-spacing: 2rpx;
+	color: #333;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+}
+.spec{
+    display: inline-block;
+    font-size: 24rpx;
+    color: #666666;
+    padding-top: 6rpx;
+}
+
+.price{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 24rpx;
+	color: #000;
+}
+.price .num{
+    font-size: 26rpx;
+    font-weight: 700;
+}
+.goods-num{
+    font-size: 26rpx;
+    color: #999;
+    text-align: right;
+    margin-top: 16rpx;
+}
+
+
+.order-info-wrap {
+    padding: 10rpx 30rpx 30rpx;
+}
+.order-info-wrap .info-item{
+    font-size: 26rpx;
+    color: #666;
+    margin-top: 20rpx;
+}
+.order-info-wrap .text-key{
+    padding-right: 10rpx;
+}
+
+.price-info-wrap{
+    font-size: 26rpx;
+    color: #999;
+    padding: 10rpx 30rpx 10rpx;
+}
+.price-info-wrap .info-item{
+    padding-top: 20rpx;
+}
+.key-primary{
+    color: #333;
+}
+.val-primary{
+    color: #e52e31;
+    font-weight: 700;
+}
+
+.after-sale{
+    text-align: right;
+    position:absolute;
+    right:28rpx;
+    bottom:15rpx;
+}
+.after-sale .btn{
+    display: inline-block;
+    font-size: 26rpx;
+    color: #333;
+    border-radius: 24px;
+    border: solid 1px #999;
+    padding: 8rpx 18rpx;
+    margin-left: 20rpx;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 92%;
+    border-top: 2rpx solid #f0f0f0;
+    padding: 24rpx  30rpx 18rpx;
+    background: #fff;
+}
+
+.operate-box{
+    text-align: right;
+}
+.operate-box button::after {
+  border: 0;
+}
+.operate-box .btn-default,.operate-box .btn-primary,.btn-primary2{
+    display: inline-block;
+    border-radius: 50rpx;
+    border: solid 2rpx #ccc;
+    background: none;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    color: #666;
+    margin-left: 28rpx;
+}
+.operate-box .btn-primary{
+    background-color: #e52e31;
+    border-color: #e52e31;
+    color: #fff;
+    line-height: 62rpx;
+}
+.btn-primary2{
+    border-color: #e52e31;
+    color: #e52e31;
+}
+.btn-comment{
+    width: 150rpx;
+}

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "商圈",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "goods-item": "../../components/goods-item/goods-item",
+        "loading": "../../components/loading/loading"
+    }
+}

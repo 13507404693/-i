@@ -1,0 +1,13 @@
+/* pages/kaituoshanghu/kaituoshanghu.wxss */
+.w205_h_205{	
+  width: 205rpx;
+	height: 205rpx;
+  }
+
+  .pd_top300{padding-top:300rpx;}
+
+    .pd_top40{padding-top:40rpx;}
+
+.f_30{font-size: 30rpx;}
+.co_99{	color: #999999;}
+  .center{text-align: center}

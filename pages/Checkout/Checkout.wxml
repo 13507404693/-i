@@ -1,0 +1,146 @@
+<view>
+  <view class="padding-30 dis-flex flex-justify po_relative" wx:if="{{!isNoAddress}}">
+    <view bindtap="tapChoiceAddress" >
+      <view class="c_33 line36 pd_top40">
+        <view class=" dis-flex">
+          <view class="f_28 pd_r_68">收货人：</view>
+          <view class="f_34">
+            <label>{{addressDefault.consignee}}</label>
+            <label class="pd_left15">{{addressDefault.mobile}}</label>
+          </view>
+        </view>
+        <view class="dis-flex pd_42_0 address-name">
+          <view class="f_28">收货地址：</view>
+          <view class="f_24 pd_letf39 w_480 ellipsis">{{addressDefault.pca_info+addressDefault.address}}</view>
+        </view>
+      </view>
+      <view class="h_30 icon-arrow">
+        <image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class="img_wh pd_top30"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="no-address-wrap" wx:if="{{isNoAddress}}">
+    <navigator url="/pages/Addmanagement/Addmanagement" hover-class="none">
+      <view class="tips">
+        <image src="https://sp.lion-mall.com/miniprogram/images/icon-add2.png" class="icon-add"></image>请添加收货地址
+      </view>
+      <view class="h_30 icon-arrow">
+        <image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class="img_wh pd_top30"></image>
+      </view>
+    </navigator>
+  </view>
+
+  <view>
+    <image src="https://sp.lion-mall.com/miniprogram/images/latiao.png" style="width:100%;height:7rpx;"></image>
+  </view>
+</view>
+
+<view class="padding32-30  borde_bto14">
+  
+  <view class="goods-item" wx:for="{{goodsList}}" wx:for-item="storeItem" wx:key="{{storeItem.store_id}}" wx:for-index="storeIndex">
+    <view class="business-info">
+        <!-- <navigator style="width: 100%;" url="{{'/pages/ShopBusiness/ShopBusiness?storeId='+ storeItem.store_id}}" hover-class="none"> -->
+          <image class="icon-business" src="https://sp.lion-mall.com/miniprogram/images/icon-business.png" />
+          <view class="business-name">{{storeItem.store_name}}
+            <image class="icon-arrow" src="https://sp.lion-mall.com/miniprogram/images/icon-arrow.png" />
+          </view>
+        <!-- </navigator> -->
+    </view>
+
+    <view class="pd_bto30" wx:for="{{storeItem.goods_list}}" wx:for-item="goodsItem" wx:key="{{goodsItem.goods_id}}" wx:for-index="goodsIndex">
+      <view hover-class="none" url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+goodsItem.model_id}}" class="dis-flex flex-justify">
+        <image style="width:240rpx;height:240rpx;" src="{{goodsItem.goods_image}}" />
+        <view class="w_418 po_relative">
+          <view class="f_28 c_33 goods-title">{{goodsItem.goods_title}}</view>
+          <view class="c_66 f_24 pd_top_22">{{goodsItem.spec1_value}} {{goodsItem.spec2_value}}</view>
+          <view class="price">
+            <label class="c_e5 f_24">￥</label>
+            <label class="c_e5 f_38">{{goodsItem.goods_total}}</label>
+            <label class="f_26 c_66" wx:if="{{goodsItem.goods_points >= 1}}">+{{goodsItem.goods_points}} 积分</label>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-info">
+    <view class="bor_btom1px pd-b-40">
+        <view class="dis-flex flex-justify detail-item first-of-type" bindtap="redPacketChange"  data-state="{{true}}">
+          <view>红包抵扣</view>
+          <view wx:if="{{cashAmount <= 0}}" class="val">
+            <text class="num pd-r-40">无可用</text>
+            <image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class="icon-baock  posi-ab-t50"></image>
+          </view>
+          <view wx:else class="val r-fontcolor">
+            ￥<text class="num pd-r-40">{{deductionAmount}}</text>
+            <image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class=" icon-baock"></image>
+          </view>
+        </view>
+          <!-- <view class="dis-flex flex-justify detail-item pd-t-28">
+          <view>优惠券</view>
+          <view class="val r-fontcolor">￥<text class="num pd-r-40">500.00</text><image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class="posi-ab-t35 icon-baock"></image></view>
+        </view> -->
+    </view>
+    <view class="dis-flex flex-justify bor_bto1px f_30 c_33 pd_40_0 bor_btom1px">
+      <view>配送方式</view>
+      <view>快递配送</view>
+    </view>
+
+    <view class="dis-flex flex-justify detail-item first-of-type">
+      <view>商品金额</view>
+      <view class="val">￥<text class="num">{{totalPrice}}</text></view>
+    </view>
+
+    <view class="dis-flex flex-justify detail-item">
+      <view>红包抵扣</view>
+      <view class="val r-fontcolor">-￥<text class="num">{{deductionAmount}}</text></view>
+    </view>
+
+    <!--  TODO 暂无接口
+      <view class="dis-flex flex-justify detail-item">
+      <view>优惠券</view>
+      <view class="val r-fontcolor">￥<text class="num">0.00</text></view>
+    </view> -->
+
+    <view class="dis-flex flex-justify detail-item" wx:if="{{ totalPoints >= 1}}">
+      <view>积分</view>
+      <view class="val"><text class="num">{{'-'+totalPoints}}</text> 积分</view>
+    </view>
+
+    <view class="dis-flex flex-justify detail-item">
+      <view>运费</view>
+      <view class="val">￥<text class="num">0.00</text></view>
+    </view>
+  </view>
+
+</view>
+
+<view class="padding-30 pd_top20">
+  <input adjust-position="{{true}}" bindinput="textareaChange" maxlength="100" placeholder="给卖家留言" class="textarea_style pd_20 mg_btom200" />
+</view>
+
+<view class="po_fxd w_100">
+  <view class="dis-flex flex-justify">
+    <view class="pd_42_0 w_506 c_66 f_34 pd_left30 boder_btm" style="background:#fff;">
+      实付款：
+      <label class="c_e5 f_42">¥{{actualPrice}}</label>
+    </view>
+    <view wx:if="{{addressList.length >= 1}}" class="w_244 bth_red f_36 pd_42_0" bindtap="submitOrder">提交订单</view>
+    <view wx:else class="w_244 bth_red f_36 pd_42_0" style="opacity:.6;">提交订单</view>
+  </view>
+</view>
+
+<picker-popup title="我的钱包" state="{{isShowRedPacketPopup}}" bindcancel="redPacketChange">
+  <view class="popup-wrap">
+    <view class="picker-item dis-flex">
+      <view class="label">钱包余额</view>
+      <view class="val">￥{{cashAmount}}</view>
+    </view>
+    <view class="picker-item dis-flex picker-input-item">
+      <view class="label">本次抵扣</view>
+      <input type="digit" class="picker-input" placeholder="请输入少于您钱包金额" bindinput="deductionInputChange" />
+    </view>
+    <button class="confirm con_listbox" bindtap="deductionPrice">确定</button>
+  </view>
+</picker-popup>

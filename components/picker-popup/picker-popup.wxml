@@ -1,0 +1,8 @@
+<view class="picker-popup {{state ? 'active' : ''}}">
+    <view class="popup-header  flex-wrap">
+        <view class="title">{{title}}</view>
+        <image bindtap="_tapClose" class="icon-close" src="https://sp.lion-mall.com/miniprogram/images/icon-close.png"></image>
+    </view>
+   <slot></slot>
+</view>
+<view bindtap="_tapClose" class="popup-mask {{state ? 'active' : ''}}" ></view>

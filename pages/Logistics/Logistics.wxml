@@ -1,0 +1,38 @@
+<!--pages/Logistics/Logistics.wxml-->
+<view class="logistics-container">
+    <view class="goods-info dis-flex padding-30">
+        <image class="goods-image" src="{{goodsImg}}"></image>
+        <view class="express-info">
+            <view class="item">
+                <text class="text-key">物流状态：</text>
+                <text class="text-val">{{stateText || '暂无状态'}}</text>
+            </view>
+            <view class="item">
+                <text class="text-key">承运来源：</text>
+                <text class="text-val">{{expTextName}}</text>
+            </view>
+            <view class="item">
+                <text class="text-key">运单编号：</text>
+                <text class="text-val">{{code}}</text>
+            </view>
+            <view class="item" wx:if="{{tel !== ''}}">
+                <text class="text-key">官方电话：</text>
+                <text class="text-val">{{tel}}</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="logistics-info-wrpa">
+        <view class="title">物流跟踪</view>
+        <view class="logistics-list">
+            <view class="item" wx:for="{{logisticsList}}" wx:key="{{index}}" >
+                <text class="speed"></text>
+                <view class="time">{{item.time}}</view>
+                <view class="describe">
+                    <text decode="{{true}}">{{item.context}}</text>
+                </view>
+            </view>
+        </view>
+        <view style="text-align: center;padding-bottom: 31rpx;color: #ccc;font-size: 28rpx;">{{logisticsList.length < 1 ? '暂无物流信息...' : ''}}</view>
+    </view>
+</view>

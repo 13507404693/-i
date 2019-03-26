@@ -1,0 +1,330 @@
+<!-- satr 頂部 -->
+<view class="pfxdtop r-bg top-nav {{isShowTopNav ? 'active' : ''}}">
+  <view class="flex-center c_ff f_32 pd_top10">
+    <view bindtap="tapTopNav" data-opt="list0" class="{{toView === 'list0' ? 'bor_bt5rpx' : ''}} ">
+      商品
+    </view>
+    <view bindtap="tapTopNav" data-opt="list2" class="{{toView == 'list2' ? 'bor_bt5rpx' : ''}} pd_left84_right_84">
+      详情
+    </view>
+    <view bindtap="tapTopNav" data-opt="list1" class="{{toView == 'list1' ? 'bor_bt5rpx' : ''}}">
+      评价
+    </view>
+  </view>
+</view>
+<!-- 尾部 -->
+<scroll-view bindscroll="bindscroll" scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true" class="pr scrollheight">
+  <!-- satr 商品快 -->
+  <view id="list0" class="swiper-container">
+    <swiper class="swiper h749" indicator-dots="{{false}}" autoplay="true" duration="{{400}}" circular="true" bindchange="swiperChange">
+      <block wx:for="{{commodity_data.goods_album}}" wx:key="{{index}}">
+        <swiper-item bindtap="tapSwiperPreviewImage" data-img="{{item}}">
+          <image src="{{item}}" class="img img_wh100" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="indicator-wrap">
+      <text class="indicator-active">{{swiperActiveIndex}}</text>
+      <text class="indicator-totle">/{{commodity_data.goods_album.length}}</text>
+    </view>
+  </view>
+  <view class="padding-30">
+    <view class="c_66 pd_top25">
+      <label class="f_24 pd_left10 pd_right10">直购价</label>
+      <label class=" f_32">
+        <label class="f_24">￥</label>
+        {{points}}
+      </label>
+    </view>
+    <view class="dis-flex pd_top25">
+      <view>
+        <label class="bg_e5 c_ff f_24 bor_rad5 pd_7">积分价</label>
+      </view>
+      <view>
+        <label class="c_e5 f_38 pd_left14">
+          <label class="f_24">￥</label>
+          {{commodity_data.goods_price || 0}}
+        </label>
+        <label class="f_26 c_e5">+{{commodity_data.goods_points || 0}}</label>
+        <image  src="https://sp.lion-mall.com/wap5.0/img/ic_jifen@2x.png" class="wh_20 pd_left4"></image>
+      </view>
+    </view>
+    <view>
+      <view class="c_33 pd_b30_tp25 w_686_h68">{{commodity_data.goods_title}}</view>
+    </view>
+    <view class="dis-flex flex-right ">
+      <view class="f_26 c_66 dis-flex pd_bto30">
+        <view>
+          <label>剩余:</label>
+          <label>{{commodity_data.goods_num + commodity_data.unit}}</label>
+        </view>
+        <view class="pd_left40">
+          <label>已售:</label>
+          <label>{{commodity_data.sale_num + commodity_data.unit}}</label>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class=" c_33 f_26 padding-30 bor_top1px bor_bt14rpx">
+    <view class="dis-flex pd_b20_tp20">
+      <view>
+        <image class="wh_24" src="https://sp.lion-mall.com/miniprogram/images/ic_gouxuan@2x.png"></image>
+        正品保障
+      </view>
+      <view class="pd_left40">
+        <image class="wh_24" src="https://sp.lion-mall.com/miniprogram/images/ic_gouxuan@2x.png"></image>
+        免运费
+      </view>
+      <view class="pd_left40">
+        <image class="wh_24" src="https://sp.lion-mall.com/miniprogram/images/ic_gouxuan@2x.png"></image>
+        7天无理由退货
+      </view>
+    </view>
+  </view>
+  <view class=" padding-30 bor_bt14rpx" bindtap="showIntegralSkuModel">
+    <view class="pd_b30_tp25 dis-flex flex-justify f_26 c_33">
+      <view>
+        <label>选择</label>
+        <label class="pd_left30">请选择商品参数</label>
+      </view>
+      <view>
+        <image class="w_14_24 pd_top4" src="https://sp.lion-mall.com/miniprogram/images/ic_xiangyou1@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- end商品快 -->
+  <!-- star 评价 -->
+  <view class="padding-30 bor_bt14rpx" id="list1">
+    <view class="dis-flex flex-justify pd_b30_tp25">
+      <view class="f_28 c_33 dis-flex">
+        <view class="w12_h26bge5"></view>
+        <view class="pd_left14">评价（{{goodst.count || 0}}）</view>
+      </view>
+      <view class="f_28 c_66" bindtap="Goall">
+        <label>查看全部</label>
+        <image src="https://sp.lion-mall.com/miniprogram/images/baock.png" class="pd_left14 w_14_24 midden"></image>
+      </view>
+    </view>
+    <view class="pd_40_0" bindtap="Goall">
+      <label class="pd_14_18 acth_bg1 f_26 c_ff ">
+      <image class='pr_wh15' src='https://sp.lion-mall.com/miniprogram/images/gooddg.png'></image>
+      全部 {{goodst.count || 0}}
+      </label>
+      <label class="pd_14_18 acth_bg2 f_26 c_ff mg_left25">好评 {{goodst.allzan.zan || 0}}</label>
+      <label class="pd_14_18 acth_bg2 f_26 c_99 mg_left25">差评 {{goodst.allzan.cai || 0}}</label>
+       <label class="pd_14_18 acth_bg2 f_26 c_99 mg_left25">有图 {{goodst.allzan.imgs || 0}}</label>
+    </view>
+    <view class="bor_bto1px mg_bto25" wx:for="{{goodsList}}" wx:key="{{index}}">
+      <view class="dis-flex flex-justify">
+        <view class="w_94_h94 bor_rad5 bor_bto1px">
+          <image src="{{item.member_avatar ? 'https://img.lion-mall.com/' + item.member_avatar : 'https://sp.lion-mall.com/miniprogram/images/douxiang.jpg' }}" data-errorimg="{{index}}" class="w_94_h94 bor_rad5"></image>
+        </view>
+        <view class="wh_570">
+          <view class="dis-flex flex-justify">
+            <view class="f_28 c_33">{{item.geval_frommembername}}</view>
+            <view class="f_22 c_99">{{item.geval_addtime}}</view>
+          </view>
+          <view class="f_26 c_e5 pd_b39_tp35">赞了该商品</view>
+        </view>
+      </view>
+      <view class="f_28 c_33 pd_bto30">{{item.geval_content}}</view>
+      <view class="flex-wraprs">
+        <image wx:if="{{geval_index}}" wx:for="{{item.geval_image}}" wx:for-item="geval_index" wx:key="{{index}}" data-indexs="{{index}}" data-images="{{item.geval_image}}" bindtap="tapPreviewImage" data-src="https://img.lion-mall.com/{{geval_index}}" src="https://img.lion-mall.com/{{geval_index}}" class="img-items goods-items pd_bto15 bor_rad5"></image>
+      </view>
+        <view class="operation flex_end" bindtap="Goall">
+      <view class="praise" bindtap='dianzan' data-index="{{index}}" >
+          <image class="img"  src="{{item.iszan==1?'https://sp.lion-mall.com/miniprogram/images/red_dianzan.png':'https://sp.lion-mall.com/miniprogram/images/icon-praise.png'}}"></image>
+          <label>{{item.zannum}}</label>
+      </view>
+      <view class="consult">
+          <image  class="img" src="https://sp.lion-mall.com/miniprogram/images/icon-consult.png"></image>咨询买家
+      </view>
+    </view>
+    </view>
+  </view>
+  <!-- end 评价 -->
+  <!-- strar 进人店铺 -->
+  <view class="padding-30 bor_bt14rpx">
+    <view class="dis-flex flex-justify pd_b20_tp20">
+      <view>
+        <image src="{{commodity_data.store_logo ? 'https://img.lion-mall.com/'+commodity_data.store_logo : 'https://sp.lion-mall.com/miniprogram/images/default-storelogo.png' }} " class="w121_h121 midden"></image>
+        <label class="pd_left30 f_28 C_33">{{commodity_data.store_name}}</label>
+      </view>
+      <view class="line36" bindtap="go_shop" data-storeid="{{commodity_data.store_id}}">
+        <label class="c_33 f_28 bor_e51px pd_20_26 bor_rad34">进店逛逛</label>
+      </view>
+    </view>
+  </view>
+  <!-- end 进人店铺 -->
+  <!-- satr 详情 -->
+  <view class="pd_bto65" id="list2">
+    <view class="padding-30">
+      <view class="pd_b30_tp25">
+        <view class="f_28 c_33 dis-flex">
+          <view class="w12_h26bge5"></view>
+          <view class="pd_left14">图文详情</view>
+        </view>
+      </view>
+    </view>
+    <view class="f_28 c_33">
+      <import src="../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+  </view>
+</scroll-view>
+<!-- end 详情 -->
+<!-- star 商品参数弹出 -->
+<view class="bg_005 pfxdh100top pr spec-model {{ishoswhide? 'active' : ''}}">
+  <view class="bg_ff pfxd  fxd">
+    <view class="dis-flex flex-justify padding-30 pd_b10_tp20">
+      <view class="dis-flex ">
+        <view catchtap="hideSkuModel">
+          <image class="w_205_h205" src="{{goods_spec_image||skusList[0][0].valArr[skusList[0][0].index].goods_spec_image}}"></image>
+        </view>
+        <view class="pd_left25">
+          <view class="f_28 c_33 pd_top40" wx:if="{{skuModelOff}}">积分价</view>
+          <view class="f_28 c_33 pd_top40" wx:else>直购价</view>
+          <view class="pd_b10_tp20">
+            <label class="f_38 c_e5">
+              <label class="f_24">¥</label>
+              {{skuPrice}}
+            </label>
+            <label class="f_26 c_66" wx:if="{{skuModelOff}}">+{{skuPoints}}积分</label>
+          </view>
+          <view class="c_66 f_24">
+            库存:
+            <label>{{skuGoodsNum}}</label>
+          </view>
+        </view>
+      </view>
+      <view bindtap="hideSkuModel">
+        <image class="w_25_h25" src="https://sp.lion-mall.com//miniprogram/images/jiaocha.png"></image>
+      </view>
+    </view>
+    <view class="padding-30 c_33 f_26 pd_bto20">购买方式</view>
+    <view class="flex-wrapr mg_bto10">
+      <view class=" f_26 dis-flex">
+        <view bindtap="showIntegralSkuModel" class="{{skuModelOff ? 'gray_atc mg_right25' : 'red_atc' }}">
+          积分惠购
+        </view>
+        <view bindtap="showDirectPricelSkuModel" class="{{skuModelOff ? ' red_atc ' : 'gray_atc mg_left37' }}">
+          直价购买
+        </view>
+      </view>
+    </view>
+    <scroll-view class="scroll-view_H" scroll-y style="width: 100%;max-height:600rpx;">
+      <view class="mg_bto10 suks-wrap" wx:for="{{skusList}}" wx:key="{{index}}">
+        <block wx:for="{{item}}" wx:key="{{index}}" wx:for-item="keyItem" wx:for-index="keyItemIndex">
+          <view class="padding-30 c_33 f_26 pd_bto20">{{keyItem.key}}</view>
+          <view class="flex-wrapr f_26">
+            <view wx:for="{{keyItem.valArr}}" wx:for-item="valItem" wx:key="{{index}}" class="{{index == keyItem.index ? 'gray_atc' : 'red_atc' }}" data-index="{{index}}" data-goodsid="{{valItem.goods_id}}" data-keyVal="{{valItem.key}}" data-keyIndex="{{keyItemIndex}}" data-skuType="{{keyItem.type}}" data-img="{{valItem.goods_spec_image}}" bindtap="tapSkus">
+              {{valItem.key}}
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="dis-flex flex-justify padding-30 pd_b80_tp80">
+        <view class="c_33 f_26">数量</view>
+        <view class="dis-flex">
+          <view class=" w_50 center" bindtap="bindMinus">
+            <image src="https://sp.lion-mall.com//miniprogram/images/ic_jianhao2@2x.png" class="w_25_h4"></image>
+          </view>
+          <view class=" center bg_f0 pd_b10_tp30 mg_0_30">{{num}}</view>
+          <view class=" w_50 center" bindtap="bindPlus">
+            <image src="https://sp.lion-mall.com//miniprogram/images/ic_jiahao2@2x.png" class="w_25_h24 pd_top15 "></image>
+          </view>
+        </view>
+      </view>
+      <view class="padding-30" data-off="{{offtf}}" wx:if="{{offtf==true}}">
+        <view class="f_26 c_33 mg_bto10">积分惠购</view>
+        <view class="f_26 c_66 pd_bto100">积分抵现享优惠后不再赠送积分哦！</view>
+      </view>
+      <view class="padding-30" data-off="{{offtf}}" wx:if="{{offtf==false}}">
+        <view class="f_26 c_33 mg_bto10">购买送积分</view>
+        <view class="f_26 c_66 pd_bto100">消费多少送多少积分哦！</view>
+      </view>
+    </scroll-view>
+    <view class="dis-flex flex-justify center">
+      <button class="c_ff f_30 bg_fe w_b50 addcart-btn con_listbox" disabled="{{addCartBtnState}}" loading="{{addCartBtnState}}" bindtap="addCart">
+        加入购物车
+      </button>
+      <button class="c_ff f_30 bg_e5 w_b50 buy-btn con_listbox" bindtap="gobuy">立即购买</button>
+    </view>
+  </view>
+</view>
+<!-- end 商品参数弹出 -->
+<!-- star 底部 -->
+<view class="fxd pfxd">
+  <view class="pd_14_30 bg_ff ">
+    <view class="dis-flex flex-justify">
+      <view class="f_22 dis-flex c_33 ">
+        <navigator open-type="switchTab" url="/pages/Shop/Shop" hover-class="none" class="pd_lef_rig_23" style="padding-left:0;">
+          <view class="center">
+            <image src="https://sp.lion-mall.com/miniprogram/images/icon-shop2.png" class="w36_h36"></image>
+          </view>
+          <view style="margin-top: 10rpx;">商城首页</view>
+        </navigator>
+        <view class="pd_lef_rig_23" data-modelId="{{commodity_data.model_id}}" bindtap="follow">
+          <view class="center">
+            <image src=" {{commodity_data.isfav == 1?'https://sp.lion-mall.com//miniprogram/images/ic_yiguanzhu@2x.png':'https://sp.lion-mall.com//miniprogram/images/ic_guanzhu@2x.png'}}" class="w36_h36"></image>
+          </view>
+          <view style="margin-top: 10rpx;">收藏</view>
+        </view>
+        <view class="pd_lef_rig_23" bindtap="to_shGwc">
+          <view class="center">
+            <image src="https://sp.lion-mall.com//miniprogram/images/ic_gouwuche1@2x.png" class="w36_h36"></image>
+          </view>
+          <view style="margin-top: 10rpx;">购物车</view>
+        </view>
+      </view>
+      <view class="dis-flex f_28 ">
+        <view class="pd_22 bg_fe borelet35_btlet35 c_ff" bindtap="showIntegralSkuModel">积分惠购</view>
+        <view class="pd_22 bg_e5 bor_r35_rbt35 c_ff" bindtap="showDirectPricelSkuModel">立即购买</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- end 底部 -->
+<!-- 商品 下架 -->
+<view class="p_fxd" wx:if="{{commodity_data.is_on_sale==0}}">
+  <view class="bg_ef">该商品已下架</view>
+  <view class="h62"></view>
+</view>
+<!-- </view> -->
+<!-- 商品 删除 -->
+<view class="p_fxdwh" wx:if="{{commodity_data.is_delete==1}}">
+  <view class="center">
+    <image class="w_180_h150" src="https://sp.lion-mall.com/miniprogram/images/guoqi.png"></image>
+    <view class="c_f6 pd_bto40 pd_top40 f_28">商品过期不存在</view>
+  </view>
+  <view class="mg_top32">
+    <image class="w_690h_80" src="https://sp.lion-mall.com/miniprogram/images/caiyoulove.png"></image>
+  </view>
+  <view class="dis-flex  flex-wrapr">
+    <view class="goods-item" wx:for="{{guesslikeData}}" bindtap="go_gwc" data-goodsid="{{item.model_id}}">
+      <view>
+        <image class="wh_350" src="https://img.lion-mall.com/{{item.goods_image}}"></image>
+      </view>
+      <view class="f_24 c_33 pd_12_0 text-ellipsis">{{item.goods_title}}</view>
+      <view class="f_24 c_33">
+        <view class="dis-flex flex-justify">
+          <view>
+            <label>直购价:</label>
+            <label class="pd_left18">¥{{item.zong_price}}</label>
+          </view>
+          <view>
+            <image bindtap="show_true" data-goodsid="{{item.model_id}}" class="wh_16" src="https://sp.lion-mall.com/miniprogram/images/icon-cart2.png"></image>
+          </view>
+        </view>
+      </view>
+      <view>
+        <label class="f_24 c_33">积分价:</label>
+        <label class="f_28 c_e5 pd_left18 pd_bto8">¥{{item.goods_price}}</label>
+        <label class="f_20 c_e5 pd_left18">+{{item.goods_points}}积分</label>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="toShop-btn {{isShowToShop? 'active' : 'no' }}" bindtap="clickIm" hover-class="none" open-type="switchTab">
+  <image style="width:100%; height:100%;" src="https://sp.lion-mall.com/miniprogram/images/icon-kf.png?time=20180728"></image>
+</view>

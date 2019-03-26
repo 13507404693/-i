@@ -1,0 +1,19 @@
+<view class='mg_0_31'> 
+  <view class='bor_1_coe6 box_between pd_pt41_pt41'>
+     <view class='f_30 w_20 al_rt'><text class='co_f7 '>* </text><text class='lettr1'>手机号</text></view>
+     <view class='pd_lf50'><input type='number' value="{{phone}}" class='f_30' maxlength='11' bindinput ="userphone" placeholder="请填写手机号"></input></view>
+  </view>
+ 
+  <view class='bor_1_coe6 box_between pd_pt41_pt41'>
+     <view class='f_30 w_20 al_rt'><text class='co_f7 '>* </text><text class='lettr1'>密码</text></view>
+     <view class='pd_lf50'><input type='password' class='f_30' maxlength='11' bindinput ="userPass" placeholder="请填写密码"></input> </view>
+  </view>
+
+<view class='pd_top70r'> 
+  <button bindtap='bth_click' class='f_32 bth_tj42 r-bg con_listbox'>完成</button>
+</view>
+
+  <view class='center pd_top50'>
+   <navigator class='f_26 c_e5 lettr1' hover-class="none" url="/pages/repairpasswrod/repairpasswrod" >忘记密码,点击找回</navigator>
+  </view>
+</view>

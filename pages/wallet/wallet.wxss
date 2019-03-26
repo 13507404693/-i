@@ -1,0 +1,93 @@
+/* pages/wallet/wallet.wxss */
+
+
+.midden{vertical-align:top;}
+.let1{letter-spacing:1rp;}
+
+/* 定位 */
+.pr{position:relative;}
+.po{position:absolute;}
+
+/* 宽高 */
+.w280_h182{width:270rpx;height:182rpx;}
+
+
+/*字体大小*/
+.f_26{font-size:26rpx;}
+.f_28{font-size:28rpx;}
+.f_30{font-size:30rpx;}
+.f_32{font-size:32rpx;}
+.f_54{font-size:54rpx;}
+
+/* 字体加粗 */
+.f_bold{font-weight:bold;}
+
+.text_r{text-align:right;}
+
+
+/* 颜色快*/
+.c_ff{color:#fff;}
+.c_33{color:#333333}
+.c_66{color:#666666;}
+.c_f6{color:#FA643F;}
+
+
+.bg_f7{background:#e52e31;}
+.bg_1_e6{background:#E6E6E6; width:100%;height:1rpx}
+.bg_ffpd{background:#F8F8F8;padding:0rpx 60rpx;}
+
+
+/* 边距快*/
+.pd_top20{padding-top:20rpx;}
+.pd_top30{padding-top:30rpx;}
+.pd_top64{padding-top:34rpx;}
+.pd_top100{padding-top:190rpx;}
+.pd_bottom64{padding-bottom:64rpx;}
+.pd_bottom32{padding-bottom:32rpx;}
+.pa_top23_bto23{padding-bottom:23rpx;padding-top:23rpx;}
+.pa_top30_bto30{padding-bottom:30rpx;padding-top:30rpx;}
+.pa_top40_bto40{padding-bottom:40rpx;padding-top:40rpx;}
+.pa_let30_rit30{padding-left:30rpx;padding-right:30rpx;}
+.pd_top41_bt35{padding-top:41rpx;padding-bottom:35rpx;}
+.top_log_pdf13{padding-left:13rpx;}
+.top_log_pdf20{padding-left:20rpx;}
+.top_logewh33{width:33rpx;height:33rpx;}
+.mg_30_0{margin:30rpx 0rpx}
+.mg_bto10{margin-bottom:10rpx;}
+
+
+.w_50{width:50%;}
+
+/*border 线快*/
+.border1e6{border-bottom:1rpx solid #E6E6E6;}
+
+.money_style{
+  top:20rpx;
+  left:50%;
+  margin-left:-116rpx;
+  }
+
+  /* 时间选择模板class */
+  .fxid{
+    position:absolute;
+    top:0rpx;
+    left:0rpx;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    }
+
+  .time_bg{
+    background:#fff;background:#fff;
+    width:600rpx;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-300rpx;
+    margin-top:-25%;
+}
+
+.pr_top3{position:relative;
+    top:3px;
+    }
+

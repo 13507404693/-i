@@ -1,0 +1,36 @@
+/* components/loading/loading.wxss */
+.loading-box{
+    width:80rpx;
+    height:80rpx;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.loading{
+  width:80rpx;
+  height:80rpx;
+  -webkit-animation:  .4s rotateLoading ease;
+  animation:  .4s rotateLoading ease;
+  -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+@keyframes rotateLoading{
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotateLoading{
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商家店铺",
+    "usingComponents": {
+        "loading": "../../components/loading/loading",
+        "shop-goods-item": "../../components/shop-goods-item/shop-goods-item"
+    }
+}

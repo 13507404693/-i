@@ -1,0 +1,30 @@
+<!--pages/GoodsList/GoodsList.wxml-->
+<block wx:if="{{type == 5}}">
+    <image class="activity-img" src="{{activityImg}}"></image>
+</block>
+<touch-gesture bind:currentGesture="onTouchGesture">
+    <view class="goodslist-container {{type != 5 ? 'pd-top-166' : ''}}">
+
+        <view class="header {{touchGesture}}">
+            <block wx:if="{{type != 5}}">
+                <view class="top-region dis-flex">
+                    <view class="search">
+                        <navigator url="/pages/ShopSearch/ShopSearch"  hover-class="none">
+                            <image class="search-icon" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-search.png" />
+                            <input type="text" disabled="{{true}}" class="search-input" placeholder="搜索商品,万种好货等你来" />
+                        </navigator>
+                    </view>
+                </view>
+
+                <list-sort bindonSort="onSort" sort-class="sort-class"></list-sort>
+            </block>
+        </view>
+
+        <view class="goods-list dis-flex">
+            <shop-goods-item goodsList="{{goodsList}}"></shop-goods-item>
+        </view>
+        <loading state="{{loadingState}}"></loading>
+        <view class="no-goods-msg" wx:if="{{noGoodsMsgState}}">没有更多的商品 ~_~</view>
+    </view>
+</touch-gesture>
+

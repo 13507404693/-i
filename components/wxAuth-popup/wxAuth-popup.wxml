@@ -1,0 +1,14 @@
+<!--components/wxAuth-popup/wxAuth-popup.wxml-->
+ <!-- - 授权弹窗 -- -->
+ <view class="auth-popup {{state? 'active' : '' }}" wx:if="{{state}}">
+        <button 
+            bindgetuserinfo="_authLoginGetUserInfo" 
+            hover-class="none" 
+            class="auth-btn  con_listbox btn" 
+            disabled="{{isLoading}}"
+            loading="{{isLoading}}"
+            open-type="getUserInfo">
+            {{isLoading ? '授权中' : '立即授权'}}
+        </button>
+ </view>
+ <view class="popup-mask" wx:if="{{state}}"></view>

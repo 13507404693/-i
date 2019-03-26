@@ -1,0 +1,85 @@
+/* pages/integral.wxss */
+.w_30_30{width:30rpx;height:30rpx}
+
+.let_spac1{letter-spacing: 1px;}
+
+
+.felx_just{display:flex;justify-content:space-between}
+.r{float:right}
+.f{float:left}
+
+.bg_f8{width:50%;height:6px;background:#ec6267;}
+
+.vermd{vertical-align:middle;}
+.integr-header{
+    position: relative;
+}
+.integr-header .head-total{
+    text-align: center;
+    color: #fff;
+    font-size: 30rpx;
+    padding-top: 48rpx;
+}
+.integr-header .head-total .total-num{
+    font-size:60rpx;
+    margin-top: 18rpx;
+}
+.integr-header .intergal-classif{
+    margin-top: 60rpx;
+}
+.integr-header .classif-item{
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: #e5e5e5;
+    padding-bottom:56rpx;
+}
+.integr-header .classif-item .item-title{
+    font-size: 30rpx;
+}
+.integr-header .classif-item .item-num{
+    font-size:32rpx;
+}
+
+.f_wei{font-weight:bold;}
+
+.integr-list{
+    padding: 0 30rpx
+}
+.integr-list .integr-item{
+    color: #333;
+    border-bottom: 2rpx solid #e6e6e6;
+    padding:22rpx 5rpx;
+    position: relative;
+}
+.integr-list .integr-item .title{
+    font-size: 30rpx;
+    padding-bottom: 24rpx;
+    color: #333;
+}
+.integr-list .integr-item .date{
+    font-size:28rpx;
+}
+.integr-list .integr-item .integr-con{
+    position: absolute;
+    top: 38%;
+    right: 30rpx;
+    font-size: 30rpx;
+}
+
+.rule{
+    position: absolute;
+    top: 20rpx;
+    right: 30rpx;
+    font-size:26rpx;
+    color: #e5e5e5;
+}
+.rule .symbol{
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 6rpx;
+    vertical-align: top;
+}
+
+.text_right{text-align:right;}

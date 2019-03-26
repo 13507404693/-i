@@ -1,0 +1,44 @@
+<!--pages/integr.wxml-->
+<view>
+    <view class="integr-header  r-bg">
+        <view class="head-total">
+            <view class="total-num">{{integrData.amount.points||0}}</view>
+            <text class='let_spac1'>可兑换积分</text>
+        </view>
+        <view class="intergal-classif">
+            <view class="classif-item"> 
+                <text class="item-title let_spac1">累积积分</text>
+                <view class="item-num">{{integrData.amount.in_point||0}}</view>
+            </view>
+            <view class="classif-item">
+                <text class="item-title let_spac1">已用积分</text>
+                <view class="item-num">{{integrData.amount.out_point||0}}</view>
+            </view>
+        </view>
+        <navigator url='/pages/WebView/WebView?url={{url}}&title={{title}}'>
+        <view class="rule" >
+        <image src='https://sp.lion-mall.com/miniprogram/images/guce.png' class='w_30_30 vermd'></image>
+        规则
+        </view>
+        </navigator>
+
+        <!-- <view class='pd_top56 felx_just'>
+          <view class='{{isdata==0?"bg_f8":""}}'></view>
+          <view class='{{isdata==1?"bg_f8":""}}'></view>
+        </view> -->
+
+    </view>
+
+    <view class="integr-list">
+        <view class="integr-item felx_just" wx:key="{{index}}" wx:for="{{listData}}">
+          <view>
+                <view class="title f_wei let_spac1">{{item.order_store || item.order_from}}</view>
+                <view class="date">{{item.create_time}}</view>
+          </view>
+          <view class='text_right'> 
+                 <view class="title r-fontcolor f_wei">{{item.symbol}}{{item.points}}积分</view>
+                 <view class="date">{{item.order_from}}</view>
+          </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,155 @@
+<!--pages/Order/Order.wxml-->
+<view class="order-container">
+    <view class="position-fixed">
+        <view class="order-nav dis-flex flex-justify padding-30">
+            <view class="item {{orderState == ''? 'active' : ''}}" bindtap="tapGetOrder" data-orderState="" data-index="{{0}}">全部</view>
+            <view 
+                class="item {{orderState == item.state? 'active' : ''}}" 
+                bindtap="tapGetOrder" 
+                data-index="{{index +1 }}" 
+                wx:for="{{orderSates}}" 
+                wx:key="{{item.id}}" 
+                data-orderState="{{item.state}}">{{item.name}}
+                </view>
+        </view>
+    </view>
+
+    <view class="bar"></view>
+
+    <view class="order-wrpa">
+        <view class="order-list">
+            <view class="order-item" wx:for="{{orderList}}" wx:for-item="orderItem" wx:key="{{orderItem.order_id}}">
+                
+                <navigator hover-class="none"  url="{{'/pages/ShopBusiness/ShopBusiness?storeId='+ orderItem.store_id}}" class="padding-30">
+                    <view class="dis-flex flex-justify">
+                        <view class="business-info">
+                            <image class="icon-business" src="https://sp.lion-mall.com/miniprogram/images/icon-business.png" />
+                            <text class="business-name">{{orderItem.store_name}}</text>
+                            <image wx:if="{{orderState != 40}}" class="icon-arrow" src="https://sp.lion-mall.com/miniprogram/images/icon-arrow.png" />
+                        </view>
+                        <view class="order-text">{{filter.getStateText(orderItem)}}</view>
+                    </view>
+                </navigator>
+
+                <navigator hover-class="none"  url="{{'/pages/OrderDetails/OrderDetails?orderId='+ orderItem.order_id}}" class="padding-30">       
+                    <view class="goods-box" wx:for="{{orderItem.goodsList}}" wx:for-item="goodsItem" wx:key="{{goodsItem.goods_id}}">
+                        <view class="dis-flex">
+                            <image class="goods-image" src="{{goodsItem.goods_image}}" />
+                            <view class="goods-info">
+                                <view class="goods-title">{{goodsItem.goods_name}}</view>
+                                <view class="spec" wx:if="{{goodsItem.spec1_value !== ''}}">
+                                    <text class="text-ellipsis">{{goodsItem.spec1_name}}：</text>
+                                    <text class="text-ellipsis">{{goodsItem.spec1_value}}</text>
+                                </view>
+                                <view class="spec" wx:if="{{goodsItem.spec2_value !== ''}}">
+                                    <text class="text-ellipsis">{{goodsItem.spec2_name}}：</text>
+                                    <text class="text-ellipsis">{{goodsItem.spec2_value}}</text>
+                                </view>
+                                <view class="price">
+                                    ￥<text class="num">{{goodsItem.goods_price}}</text>
+                                    <view class="goods-num">x {{goodsItem.goods_num}}</view>
+                                </view> 
+                            </view>
+                        </view>
+                    </view>
+
+                    <view class="totle-box">
+                        <text>共{{orderItem.goods_all_num}}件商品</text>
+                        <text>合计:<text class="totle-price">￥{{orderItem.order_amount}}</text> </text>
+                    </view>
+                </navigator>    
+
+                <view class="operate-box" >
+                    <button class="btn-default" data-orderId="{{orderItem.order_id}}" bindtap="tapCancelOrder" wx:if="{{orderItem.order_state == 10}}">取消订单</button>
+                    <button class="btn-primary" data-orderId="{{orderItem.order_id}}" data-paySn="{{orderItem.pay_sn}}" bindtap="tapPay" wx:if="{{orderItem.order_state == 10}}">立即付款</button>
+                    <button 
+                        class="btn-default" 
+                        bindtap="tapLogistics" 
+                        data-shippingCode="{{orderItem.shipping_code}}"
+                        data-expressName="{{orderItem.shipping_express_name}}"
+                        data-goodsImg="{{orderItem.goodsList[orderItem.goodsList.length-1].goods_image}}"
+                        wx:if="{{orderItem.order_state == 20||orderItem.order_state == 30||orderItem.order_state == 40}}">查看物流
+                    </button>
+                    <button class="btn-primary" data-orderId="{{orderItem.order_id}}" bindtap="tapConfirmOrder" wx:if="{{orderItem.order_state == 30 && orderItem.refund_state == 0}}">确认收货</button>
+                    <button 
+                        class="btn-default" 
+                        bindtap="tapDeleteOrder"
+                        data-index="{{index}}"
+                        wx:if="{{orderItem.order_state == 0||orderItem.order_state == 50}}"
+                        data-orderId="{{orderItem.order_id}}">删除订单
+                    </button>
+                    <button data-orderIndex="{{index}}" data-orderId="{{orderItem.order_id}}" class="btn-primary" bindtap="tapAddCart" wx:if="{{orderItem.order_state == 0}}">再次购买</button>
+                    <button 
+                        data-orderId="{{orderItem.order_id}}" 
+                        data-goodsImg="{{orderItem.goodsList[orderItem.goodsList.length-1].goods_image}}" 
+                        bindtap="tapComment" 
+                        class="btn-comment {{orderState == 40 ? 'btn-primary2' : 'btn-primary'}}" 
+                        wx:if="{{orderItem.order_state == 40}}">评价
+                    </button>
+                </view>
+                <view class="bar"></view>
+            </view>
+        </view>
+    </view>
+
+    <view class="loading-wrpa" wx:if="{{loadingState}}">
+        <loading state="{{true}}"></loading>
+    </view>
+</view>
+
+<view class="no-goods" wx:if="{{!loadingState && orderList.length < 1}}">
+    <image class="icon-cart" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-cart.png" />
+    <view>你还没有订单</view>
+    <view>好东西 手慢无</view>
+    <navigator class="r-bg" open-type="switchTab" url="/pages/Shop/Shop">去逛逛</navigator>
+</view>
+
+<wxs module="filter">
+    var getStateText = function(info) {
+        switch (parseInt(info.order_state)){
+          case 10:
+            return '等待买家付款';
+            break;
+          case 20: 
+            switch(parseInt(info.refund_state)){
+                case 0:
+                    return '等待卖家发货';
+                    break;
+                case 3:
+                    return '退款成功';
+                    break;
+                default: 
+                    return '退款中';
+                    break;
+            };
+            break;
+         case 30:
+            switch(parseInt(info.refund_state)){
+                case 0:
+                    return '待收货';
+                    break;
+                case 3:
+                    return '退货成功';
+                    break;
+                default: 
+                    return '退货中';
+                    break;
+            };
+            break;
+          case 40:
+            return '交易成功';
+            break;
+          case 50:
+            return '已评论';
+            break;
+          case 0:
+            return '订单已取消';
+            break;
+        default:
+            return '未知订单状态'
+            break;
+        }
+    }
+
+    module.exports.getStateText =  getStateText;
+</wxs>

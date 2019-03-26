@@ -1,0 +1,11 @@
+{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "搜索",
+    "usingComponents": {
+        "list-sort": "../../components/list-sort/list-sort",
+        "goods-item": "../../components/goods-item/goods-item",
+        "commodity": "../../components/commodity/commodity",
+        "loading": "../../components/loading/loading"
+    }
+}

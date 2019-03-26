@@ -1,0 +1,20 @@
+<!--components/shop-goods-item/shop-goods-item.wxml-->
+<view class="dis-flex">
+    <view class="goods-item" wx:for="{{goodsList}}" wx:for-item="goodsItem" wx:key="{{goodsItem.goods_id}}">
+        <navigator url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+ goodsItem.model_id}}" hover-class="none">
+            <image class="goods-img" src="{{goodsItem.goods_image}}" />
+            <view class="goods-title text-ellipsis">{{goodsItem.goods_title}}</view>
+            <view class="goods-change">
+                <view class="price">直购价：<text style="padding-left: 8rpx;">￥{{goodsItem.goods_price + goodsItem.goods_points}}</text></view>
+                <view class="integral-price">
+                    积分价：
+                    <text class="num">￥{{goodsItem.goods_price}}</text>
+                    <text>+{{goodsItem.goods_points}} 积分</text>
+                </view>
+            </view>
+        </navigator>
+        <!-- <view class="add-cart" bindtap="_addCart" data-goodsId="{{goodsItem.model_id}}">
+            <image style="width:32rpx;height:32rpx;" src="https://sp.lion-mall.com/miniprogram/images/icon-cart2.png" />
+        </view> -->
+    </view>
+</view>

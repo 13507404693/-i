@@ -1,0 +1,5 @@
+<!--pages/ShareBusiness.wxml-->
+<image src="{{shareImage}}" class="share-image" bindtap="tapPreviewImage" data-img="{{shareImage}}" ></image>
+<canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+<button class="seve-btn con_listbox" bindtap="tapSaveImage">保存图片</button>
+<view class="tips">保存图片到手机后，您可到朋友圈分享该图片</view>

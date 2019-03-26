@@ -1,0 +1,175 @@
+<view class="shop-container">
+    <view class="header">
+        <view class="top-region dis-flex" style="{{headerStyle}}">
+            <view class="search">
+                <navigator url="/pages/ShopSearch/ShopSearch"  hover-class="none">
+                    <image class="search-icon" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-search.png" />
+                    <input type="text" disabled="{{true}}" class="search-input" placeholder="搜索商品,万种好货等你来" />
+                </navigator>
+            </view>
+            <navigator url="/pages/Commodityclassification/Commodityclassification" hover-class="none" class="menu">
+                <image class="icon-menu" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-menu.png" />
+            </navigator>
+        </view>
+        
+        <view class="banner-region">
+            <swiper 
+                class="swiper" 
+                skip-hidden-item-layout="{{false}}"
+                autoplay="true" 
+                duration="{{400}}" 
+                circular="{{true}}"
+                bindchange="mainBannerChange">
+                <swiper-item  wx:for="{{mainBanner}}" wx:key="{{index}}" wx:if="{{index < 5}}">
+                    <navigator url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+ item.url}}" hover-class="none"> 
+                        <image src="{{item.image}}" class="img" />
+                    </navigator>
+                </swiper-item>
+            </swiper>
+            <view class="indicator-dots">
+                <text wx:for="{{mainBanner}}"  wx:key="{{index}}"
+                class="dots {{mainBannerCurrent ===  index? 'active' : '' }}" 
+                wx:if="{{index < 5}}">
+                </text>
+            </view>
+        </view>
+
+    </view>
+
+    <view class="nav-container dis-flex">
+        <view 
+            class="nav-item" 
+            bindtap="tapActivity" 
+            data-name="{{item.name}}"
+            data-url="{{item.url}}"
+            data-type="{{item.type}}"
+            wx:for="{{nav}}" 
+            wx:key="{{item.classify_id}}" 
+            data-classifyId="{{item.classify_id}}" 
+            wx:if="{{index < 10}}">
+            <view class="nav-img"><image src="{{item.img}}" /></view>
+            <text class="name text-ellipsis">{{item.name}}</text>
+        </view>
+    </view>
+
+    <view class="banner-theme">
+        <swiper 
+            class="banner" 
+            skip-hidden-item-layout="{{false}}"
+            autoplay="true" 
+            duration="{{500}}" 
+            interval="{{8000}}"
+            circular="{{true}}">
+            <swiper-item bindtap="tapActivity" data-url="{{item.url}}" data-type="{{item.type}}" data-name="{{item.name}}" class="swiper-item" wx:for="{{bannerTheme}}" wx:key="{{index}}">
+                <image src="{{item.img}}" class="img" />
+            </swiper-item>
+        </swiper>
+    </view> 
+
+    <view class="banner-classif">
+        <view class="swiper-tab">
+            <view 
+                bindtap="classifActivityTab" 
+                class="tab-item {{classifActivityIndex === index ? 'active' : ''}}" 
+                wx:for="{{classifActivity}}" 
+                wx:key="{{item.classify_id}}"
+                data-index="{{index}}">
+                {{item.name}}
+            </view>
+        </view>
+        <swiper 
+            class="banner" 
+            skip-hidden-item-layout="{{false}}"
+            autoplay="{{false}}" 
+            duration="{{800}}" 
+            circular="{{true}}"
+            display-multiple-items="{{1}}"
+            current="{{classifActivityGoodsCurrent}}"
+            bindchange="bannerClassif">
+            <swiper-item class="swiper-item dis-flex" wx:for="{{classifActivityGoods}}" wx:for-item="items" wx:key="{{index}}">
+                <block  wx:for="{{items}}" wx:for-item="item"  wx:key="{{index}}">
+                    <view class="item">
+                        <navigator url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+ item.model_id}}" hover-class="none"> 
+                            <image src="{{item.goods_image}}" class="img" />
+                            <view class="name text-ellipsis">{{item.goods_title}}</view>
+                        </navigator>
+                    </view>
+                </block>
+            </swiper-item>
+        </swiper>
+        <view class="indicator-dots">
+            <text wx:for="{{classifActivityGoods}}"  wx:key="{{index}}"
+            class="dots {{classifActivityGoodsCurrent ===  index? 'active' : '' }}" >
+            </text>
+        </view>
+    </view>
+
+    <view class="bestgoods-banner">
+        <view class="title">{{hotActivity[0].name}}
+            <image class="title-bg" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/best-_title_bg.png" />
+        </view>
+        <view class="best-image">
+            <navigator url="{{ '/pages/GoodsList/GoodsList?type='+ hotActivity[0].type +'&ids='+ hotActivity[0].url +'&title='+ hotActivity[0].name }}" hover-class="none">
+                <image src="{{hotActivity[0].img}}" />
+            </navigator>
+        </view>
+        
+        <swiper 
+            class="banner" 
+            skip-hidden-item-layout="{{false}}"
+            autoplay="{{false}}" 
+            duration="{{800}}" 
+            circular="{{true}}"
+            display-multiple-items="{{1}}"
+            bindchange="bannerBest">
+            <swiper-item class="swiper-item dis-flex" wx:for="{{hotActivityGoods}}" wx:for-item="items" wx:key="{{index}}">
+                <block  wx:for="{{items}}" wx:for-item="item"  wx:key="{{index}}">
+                    <view class="item">
+                        <navigator url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+ item.model_id}}" hover-class="none"> 
+                            <image src="{{item.goods_image}}" class="img" />
+                            <view class="name text-ellipsis">{{item.goods_title}}</view>
+                        </navigator>
+                    </view>
+                </block>
+            </swiper-item>
+        </swiper>
+        <view class="indicator-dots">
+            <text wx:for="{{hotActivityGoods}}"  wx:key="{{index}}"
+            class="dots {{hotActivityGoodsCurrent ===  index? 'active' : '' }}" >
+            </text>
+        </view>
+    </view>
+
+    <view class="selected-goodsregion">
+        <view class="top dis-flex flex-justify">
+            <view class="title">
+                <image class="title-icon" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-selected.png" />
+                精选商品
+            </view>
+            <!-- <view class="more">查看更多>></view> -->
+        </view>
+        <view class="goods-list dis-flex">
+            <view class="goods-item" wx:for="{{hotGoodsList}}" wx:for-item="goodsItem" wx:key="{{goodsItem.goods_id}}">
+                <navigator url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+ goodsItem.model_id}}" hover-class="none">
+                    <image class="goods-img" src="{{goodsItem.goods_image}}" />
+                    <view class="goods-title text-ellipsis">{{goodsItem.goods_title}}</view>
+                    <view class="goods-change">
+                        <view class="price">直购价：￥{{goodsItem.goods_price + goodsItem.goods_points}}</view>
+                        <view class="integral-price">
+                            积分价：<text class="num">￥{{goodsItem.goods_price}}</text>
+                            <text>+{{goodsItem.goods_points}}积分</text>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <loading state="{{hotGoodsLoading}}"></loading>
+        <view class="no-goods-tips" wx:if="{{noGoodsTips}}">{{noGoodsTips}}</view>
+    </view>
+
+    <view class='fxd_st'> 
+      <navigator url='/pages/Cart/Cart' hover-class='none'> 
+          <image class='imgwh' src='https://sp.lion-mall.com/miniprogram/images/icon-shop-cart.png'></image>
+      </navigator>
+    </view>
+</view>

@@ -1,0 +1,47 @@
+.bg_atc{
+  background:url(https://sp.lion-mall.com/images/ic_gouxuan@2x.png)no-repeat;
+  background-size:100%;border:1px solid #ffffff!important;
+  }
+.c_33 {color: #333;}
+.c_66 {color: #666;}
+.f_30 {font-size: 30rpx;}
+.f_28 {font-size: 28rpx;}
+
+.pdletop_30 { padding-top: 30rpx;}
+.pdleft_78 { padding-left: 78rpx;}
+.pdlert_8 { padding-right: 8rpx;}
+.pdleft_26 { padding-left: 26rpx;}
+.pdleft_34 { padding-left: 34rpx;}
+.pd_bto100{padding-bottom:100rpx;}
+
+.pd_37_0{padding: 37rpx 0rpx;}
+.pdleft_28_46_28_0 {padding: 28rpx 46rpx 28rpx 0rpx;}
+.bor_bt1 {border-bottom: 1px solid #f0f0f0;}
+view {letter-spacing: 1px;}
+.border_radis {
+  border-radius: 100rpx;
+  width: 38rpx;
+  height: 38rpx;
+  border: solid 1px #808080;
+}
+
+.bor_bt14{border-bottom:14rpx solid #f0f0f0}
+
+.w_36_36{width:36rpx;height:36rpx;}
+
+.middle{vertical-align:middle}
+.pr{position:relative}
+
+.nav{
+  position: fixed;
+  bottom:0rpx;
+  left:0rpx;
+	width:100%;
+	height: 90rpx;
+  text-align: center;
+	line-height: 45px;
+  background-color: #e52e31;
+  font-size: 32rpx;
+  color: #ffffff;
+	letter-spacing: 1px;
+  }

@@ -1,0 +1,51 @@
+<!--pages/ShopBusiness/ShopBusiness.wxml-->
+<!-- <view class="top-region dis-flex">
+    <view class="search">
+        <image class="search-icon" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-search.png" />
+        <input type="text" class="search-input" placeholder="搜索您想要的商品" />
+    </view>
+</view> -->
+
+<view class="shopbusiness-container">
+    <view class="header dis-flex flex-justify">
+
+        <view class="business-info">
+            <navigator url="{{'/pages/ShopBusinessInfo/ShopBusinessInfo?storeId='+ storeId}}" hover-class="none">
+                <image class="logo" src="{{info.store_logo || 'https://sp.lion-mall.com/miniprogram/images/default-storelogo.png' }}" />
+                <text class="name text-ellipsis">{{info.store_name}}</text>
+            </navigator>
+        </view>
+
+        <view class="storeup-wrap {{info.is_fav == 1 ? 'active' : ''}}" bindtap="tapCollection">
+            <image wx:if="{{info.is_fav == 1}}" class="icon-start" src="https://sp.lion-mall.com/miniprogram/images/start-yes.png" />
+            <image wx:else class="icon-start" src="https://sp.lion-mall.com/miniprogram/images/start.png" />
+            <text>{{info.is_fav == 1?'已收藏店铺' : '收藏店铺'}}</text>
+        </view>
+    </view>
+
+    <view class="meun-wrap">
+        <view class="nav-scroll">
+            <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%" scroll-with-animation="{{true}}">
+                <view class="dis-flex">
+                    <view class="nav-name {{tapNavIndex === 0 ? 'active' : ''}}" data-categoryId="" data-index="{{0}}" bindtap="tapCategory">所有商品</view>
+                    <view 
+                        wx:for="{{category}}" 
+                        wx:key="{{index}}" 
+                        data-index="{{index+1}}" 
+                        data-categoryId="{{item.store_category_id}}" 
+                        bindtap="tapCategory" 
+                        class="nav-name {{tapNavIndex === (index+1) ? 'active' : ''}}">
+                        {{item.store_category_name}}
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <view class="goods-list">
+        <shop-goods-item goodsList="{{goodsList}}"></shop-goods-item>
+    </view>
+
+    <loading state="{{loadingState}}"></loading>
+    <view class="err-msg" wx:if="{{noGoodsMsgState}}">更多商品正在录入，敬请期待</view>
+</view>

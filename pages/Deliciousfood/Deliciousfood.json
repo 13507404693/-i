@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "美食",
+  "usingComponents": {
+    "goods-item": "../../components/goods-item/goods-item",
+    "loading": "../../components/loading/loading"
+  }
+  }

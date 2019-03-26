@@ -1,0 +1,96 @@
+/* pages/ShopBusiness/ShopBusiness.wxss */
+page{
+    background: #fff;
+    border-top: 2rpx solid #eee;
+}
+
+.search{
+    position: relative;
+    border-radius: 100rpx;
+    padding-right: 28rpx;
+    margin:0 32rpx;
+    padding-top: 20rpx;
+}
+.search .search-input{
+    width:614rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    border-radius: 100rpx;
+    background:rgb(246,246,246);
+    font-size: 22rpx;
+    color: #ddd;
+    padding-left: 72rpx;
+}
+.search .search-icon{
+    position: absolute;
+    top: 50%;
+    left: 26rpx;
+    margin-top: -6rpx;
+    width: 28rpx;
+    height: 28rpx;
+    z-index: 10;
+}
+
+
+.shopbusiness-container{
+    padding: 0 32rpx;
+}
+.logo{
+    width:84rpx;
+    height:84rpx;
+    border-radius: 50%;
+}
+.icon-start{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 8rpx;
+    vertical-align:top;
+}
+
+.header{
+    margin-top: 14rpx;
+    border-bottom:2rpx solid #EEE;
+    padding-bottom: 12rpx;
+}
+.storeup-wrap{
+    padding-top:30rpx;
+    font-size:22rpx;
+    color: #333;
+}
+.storeup-wrap.active{
+    color: #E52E31;
+}
+.business-info .name{
+    display: inline-block;
+    position: relative;
+    top: -30rpx;
+    left: 20rpx;
+    font-size:30rpx;
+    color: #333;
+    max-width:418rpx;
+}
+
+.meun-wrap{
+    border-bottom:2rpx solid #EEE;
+}
+.nav-name{
+    color: #333;
+    font-size:24rpx;
+    padding: 14rpx 0;
+    padding-right:56rpx;
+    position: relative;
+}
+.nav-name.active{
+    color: #E52E31;
+}
+.nav-name.active::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -44rpx;
+    width:26rpx;
+    height:5rpx;
+    background:rgba(229,46,49,1);
+}
+.scroll-view_H{white-space:nowrap;width: 100%;box-sizing: border-box;}

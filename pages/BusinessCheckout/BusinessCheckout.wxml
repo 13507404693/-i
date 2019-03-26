@@ -1,0 +1,135 @@
+<!--pages/BusinessCheckout/BusinessCheckout.wxml-->
+<scroll-view scroll-y="{{false}}" >
+    <view class="checkout-contriner">
+        <view class="header">
+            <view class="title">到店自取</view>
+            <view class="address">{{storeInfo.store_address}}</view>
+        </view>
+
+        <view class="wraper">
+            <view class="wrap-cell cell-pd cell-mg cell-line-b">
+                <view class="cell-bd bd-font">商家距离您的位置{{distance || 0 }}</view>
+                <view class="cell-ft ft-font" bindtap="tapOpenLocation">查看地图<image class="cell-access" src="https://sp.lion-mall.com/miniprogram/images/icon-access.png" /> </view>
+            </view>
+            <view class="wrap-cell cell-pd cell-mg cell-line-b">
+                <view class="cell-bd bd-font">自取时间</view>
+                <picker mode="time" value="{{time}}" bindchange="onTimeChange" class="cell-ft ft-font">
+                {{time||startTime}}<image class="cell-access" src="https://sp.lion-mall.com/miniprogram/images/icon-access.png" />
+                </picker>
+            </view>
+            <view class="wrap-cell cell-pd cell-mg cell-line-b">
+                <view class="cell-bd bd-font" style="min-width: 80px;">自取电话</view>
+                <input class="cell-ft ft-font" type="number" value="{{telephone}}" name="" placeholder="请填写手机号码" maxlength="11" data-key="telephone" bindinput="onInputChange" />
+                <image class="cell-access" src="https://sp.lion-mall.com/miniprogram/images/icon-access.png" />
+            </view>
+            <view class="wrap-cell cell-mg cell-line-b cell-checked">
+                <checkbox-group class="checked-box" bindchange="checkedChange" >
+                    <label class="checkbox" >
+                        <checkbox class="checked" value="1" color="#000" checked="{{true}}" />同意并接受<text class="text-a">《到店自取服务协议》</text>
+                    </label>
+                </checkbox-group>
+            </view>
+        </view>
+
+        <view class="wraper mg-top20" >
+            <view class="wrap-cell cell-mg cell-line-b business-title">{{storeInfo.store_name||storeInfo.store_nickname}}</view>
+            <view class=" cell-mg cell-line-b goods-list">
+                <block wx:for="{{goodsData}}" wx:key="{{item.goodsId}}">
+                    <view class="wrap-cell goods-item">
+                        <image class="goods-img" src="{{utli.urlPrefix(utli.urlPrefix(item.skuInfo.goods_spec_image,item.goodsImg))}}" ></image>
+                        <view class="cell-bd goods-info">
+                            <view class="goods-name dis-flex flex-justify">
+                                <text class="text">{{item.title}}</text>
+                                <text class="goods-num">x{{item.amount}}</text>
+                            </view>
+                            <view class="trait">
+                                （{{utli.objJoin(item.skuInfo.attributes,'value', '/')}}） + {{utli.arrJoin(item.trait,' / ')}}
+                            </view>
+                        </view>
+                        <view class="cell-ft price-box">
+                            <view class="price"><text class="unit">￥</text>{{item.skuInfo.goods_price}}</view>
+                            <view class="org-price"><text class="unit">￥</text>{{item.skuInfo.goods_market_price}}</view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="cell-mg  cell-line-b pay-info">
+                <view class="wrap-cell info-item" bindtap="tapSwitchPaytypePopup">
+                    <view class="cell-bd">支付类型</view>
+                    <view class="cell-ft">{{payTypeData[payTypeIndex].name}}<image class="cell-access" src="https://sp.lion-mall.com/miniprogram/images/icon-access.png" /> </view>
+                </view>
+                <view class="wrap-cell info-item" wx:if="{{discountPrice > 0}}">
+                    <view class="cell-bd">品兑积分抵扣</view>
+                    <view class="cell-ft integral r-fontcolor">-{{discountPrice}}积分</view>
+                </view>
+            </view>
+            <view class="wrap-cell cell-mg">
+                <view class="cell-bd cell-ft cell-sum">
+                    实付<text class="sum"><text class="unit">￥</text>{{totalPrice}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="wraper mg-top20" >
+            <view class="wrap-cell cell-mg cell-remarks">
+                <view class="cell-bd" style="min-width: 80px;">备注</view>
+                <input class="cell-ft ft-font orderMsg" type="text" value="{{orderMsg}}" name="" placeholder="口味、偏好要求等" maxlength="100" data-key="orderMsg" bindinput="onInputChange"/>
+                <image class="cell-access" src="https://sp.lion-mall.com/miniprogram/images/icon-access.png" /> 
+            </view>
+        </view>
+
+        <view class="footer-bar wrap-cell">
+            <view class="cell-bd">
+                <view class="dis-flex flex-justify">
+                    <view class="discount text-ellipsis">
+                        <block wx:if="{{discountPrice > 0 }}">
+                            已优惠 <text class="unit">¥</text><text class="sum">{{discountPrice}}</text>
+                        </block>
+                        <block wx:else>暂无优惠</block>
+                    </view>
+                    <view class="total-price">合计<text class="sum"><text class="unit">￥</text>{{ discountPrice > 0 ? discountTotalPrice : totalPrice}}</text></view>
+                </view>
+            </view>
+            <view class="cell-ft">
+                <button class="submit-order con_listbox" bindtap="submitOrder" disabled="{{!isAgreement}}">提交订单</button>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<view class="mask {{isMask ? 'active' : ''}}" bindtouchmove="tapMask" bindtap="tapMask"></view>
+
+<view class="paytype-popup {{paytypePopup ? 'active' : ''}}">
+    <view class="popup-header">
+        <view class="title">支付类型</view>
+        <image bindtap="tapSwitchPaytypePopup" class="icon-close" src="https://sp.lion-mall.com/miniprogram/images/icon-close.png"></image>
+    </view>
+    <view class="popup-wraper">
+        <block wx:for="{{payTypeData}}" wx:key="{{index}}" >
+            <view class="type-item {{ payTypeIndex==index? 'active' : ''}}" data-index="{{index}}" hover-class="button-hover" hover-stay-time="100" bindtap="tapSelectPayType">{{item.name}}</view>
+        </block>
+    </view>
+</view>
+
+<wxs module="utli">
+    module.exports.urlPrefix =  function(URL,repImg){
+        var str = URL;
+        if(str == ''||str == 'http://img.lion-mall.com/'||str == 'https://img.lion-mall.com/'){
+            return repImg||'https://sp.lion-mall.com/miniprogram/images/default-goods-img.png';
+        };
+        if(str.indexOf('https://') == -1 && str.indexOf('http://') == -1){
+            return 'http://img.lion-mall.com/'+str;
+        }else{
+            return str;
+        };
+    };
+    module.exports.arrJoin =  function(arr,n){
+        return arr.join(n);
+    };
+    module.exports.objJoin =  function(arrObj,key,n){
+        var arr = [];
+        for (var i = 0; i < arrObj.length; ++i) {
+            arr.push(arrObj[i][key]);
+        };
+        return arr.join(n);
+    };
+</wxs>

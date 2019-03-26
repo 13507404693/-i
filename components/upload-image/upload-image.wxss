@@ -1,0 +1,51 @@
+/* components/upload-image/upload-image.wxss */
+.dis-flex{
+    display: flex;
+    display: -webkit-flex;
+}
+.image-list{
+    flex-wrap: wrap;
+}
+.img-item{
+    width: 165rpx;
+	height: 165rpx;
+    border-radius: 5rpx;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx;
+    position: relative;
+}
+.img-item .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-transition: height .6s;
+    -moz-transition: height .6s;
+    transition: height .6s;
+}
+.img-item:nth-child(4n){
+    margin-right: 0;
+}
+.img-item image{
+    width: 100%;
+    height: 100%;
+}
+.add{
+    width: 165rpx;
+	height: 165rpx;
+    background: url(https://sp.lion-mall.com/miniprogram/images/tianjiatupian@3x.png) no-repeat center center/100% 100%;
+}
+.remove{
+    position: absolute;
+    top:-12rpx;
+    right:-12rpx;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 0 0 0 8rpx;
+}
+.remove-btn{
+    width: 100%;
+    height: 100%;
+}

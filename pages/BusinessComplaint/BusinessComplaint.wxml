@@ -1,0 +1,37 @@
+<view class="pd_30 pd_top_0">
+  <view class="pd_bt30 ">
+    <text class="f_32 c_33 before_star">
+      反馈问题类型
+    </text>
+  </view>
+  <view class="c_33 flex_wrap">
+    <view 
+      class="fankui mg_r38 {{ type === index ? 'r-bordercolor' : '' }}" 
+      wx:for="{{typeArr}}" 
+      wx:key="{{index}}"
+      data-type="{{index}}"
+      bindtap="tapType">{{item}}</view>
+  </view>
+</view>
+<view class="bgee_h16"></view>
+<view class="pd_30">
+  <view class="f_32 c_33 pd_b-30">问题图片（最多8张）</view>
+  <upload-image bind:onSuccess="onUploadImg"></upload-image>
+</view>
+<view class="bgee_h16"></view>
+<view class="pd_30">
+
+  <view class="pr">
+    <view class="po b20_r_20">
+      <label class="f_28 c_99">
+        {{num}} /
+        <text>150</text>
+      </label>
+    </view>
+    <textarea adjust-position="true" class="bor_1_5rpx pd_17 f_30 let1" bindinput="bindiupt" maxlength="150" bindblur="bindTextAreaBlur" placeholder="请对需要投诉的内容进行描述" />
+  </view>
+
+
+  
+  <button class="mg_top100 con_listbox bg43_c_ff f_34 r-bg" bindtap="submit"  disabled="{{submitBtnState}}" loading="{{submitBtnState}}">完成</button>
+</view>

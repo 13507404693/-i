@@ -1,0 +1,353 @@
+<!--pages/Business/Business.wxml-->
+<view class="business-container" style="{{details.pay_online != 1? 'padding-bottom:0;' : ''}}">
+    <view class="header">
+        <vie class="head-box r-beforebg">
+            <view class="head">
+                <image data-img="{{details.store_heard || details.store_logo }}" bindtap="tapPreviewImage" class="img" src="{{details.store_heard || details.store_logo || 'https://sp.lion-mall.com/miniprogram/images/business/default_head.png'}}"></image>
+            </view>
+        </vie>
+        <view class="share-business" bindtap="tapGoShare"></view>
+
+        <view class="title">{{details.store_name}}</view>
+        <view class="comment-box" wx:if="{{details.store_tag !== null}}">
+            <text>{{details.store_tag }}</text>
+        </view>
+        <!-- <view class="tag-box  {{slideToggleState ? 'active' : ''}}">
+            <view class="full-reduce  tag-item" wx:if="{{details.store_actives[1]}}"><text class="label">减</text>{{details.store_actives[1] || '商家暂无优惠'}}</view>
+            <view class="new-discount  tag-item" wx:if="{{details.store_actives[0]}}"><text class="label">首</text>{{details.store_actives[0] || '商家暂无优惠'}}</view>
+        </view>
+        <view 
+            wx:if="{{ details.store_actives[0].length >= 21 || details.store_actives[1].length >= 21 }}" 
+            class="slide-toggle {{slideToggleState ? 'active' : ''}}" 
+            bindtap="slideToggle"></view> -->
+
+    </view>
+
+    <view class="swiper-indicator" id="swiperIndicator">
+        <text wx:for="{{indicatorArr}}"
+            wx:key="{{index}}" 
+            data-index="{{index}}" 
+            bindtap="tapIndicator" 
+            class="indicator-item {{ index==swiperCurrent?'c_red':''}}">
+            {{item}}
+        </text>
+        <view class="slider-line r-bg"  style="transform: translateX({{swiperLine}}rpx);"></view>
+    </view>
+    <view class="swiper-indicator {{isShowTopIndicator ? 'active' : ''}} " wx:if="{{isShowTopIndicator}}" id="swiperIndicatorFlexd">
+        <text wx:for="{{indicatorArr}}" wx:key="{{index}}" data-index="{{index}}" bindtap="tapIndicator" class="indicator-item {{ index==swiperCurrent?'c_red':''}}">
+            {{item}}
+        </text>
+        <view class="slider-line r-bg" style="transform: translateX({{swiperLine}}rpx);"></view>
+    </view>
+
+    <view class="business-swipre overflow-hidden" >
+
+        <view wx:if="{{swiperCurrent === 0}}" class="swiper-item overflow-hidden">
+            
+            <view id="recommendWrpaer" wx:if="{{recommendGoodsData.length >= 1}}">
+                <view class="swiper-title">商家推荐</view>
+                <view class="recommend-goods">
+                    <scroll-view class="recommend-scroll" scroll-x="{{true}}"  >
+                        <view class="list">
+                            <view class="goods-item" wx:for="{{recommendGoodsData}}" wx:key="{{index}}">
+                                <image class="goods-img" lazy-load="{{true}}" src="{{utli.urlPrefix(item.goods_image)}}" data-goodsid="{{item.model_id}}" bindtap="tapCutGoodsDetailsPopup"></image>
+                                <view class="goods-info"> 
+                                    <view class="goods-title text-ellipsis" data-goodsid="{{item.model_id}}"  bindtap="tapCutGoodsDetailsPopup">{{item.goods_title}}</view>
+                                    <view class="goods-change" data-goodsid="{{item.model_id}}"  bindtap="tapCutGoodsDetailsPopup">
+                                        <text class="volume">月售{{item.sale_num}}</text>
+                                        <text class="good-volume">好评88</text>
+                                    </view>
+                                    <view class="goods-spec text-ellipsis">
+                                        <text class="price r-fontcolor"><text class="unit">￥</text>{{item.goods_price}}/{{item.unit || '份'}}</text>
+                                        <text class="original-price"><text class="unit">￥</text>{{item.goods_market_price}}/{{item.unit || '份'}}</text>
+                                    </view>
+                                    <view class="add-cart" data-goodsid="{{item.model_id}}" bindtap="tapCutspecPopup" wx:if="{{details.pay_online == 1}}"></view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="occupy"></view>
+                    </scroll-view>
+                </view>
+            </view>
+
+            <view class="goods-wraper dis-flex flex-justify" id="classifyGoodsWrap">
+
+                <view class="classify-list {{isClassifyTop ? 'active' : ''}}" style="height:{{classifyScrollHeight}}px;">
+                    <block wx:for="{{classifyGoodsData}}" wx:for-item="classifyItem" wx:key="{{index}}" wx:if="{{classifyItem.goods.length >= 1}}">
+                        <view 
+                            bindtap="tapClassify" 
+                            data-index="{{index}}" 
+                            data-id="{{classifyItem.store_category_id}}" 
+                            class="classify-item {{index == classifyIndex?'active' : ''}}" >{{classifyItem.store_category_name}}
+                        </view>
+                    </block>
+                </view>
+                <view ></view>
+                <view class="classify-goodslist">
+                    <scroll-view class="classify-scroll" scroll-y="{{classifyScroll}}" scroll-into-view="{{classifyScrollId}}" scroll-with-animation="{{true}}" bindscroll="onClassifyScroll" style="height:{{classifyScrollHeight}}px;">
+                        <view class="err-msg" wx:if="{{classifyGoodsData.length < 1}}">暂无相关内容</view>
+
+                        <block wx:for="{{classifyGoodsData}}" wx:for-item="classifyItem" wx:key="{{index}}" wx:if="{{classifyItem.goods.length >= 1}}">
+                            <view class="classify-goods-item" data-index="{{index}}" id="classify{{classifyItem.store_category_id}}" >
+                                <view class="classify" >{{classifyItem.store_category_name}}</view>
+                                <view class="list">
+                                    <view class="goods-item" wx:for="{{classifyItem.goods}}" wx:key="{{item.goods_id}}">
+                                        <image class="goods-img" lazy-load="{{true}}" data-goodsid="{{item.model_id}}"  bindtap="tapCutGoodsDetailsPopup" src="{{utli.urlPrefix(item.goods_image)}}"></image>
+                                        <view class="goods-info">
+                                            <view class="goods-title text-ellipsis" data-goodsid="{{item.model_id}}" bindtap="tapCutGoodsDetailsPopup">{{item.goods_title}}</view>
+                                            <view class="goods-spec text-ellipsis">
+                                                <text class="price r-fontcolor"><text class="unit">￥</text>{{item.goods_price}}/{{item.unit || '份'}}</text>
+                                                <text class="original-price"><text class="unit">￥</text>{{item.goods_market_price}}/{{item.unit || '份'}}</text>
+                                                <text class="volume">月售{{item.sale_num}}</text>
+                                            </view>
+                                            <view class="add-cart" data-goodsid="{{item.model_id}}" bindtap="tapCutspecPopup" wx:if="{{details.pay_online == 1}}"></view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </scroll-view>  
+                </view>
+            </view>
+
+        </view>
+        
+        <view wx:if="{{swiperCurrent === 1}}" class="swiper-item">
+            <view class="comment-box">
+                <view class="comment-top  dis-flex  padding-30">
+                    <button bindtap="tapComment" class="comment-btn btn-all {{commentType === '' ? 'active r-bg' : ''}}">全部 {{commentTotal}}</button>
+                    <button bindtap="tapComment" data-type="5" class="comment-btn btn-good {{commentType === '5' ? 'active r-bg' : ''}}">好评 {{commentScore.high || 0}}</button>
+                    <button bindtap="tapComment" data-type="1" class="comment-btn btn-bad {{commentType === '1' ? 'active r-bg' : ''}}">差评 {{commentScore.low || 0}}</button>
+                    <view class="new-comment r-bordercolor r-fontcolor" 
+                        hover-class="diy-navigator-hover" 
+                        data-url="{{'/pages/BusinessComment/BusinessComment?id='+id}}"
+                        bindtap="tapCommentNavigateTo">发表评论</view>
+                </view>
+                <view class="comment-list padding-30">
+                    <view class="commit-item" wx:for="{{comment}}" wx:for-item="commitItem" wx:key="{{commitItem.seval_id}}" >
+                        <view class="dis-flex">
+                            <view class="head">
+                                <image src="{{ commitItem.member_avatar === null ?  'https://sp.lion-mall.com/miniprogram/images/business/default_head.png' : 'http://img.lion-mall.com/'+commitItem.member_avatar }}"></image>
+                            </view>
+                            <view class="comment-info">
+                                <view class="author-info dis-flex flex-justify">
+                                    <text class="name">{{commitItem.seval_membername}}</text>
+                                    <text class="date">{{commitItem.addtime}}</text>
+                                </view>
+                                <view class="handle r-fontcolor" wx:if="{{commitItem.seval_comment >= 2}}">赞了该商品</view>
+                                <view class="handle" wx:else style="color:#ccc;">踩了该商品</view>
+                                <view class="com-content">{{commitItem.seval_content}}</view>
+                            </view>
+                        </view>
+                        <view class="image-container dis-flex">
+                            <view 
+                                class="img-item" 
+                                bindtap="previewCommentImage" 
+                                data-img="{{ 'http://img.lion-mall.com/'+item}}" 
+                                wx:for="{{commitItem.seval_img}}"
+                                wx:key="{{index}}">
+                                <image src="http://img.lion-mall.com/{{item}}"></image>
+                            </view>
+                        </view>
+                        <view class="operation">
+                            <view class="praise"  bindtap='dianzan'  data-index="{{index}}">
+                                <image class="img"  src="{{commitItem.iszan==1?'https://sp.lion-mall.com/miniprogram/images/red_dianzan.png':'https://sp.lion-mall.com/miniprogram/images/icon-praise.png'}}"></image>{{commitItem.zannum}}
+                            </view>
+                            <view class="consult" data-receiveUser="{{commitItem}}" bindtap="clickIm"><image  class="img" src="https://sp.lion-mall.com/miniprogram/images/icon-consult.png"></image>咨询买家</view>
+                        </view>
+                    </view>
+                
+                </view>
+            </view>
+        </view>
+
+        <view wx:if="{{swiperCurrent === 2}}" class="swiper-item">
+            <view class="business-box ">
+                <view class="environment  padding-30" wx:if="{{details.store_environment !== ''}}">
+                    <view class="title">商家环境</view>
+                    <view class="image-container dis-flex" >
+                        <view class="img-item" wx:for="{{details.store_environment}}" wx:key="{{index}}" bindtap="previewEnvironmentImage" data-img="http://img.lion-mall.com/{{item}}">
+                            <image src="http://img.lion-mall.com/{{item}}"></image>
+                        </view>
+                    </view>
+                </view>
+                
+                <view class="synopsis  padding-30" wx:if="{{details.store_description !== ''&&details.store_description !== null}}">
+                    <view class="title">商家简介</view>
+                    <view class="synopsis-con">{{details.store_description}}</view>
+                </view>
+                <view class="aptitude margin-top-16 padding-30">
+                    <view class="title">营业资质</view>
+                    <view class="image-container dis-flex">
+                        <view class="img-item" bindtap="previewAptitudeImage" data-img="{{details.store_licence}}" wx:if="{{details.store_licence !== ''}}">
+                            <image src="{{details.store_licence}}"></image>
+                        </view>
+                        <view class="img-item" bindtap="previewAptitudeImage" data-img="{{details.store_tax}}" wx:if="{{details.store_tax !== ''}}">
+                            <image src="{{details.store_tax}}"></image>
+                        </view>
+                        <view class="img-item" bindtap="previewAptitudeImage" data-img="{{details.store_institutions}}" wx:if="{{details.store_institutions !== ''}}">
+                            <image src="{{details.store_institutions}}"></image>
+                        </view>
+                    </view>
+                </view>
+                <view class="business-info margin-top-16 padding-30">
+                    <view class="info-item  dis-flex  flex-justify">
+                        <view class="major">商家名称</view>
+                        <view class="value">{{details.store_name}}</view>
+                    </view>
+                    <view class="info-item  dis-flex  flex-justify">
+                        <view class="major">商家地址</view>
+                        <view class="value">{{details.store_address}}</view>
+                    </view>
+                    <view class="info-item  dis-flex  flex-justify">
+                        <view class="major">商家电话</view>
+                        <view class="value r-fontcolor" bindtap="tapDialTelephone" data-phone="{{details.contacts_phones||details.contacts_phone}}">{{details.contacts_phones||details.contacts_phone}}</view>
+                    </view>
+                    <view class="info-item  dis-flex  flex-justify">
+                        <view class="major">营业时间</view>
+                        <view class="value" >{{details.store_workingtime}}</view>
+                    </view>
+                </view>
+
+                <view class="business-footer">
+                    <view 
+                        class="complaint-btn"
+                        data-url="{{'/pages/BusinessComplaint/BusinessComplaint?id='+id}}"
+                        bindtap="tapNavigateTo">投诉商家</view>
+                </view>
+            </view>
+        </view>
+
+        <block  wx:if="{{swiperCurrent !== 2&&swiperCurrent !== 0}}">
+            <view class="err-msg" wx:if="{{!isShowSwipreLoading}}">暂无相关内容</view>
+        </block>
+        <loading state="{{isShowSwipreLoading}}"></loading>
+    </view>
+
+    <view class="loading-mask" wx:if="{{isShowFullLoading}}">
+        <!-- <loading state="{{true}}"></loading> -->
+        <image src="https://sp.lion-mall.com/miniprogram/images/business-loading.png" style="width:100%;height:100%;" />
+    </view>
+</view>
+
+<view class="mask {{isMask ? 'active' : ''}}" bindtouchmove="tapMask" bindtap="tapMask"></view>
+
+<view class="footer-cart" wx:if="{{details.pay_online == 1}}">
+    <view class="cart-list-wraper" wx:if="{{isCartShowList}}">
+        <view class="cartlist-hd dis-flex flex-justify">
+            <view class="title">已选商品</view>
+            <view class="empty" bindtap="tapEmptyCart"><image class="icon-empty" src="https://sp.lion-mall.com/miniprogram/images/icon-empty.png" ></image>清空</view>
+        </view>
+        <view class="cart-list">
+            <scroll-view scroll-y="{{true}}" style="max-height:412rpx;">
+                <block wx:for="{{cart}}" wx:key="{{item.goodsId}}">
+                    <view class="item">
+                        <view class="dis-flex">
+                            <view class="name text-ellipsis">{{item.title}}</view>
+                            <view class="price text-ellipsis"><text class="unit">￥</text>{{item.totalPrice}}</view>
+                            <view class="operate-box  dis-flex">
+                                <button class="increase con_listbox" data-id="{{item.goodsId}}" data-index="{{index}}" bindtap="tapReduceCart"></button>
+                                <text class="amount">{{item.amount}}</text>
+                                <button class="reduce con_listbox" data-id="{{item.goodsId}}" data-index="{{index}}" bindtap="tapAddCart"></button>
+                            </view>
+                        </view>
+                        <view class="trait">
+                            （{{utli.objJoin(item.skuInfo.attributes,'value', '/')}}） + {{utli.arrJoin(item.trait,' / ')}}
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+
+    <view class="cart-bar">
+        <view class="cart-btn {{cartSize >= 1 ? 'active' : ''}} animated {{cartBtnAmin ? 'rubberBand' : ''}}"  bindtap="tapCutCartList" hover-class="cart-btn-hover" hover-stay-time="20">
+            <view class="badge" wx:if="{{cartSize >= 1}}">{{cartSize}}</view>
+        </view>
+        <view class="price"><text class="unit">￥</text>{{cartTotalPrice||0}}</view>
+        <button class="settlement-btn con_listbox {{cartSize >= 1 ? 'active' : ''}}" disabled="{{cartSize < 1}}" bindtap="submitCart">去结算</button>
+    </view>
+
+</view>
+
+<view class="goods-details-popup magictime" wx:if="{{goodsDetailsPopup}}">
+    <view class="goods-item">
+        <image class="goods-img" data-img="{{utli.urlPrefix(goodsDetails.goods_image)}}" bindtap="tapPreviewImage" src="{{utli.urlPrefix(goodsDetails.goods_image)}}"></image>
+        <view class="goods-info">
+            <view class="goods-title">{{goodsDetails.goods_title}}</view>
+            <view class="goods-change">
+                <text class="good-volume">好评88</text>
+            </view>
+            <view class="goods-spec">
+                <text class="price r-fontcolor"><text class="unit">￥</text>{{goodsDetails.goods_price}}<text class="unit-text">起</text></text>
+                <text class="original-price"><text class="unit">￥</text>{{goodsDetails.goods_price}}/{{goodsDetails.unit || '份'}}</text>
+            </view>
+            <view class="desc">{{goodsDetails.goods_desc}}</view>
+        </view>
+        <view class="goods-operate dis-flex">
+            <button class="share con_listbox" open-type="share"></button>
+            <view class="close" bindtap="tapCutGoodsDetailsPopup"></view>
+        </view>
+    </view>
+</view>
+
+<view class="spec-popup" wx:if="{{specPopup}}">
+    <view class="goods-wraper dis-flex">
+        <image class="goods-img" bindtap="tapPreviewImage" data-img="{{utli.urlPrefix(utli.urlPrefix(selectSku.goods_spec_image,goodsDetails.goods_image))}}" src="{{utli.urlPrefix(utli.urlPrefix(selectSku.goods_spec_image,goodsDetails.goods_image))}}" ></image>
+        <view class="goods-change">
+            <view class="title">{{goodsDetails.goods_title}}</view>
+            <view class="goods-rwa">
+                <text class="price r-fontcolor"><text class="unit">￥</text>{{selectSku.goods_price}}</text>
+                <text class="org-price"><text class="unit">￥</text>{{selectSku.goods_market_price}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="spec-wraper">
+        <view class="sku-list">
+            <scroll-view scroll-y="{{true}}" style="max-height:542rpx;">
+                <view class="sku-item" wx:for="{{skusList}}" wx:for-item="keyItem" wx:key="{{index}}">
+                    <view class="sku-name">{{keyItem.key}}</view>
+                    <view class="sku-attrs">
+                        <block  wx:for="{{keyItem.valArr}}" wx:for-item="valItem" wx:key="{{valItem.goods_id}}" wx:for-index="valIndex" >
+                            <text bindtap="tapSelectSku" class="attr-item {{keyItem.index == valIndex ? 'active' : ''}}" data-keyindex="{{index}}" data-valindex="{{valIndex}}" data-goodsid="{{valItem.goods_id}}" >{{valItem.key}}</text>
+                        </block>
+                    </view>
+                </view>
+                <view class="sku-item" wx:for="{{trait}}" wx:for-item="keyItem" wx:key="{{index}}">
+                    <view class="sku-name">{{keyItem.key}}</view>
+                    <view class="sku-attrs">
+                        <block  wx:for="{{keyItem.value}}" wx:for-item="valItem" wx:key="{{index}}" wx:for-index="valIndex" >
+                            <text bindtap="tapSelectTrait" class="attr-item {{keyItem.index == valIndex ? 'active' : ''}}" data-keyindex="{{index}}" data-valindex="{{valIndex}}" >{{valItem}}</text>
+                        </block>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="close-btn" bindtap="tapCutspecPopup"></view>
+    <button class="con_listbox submit" hover-class="button-hover" hover-stay-time="20" bindtap="tapSubmitSku">选好了</button>
+</view>
+
+<wxs module="utli">
+    module.exports.urlPrefix =  function(URL,repImg){
+        var str = URL;
+        if(str == ''||str == 'http://img.lion-mall.com/'||str == 'https://img.lion-mall.com/'){
+            return repImg||'https://sp.lion-mall.com/miniprogram/images/default-goods-img.png';
+        };
+        if(str.indexOf('https://') == -1 && str.indexOf('http://') == -1){
+            return 'http://img.lion-mall.com/'+str;
+        }else{
+            return str;
+        };
+    };
+    module.exports.arrJoin =  function(arr,n){
+        return arr.join(n);
+    };
+    module.exports.objJoin =  function(arrObj,key,n){
+        var arr = [];
+        for (var i = 0; i < arrObj.length; ++i) {
+            arr.push(arrObj[i][key]);
+        };
+        return arr.join(n);
+    };
+</wxs>

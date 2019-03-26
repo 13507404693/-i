@@ -1,0 +1,165 @@
+/**index.wxss**/
+.img{
+  width: 100%;
+  height: 100%;
+}
+.header{
+  padding: 20rpx 20rpx 30rpx;
+}
+.header .area{
+  width: 123rpx;
+  font-size: 30rpx;
+	letter-spacing: 1rpx;
+  color: #333;
+  text-align: left;
+  line-height: 68rpx;
+  overflow: hidden;
+}
+.header .area-btn{
+  padding: 0;
+  margin: 0;
+}
+.header .scan-code{
+  width: 46rpx;
+	height: 50rpx;
+  margin-top: 12rpx;
+  padding-left: 44rpx;
+  padding: 0;
+  line-height: 0;
+  border-radius: 0;
+  background: none;
+  position: relative;
+  left: 13rpx;
+}
+.header .scan-code::before ,.header .scan-code::after,.button-hover{
+  border: none;
+  background: none;
+  color: #fff;
+}
+.header .search{
+  width: 402rpx;
+	height: 68rpx;
+  border-radius: 15rpx;
+  padding-left: 74rpx;
+  background:#f2f2f2 url(http://p95rpx4s7.bkt.clouddn.com/icon-search.png) no-repeat 25rpx center/30rpx 30rpx; 
+} 
+.header .search .search-input{
+  font-size: 24rpx;
+	letter-spacing: 1rpx;
+  color: #999;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.nav {
+  margin-top: 39rpx;
+  margin-bottom: 39rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.nav .item{
+  width: 20%;
+  text-align: center;
+} 
+.nav .item .nav-icon{
+  width: 48rpx;
+  height: 48rpx;
+  margin: auto;
+}
+.nav .item .nav-title{
+  font-size: 24rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+  color: #333;
+  padding-top: 20rpx;
+}
+.nav .area-btn{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.swiper{
+  height: 230rpx;
+}
+.swiper-container{
+  height: 230rpx;
+  margin: 0 31rpx;
+  box-shadow: 0px 5rpx 13rpx 0px 
+    rgba(0, 0, 0, 0.15);
+  border-radius: 20rpx;
+}
+.swiper-container swiper-item{
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.swiper .img{
+  width: 100%;
+  height: 230rpx;
+}
+
+.goods-container{
+  margin-top: 34rpx;
+}
+.goods-container .goods-list{
+  margin-top: 10rpx;
+}
+.top-slogan{
+  width: 245rpx;
+	height: 27rpx;
+  margin: 0 auto;
+  padding-bottom: 10rpx;
+}
+.top-slogan .img{
+  width: 100%;
+  height: 100%;
+}
+
+.relative{
+  position: relative;
+}
+
+.location-btn{
+  position: fixed;
+  bottom: 200rpx;
+  right: 0;
+  width: 70rpx;
+  height: 84rpx;
+}
+.location-btn image{
+  width: 100%;
+  height: 100%;
+}
+
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+.new-register{
+  position: fixed;
+  top: 280rpx;
+  left: 0;
+  width: 100%;
+  height: 518rpx;
+  z-index: 11;
+  padding: 0 29rpx;
+  box-sizing: border-box;
+}
+.new-register .close{
+  position: absolute;
+  top: 0;
+  right:42rpx;
+  width:60rpx;
+  height:60rpx;
+  border-radius:50%;
+}

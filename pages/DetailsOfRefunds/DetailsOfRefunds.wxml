@@ -1,0 +1,74 @@
+<view class='pd-30'> 
+      <view class='bg_ff'>
+
+          <view class='pd_15 dis-flex'> 
+              <view> 
+                <image class='w_11h_240' src='https://sp.lion-mall.com/miniprogram/images/Progress bar.png'></image>
+              </view> 
+
+              <view class='c_33 pr pd_left18'>
+                  <view class='po top1'>
+                      <view class='f_22'>{{buzhouData[0].time}}</view>
+
+                <view class='f_24 pd_top10' wx:if="{{buzhouData[0].name=='处理中'}}">{{buzhouData[0].name}}</view>
+                  </view>
+
+                  <view class='po top163'>
+                     <view class='f_22' wx:if="{{buzhouData[1].time}}">{{buzhouData[1].time}}</view> 
+                     <view class='f_24 pd_top10'>{{buzhouData[1].name}}</view> 
+                  </view>
+
+                  <view class='po top283'>
+                     <view class='f_22' wx:if="{{buzhouData[2].time}}">{{buzhouData[2].time}}</view> 
+                     <view class='f_24 pd_top10'>{{buzhouData[2].name}}</view> 
+                  </view>
+
+                  <view class='po top403'>
+                     <view class='f_22' wx:if="{{buzhouData[3].time}}">{{buzhouData[3].time}}</view> 
+                     <view class='f_24 pd_top10'>{{buzhouData[3].name}}</view> 
+                  </view>
+
+              </view>
+          </view>
+      
+      </view>
+
+        <view class='mg_top32'> 
+            <image class='w_690h_80' src='https://sp.lion-mall.com/miniprogram/images/caiyoulove.png'></image>
+        </view>
+
+
+        <view class='dis-flex  flex-wrapr' > 
+
+
+              <view class='goods-item' wx:for="{{guesslikeData}}" bindtap='go_gwc'  data-goodsid="{{item.model_id}}">
+
+              <view>
+              <image class='wh_350' src='https://img.lion-mall.com/{{item.goods_image}}'>  </image></view>
+                <view class='f_24 c_33 pd_12_0 text-ellipsis'>{{item.goods_title}}</view>
+                <view class='f_24 c_33'>
+
+                <view class='dis-flex flex-justify'>
+                      <view>
+                      <label>直购价:</label><label class='pd_left18'>¥{{item.zong_price}}</label>
+                      
+                      </view>
+                      <view>
+                      <image bindtap='show_true'  data-goodsid="{{item.model_id}}"   class ="wh_16" src='https://sp.lion-mall.com/miniprogram/images/icon-cart2.png'></image>
+                      </view>
+                </view>
+                </view>
+              
+                <view>
+                <label class='f_24 c_33'>积分价:</label>
+                <label class='f_28 c_e5 pd_left18 pd_bto8' >¥{{item.goods_price}}</label> 
+                <label class='f_20 c_e5 pd_left18'>+{{item.goods_points}}积分</label>
+                </view>
+              
+              </view>
+
+        </view>
+
+</view>
+
+

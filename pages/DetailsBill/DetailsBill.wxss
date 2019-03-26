@@ -1,0 +1,17 @@
+
+.center{text-align: center}
+.bor_ee{border-bottom:1px solid #eee}
+
+/* 颜色 */
+.c_99{color:#999999}
+/* 字体 */
+.f_28{font-size:28rpx;}
+.f_30{font-size:30rpx;}
+.f_60{font-size:60rpx;}
+
+/* 边距 */
+.pd_55_0{padding:55rpx 0rpx;}
+.pd_40_0{padding:40rpx 0rpx;}
+.pd_top40{padding-top:40rpx;}
+.pd_btn40{padding-bottom:40rpx;}
+.pd_top50bth35{padding-bottom:34rpx;padding-top:40rpx;}

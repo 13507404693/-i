@@ -1,0 +1,90 @@
+page{background:#eee}
+
+.right{text-align: right}
+
+/* 加粗 */
+.f_bold{font-weight:bold;}
+
+.pr8{position:relative;top:8rpx;}
+
+/* 颜色 */
+.c_99{color:#999999;}
+.c_66{color:#666;}
+.c_e5{color:#E84540;}
+.bgff{background:#fff;}
+
+/* 边距 */
+.margin-30{margin:0rpx 30rpx;}
+.mg_left30{margin-left:30rpx;}
+.mg_bto20{margin-bottom:20rpx;}
+.pd30{padding:30rpx;}
+.pd_left20{padding-left:20rpx;}
+.pdtop20{padding-top:20rpx;}
+.pdtopbto30{padding-bottom:30rpx;padding-top:30rpx;}
+
+.pd_top10{padding-top:10rpx;}
+.pd_top30{padding-top:30rpx;}
+.pd_top20{padding-top:20rpx;}
+.pd_bto30{padding-bottom:30rpx;}
+.pd_bto20{padding-bottom:20rpx;}
+
+.mr_top30{margin-top:30rpx;}
+.mr_bot30{margin-bottom:30rpx;}
+.mr_top20{margin-top:20rpx;}
+
+.bor_radius4{border-radius:4rpx;}
+.bor_e5{border:1px solid #E84540;padding:8rpx 12rpx;border-radius:6rpx}
+.bor_99{border:1px solid #999999;padding:8rpx 12rpx;border-radius:6rpx}
+.borderee{border-bottom: 1px solid #F0F0F0}
+.bortopee{border-top:1px solid #F0F0F0}
+.box_show{border-radius:4px;box-shadow:1rpx 1rpx 1rpx 1rpx #ccc}
+
+/* 字体 */
+.f_bold{font-weight:bold}
+.f_34{font-size:34rpx;}
+.f_30{font-size:30rpx;}
+.f_32{font-size:32rpx;}
+.f_28{font-size:28rpx;}
+.f_26{font-size:26rpx;}
+.f_24{font-size: 24rpx;}
+.f_22{font-size: 22rpx;}
+
+/* 宽高 */
+.w_102h99{width:102rpx;height:99rpx;}
+.w_100{width:100%;}
+.w_300{width:300rpx;height:300rpx;}
+
+.maxw320{max-width:320rpx;}
+.maxw116{max-width:260rpx;}
+
+
+.item-active{margin-left:-80rpx;transition:all 0.2s;}
+
+.item-activeflase{margin-left:0rpx;transition:all 0.2s;}
+
+.transition2s{transition:all 1s;}
+.bor_edbgred{
+  background:#E84540;
+  width:150rpx;
+  border-radius:6rpx;
+  color:#fff;
+  height: 100%; 
+  font-size: 26rpx;
+  margin-left:20rpx;
+  display:flex;
+  align-items:center;
+  justify-content: center;} 
+
+.flex_itemscont{
+    position: fixed;
+    top: 0rpx;
+    left:0rpx;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 30rpx;
+}
+

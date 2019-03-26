@@ -1,0 +1,111 @@
+<!-- pages/my/my.wxml -->
+<view class="r-bg bg_blue pd_top40">
+  <view class=" bg_show_ff mg_0_30">
+    <view class=" felx_between">
+      <view class="flex_wrap">
+        <view class="pd_img">
+          <image class="w_170_h_170 bd-radius" src="{{userInfo.avatarUrl || avatarUrl || 'https://sp.lion-mall.com/miniprogram/images/touxing.png'}}"></image>
+        </view>
+        <view class="pd_top90">
+          <button hover-class="none" class="auth-btn  con_listbox text-ellipsis" open-type="getUserInfo">
+            {{userInfo.nickName||'授权获取信息'}}<text class="grade r-bg">金卡</text>
+          </button>
+          <view class="f_26 co_33 pd_top20" bindtap="register">
+            <view class="con_listbox f_26 co_33">{{member_mobile}}</view>
+            <view>{{member_sm}}</view>
+          </view>
+        </view>
+      </view>
+      <!-- TODO 暂时注释  <view>
+        <image class="w_88h_77 pd_top90_right18" src="https://sp.lion-mall.com/miniprogram/images/erweima.png"></image>
+      </view> -->
+    </view>
+    <view class="pd_top140 center pd_top63">
+      <text class="f_36 r-fontcolor letr5">{{filter.idSplit(member_id)}}</text>
+    </view>
+  </view>
+  <view class="felx_between mg_57_30">
+    <view class="w_33 center bor_right1" bindtap="navigateTo" data-url="{{ '/pages/integral_sl/integral_sl?member_id='+ member_id }}">
+      <view class="letr1 r-fontcolor f_32">{{points||0}}</view>
+      <view class="f_26 co_33">积分</view>
+    </view>
+    <view class="w_33 center bor_right1" bindtap="navigateTo" data-url="{{ '/pages/wallet/wallet?member_id='+ member_id }}">
+      <view class="letr1 r-fontcolor f_32">{{cash_amount||0}}</view>
+      <view class="f_26 co_33">钱包</view>
+    </view>
+    <view class="w_33 center" bindtap="navigateTo" data-url="/pages/Coupon/Coupon">
+      <view class="letr1 r-fontcolor f_32">0</view>
+      <view class="f_26 co_33">优惠券</view>
+    </view>
+  </view>
+
+  <!-- 扫描支付 -->
+  <view class="mg_0_30" bindtap="saoma" >
+    <image class="w_690_h100" src="https://sp.lion-mall.com/miniprogram/images/saomazhifu.png"></image>
+  </view>
+  <view class="he_15bgf2"></view>
+
+
+
+<view class='pr' style="position: relative;">
+  <view class="myorder-wrap mg_0_30" >
+    <navigator url="/pages/Order/Order?orderState=''" class="order-all dis-flex flex-justify bor_bto1"  hover-class="none">
+      <view class="text">我的订单</view>
+      <view class="value">
+        <text>全部订单</text>
+        <image class="icon-icon-awrow2" src="https://sp.lion-mall.com/miniprogram/images/icon-awrow2.png"></image>
+      </view>
+    </navigator>
+    
+    <view class="order-state-list dis-flex flex-justify">
+
+      <view class="order-state-item" wx:for="{{orderSates}}" wx:key="{{index}}" data-orderState="{{item.state}}" bindtap="tapToOrder">
+        <image class="icon-order-state" src="{{item.icon}}"></image>
+        <view class="title">{{item.name}}</view>
+        <view class="badeg" wx:if="{{item.order_nums >= 1}}">{{item.order_nums}}</view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class="he_15bgf2"></view>
+
+  <view class="server-wrap padding-30">
+    <view class="top">我的服务</view>
+    <view class="server-items dis-flex">
+    <!-- pages/Mybill/Mybill?member_id={{member_id}} -->
+      <navigator url="/pages/Mybilltwo/Mybilltwo" hover-class="none" class="item">
+        <image class="icon-server" src="https://sp.lion-mall.com/miniprogram/images/icon-server2.png"></image>
+        <view class="name">我的账单</view>
+      </navigator>
+      <navigator url="/pages/Addressmanagement/Addremanagement" hover-class="diy-navigator-hove" class="item">
+        <image class="icon-server" src="https://sp.lion-mall.com/miniprogram/images/icon-server3.png"></image>
+        <view class="name">收货地址</view>
+      </navigator>
+      <navigator url='/pages/WebView/WebView?url=https://sp.lion-mall.com/wap5.0/CustomerService.html&title=客服与帮助' hover-class="diy-navigator-hove" class="item">
+        <image class="icon-server" src="https://sp.lion-mall.com/miniprogram/images/icon-server1.png"></image>
+        <view class="name">帮助与客服</view>
+    </navigator>
+    </view>
+  </view>
+
+  <view bindtap='clickNoLogin' wx:if="{{isLogin}}" class='po_fxdb100'></view>
+</view>
+
+
+
+  <wxAuth-popup state="{{isOpenAuthLoginGetUserInfo}}" bind:onAuthSuccess="onAuthLoginGetUserInfo"></wxAuth-popup>
+</view>
+
+<wxs module="filter">
+  var idSplit = function(id){
+    var strArr = id.split('');
+    var str = '';
+    for (var i = 0; i < strArr.length; i++) {
+      str += i % 4 === 3 ? strArr[i] + ' ' : strArr[i];
+    };
+
+    return str;
+  }
+  module.exports.idSplit = idSplit;
+</wxs>

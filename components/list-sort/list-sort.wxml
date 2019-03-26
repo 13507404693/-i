@@ -1,0 +1,8 @@
+<!--components/list-sort.wxml-->
+<view class=" sort-class sort-wrap position_fixed">
+    <view class="sort-list">
+        <view bindtap="_tapSort" wx:for="{{sort}}" wx:key="{{index}}" data-sort="{{item.sortType}}" data-index="{{index}}" data-type="{{ index === 0 ? '' : item.type === 1 ? 0 : 1 }}" class="sort-item {{index ===  thisSortIndex ? 'active' : '' }}">
+            {{item.name}}
+        </view>
+    </view>
+</view>

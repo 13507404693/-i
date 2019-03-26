@@ -1,0 +1,27 @@
+<!--pages/wxPhoneLogin/wxPhoneLogin.wxml-->
+
+<view class="header">
+    <image src="https://sp.lion-mall.com/miniprogram/images/pd-logo.png" class="logo"></image>
+    <view class="title">“兑”的品质生活</view>
+</view>
+
+<view class="login-container">
+    <button disabled="{{isLoading}}"
+            loading="{{isLoading}}" 
+            open-type="getPhoneNumber" 
+            bindgetphonenumber="bindPhoneNumberLogin" 
+            class="login-btn con_listbox">微信手机号快捷登录
+    </button>
+    <view class="nav-to" bindtap="tapShowPopup">其它手机号登录</view>
+</view>
+
+<view class="bindphone-popup {{ isBindphonePopup ? 'active' : ''}}">
+    <view class="title">绑定手机号</view>
+    <view class="form-item">
+        <image class="icon-phone" src="https://sp.lion-mall.com/miniprogram/images/icon-phone.png" />
+        <input type="number" bindinput="phoneInputChange" value="{{phone}}" class="phone-input" placeholder="请输入手机号码" />
+        <view class="tips">绑定手机您可获得更多优惠</view>
+    </view>
+    <button class="next con_listbox" bindtap="tapNext">下一步</button>
+</view>
+<view bindtap="tapShowPopup" class="mask {{ isBindphonePopup ? 'active' : ''}}"></view>

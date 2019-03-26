@@ -1,0 +1,40 @@
+    <view class="header">
+        <view class="top-region dis-flex" style="opacity:{{headerOpacity}};">
+            <view class="search">
+                <navigator url="/pages/ShopSearch/ShopSearch"  hover-class="none">
+                    <image class="search-icon" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-search.png" />
+                    <input type="text" disabled="{{true}}" class="search-input" placeholder="搜索商品" />
+                </navigator>
+            </view>
+            <view class="menu" bindtap='go_gwc'><image class="icon-menu" src="https://sp.lion-mall.com/miniprogram/images/gwuc(1)@2x.png" /></view>
+        </view>
+    </view>
+
+<!--内容滑块区  -->
+<view class='borer_top dis-flex flex-justify mg_top20'> 
+
+  <scroll-view scroll-y class='w_173' style='height:{{windowHeight}}px'>
+
+        <view  wx:for="{{productData}}" data-id="{{item.classify_id}}" data-index="{{index}}"         class='{{index==indexs?"scroll_atc2":"scroll_atc1"}} ' bindtap='tap_product'>
+        {{item.classify_name}}
+        </view>
+        <!-- <view class='scroll_atc2'>家用电器</view>
+        <view class='scroll_atc1'>家用电器</view> -->
+  </scroll-view>
+
+  <scroll-view class='w_557' scroll-y style="height:{{windowHeight}}px"> 
+
+      <view wx:for="{{proBlcokData}}" wx:for-item="index_one"> 
+        <view class='f_24 pd_50bt30'>{{index_one.classify_name}}</view>
+        <view class='flex-wrapr borer_bottom'> 
+
+            <view class='center pd_bt20' wx:for="{{index_one.category3}}" wx:for-item="index_two" data-categoryId="{{index_two.classify_id}}" data-prid="{{index_two.parent_id}}" data-name="{{index_two.classify_name}}" bindtap='navTo_name'>
+             <image class='wh_100' src='{{index_two.img}}'></image>
+             <view class='f_24'>{{index_two.classify_name}}</view>
+            </view>
+        </view>
+      </view>
+
+  </scroll-view>
+</view>
+    

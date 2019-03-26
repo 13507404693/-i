@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "品兑支付",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "wxAuth-popup": "../../components/wxAuth-popup/wxAuth-popup",
+        "picker-popup": "../../components/picker-popup/picker-popup"
+    }
+}

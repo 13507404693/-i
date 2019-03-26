@@ -1,0 +1,7 @@
+<view> 
+<!-- <goods-item item="{{goods}}"></goods-item> -->
+  <view class='center pd_top300'>
+  <image class='w205_h_205' src='https://sp.lion-mall.com/miniprogram/images/kaituoshanghu@2x.png'></image>
+  <view class='f_30 co_99 pd_top40'>正在全力开拓优惠商户，敬请期待！</view>
+ </view>  
+</view>

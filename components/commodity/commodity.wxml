@@ -1,0 +1,12 @@
+
+<navigator url="{{'/pages/Business/Business?id='+ item.store_id }}"  hover-class="diy-navigator-hover">
+<view class="goods-list   padding-30">
+  <view class="goods-item">
+    <view class="goods-img">
+      <image class="img" src="{{item.goods_image}}"></image>
+      <view class="goods-title">{{item.goods_title}}</view>
+    </view>
+    <view class="goods-price">￥ {{item.goods_price}}/份</view>
+  </view>
+</view>
+</navigator>

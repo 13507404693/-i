@@ -1,0 +1,76 @@
+<view class="padding-30"> 
+ 
+  <view class='center pd_t_b56 border1e6'  wx:if="{{datalist.amount}}"> 
+    <view class='c_00 f_60'>{{datalist.amount}}</view>
+    <view class='c_99 f_30 pd_top34'>红包金额</view>
+  </view>
+
+  <view class='center pd_t_b56 border1e6'  wx:if="{{datalist.member_cash}}"> 
+    <view class='c_00 f_60'>{{datalist.member_cash}}</view>
+    <view class='c_99 f_30 pd_top34'>红包金额</view>
+  </view>
+
+
+  <view class='border1e6 pd_bto40 f_30' > 
+
+    <view class='dis-flex flex-justify pd_top40' wx:if="{{datalist.payment_time}}">
+        <view class='c_99'>交易时间</view>
+        <view class='c_33'>{{datalist.payment_time}}</view>
+    </view>
+
+    <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.pay_sn}}">
+       <view class='c_99'>支付单号</view>
+        <view class='c_33'>{{datalist.pay_sn}}</view>
+    </view>
+
+  <view  class='dis-flex flex-justify pd_top40' wx:if="{{type_num==7 || type_num==9 ||  type_num==10}}">
+        <view class='c_99'>商户ID</view>
+        <view class='c_33'>{{datalist.store_id}}</view>
+    </view>
+
+
+    <view  class='dis-flex flex-justify pd_top40' wx:if="{{type_num==7 || type_num==9 ||  type_num==10}}">
+        <view class='c_99'>商户名称</view>
+        <view class='c_33'>{{datalist.store_name}}</view>
+    </view> 
+
+    <view  class='dis-flex flex-justify pd_top40' wx:if="{{type_num==5 || type_num==8 ||  type_num==6}}">
+        <view class='c_99'>订单编号</view>
+        <view class='c_33'>{{datalist.order_id}}</view>
+    </view>
+    
+
+    <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.type_name}}">
+        <view class='c_99'>消费属性</view>
+        <view class='c_33'>{{datalist.type_name}}</view>
+    </view>
+
+    <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.goods_amount}}">
+        <view class='c_99'>支付金额</view>
+        <view class='c_33'>{{datalist.goods_amount}}</view>
+    </view>
+
+  <!-- star 提现金额 -->
+
+     <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.withdraw_add_time}}">
+        <view class='c_99'>提现金额</view>
+        <view class='c_33'>{{datalist.withdraw_amount}}</view>
+    </view>
+
+   <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.withdraw_add_time}}">
+        <view class='c_99'>申请时间</view>
+        <view class='c_33'>{{datalist.withdraw_add_time}}</view>
+    </view>
+
+       <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.withdraw_payment_time}}">
+        <view class='c_99'>到账时间</view>
+        <view class='c_33'>{{datalist.withdraw_payment_time}}</view>
+    </view>
+
+   <view  class='dis-flex flex-justify pd_top40' wx:if="{{datalist.member_cash}}">
+        <view class='c_99'>账户余额</view>
+        <view class='c_33'>{{datalist.member_cash}}</view>
+    </view>
+ <!-- end 提现金额 -->
+  </view>
+</view>

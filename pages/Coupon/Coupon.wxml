@@ -1,0 +1,7 @@
+<!-- pages/Coupon/Coupon.wxml -->
+<view class="box">
+  <view class="center">
+    <image class="w_120_h120" src="https://sp.lion-mall.com/miniprogram/images/haibai.png"></image>
+    <view class="f_34 co_66">暂无优惠券</view>
+  </view>
+</view>

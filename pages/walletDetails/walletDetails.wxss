@@ -1,0 +1,23 @@
+/*颜色*/
+.c_00{color:#000;}
+.c_99{color:#999;}
+.c_33{color:  #333333;}
+
+/* 字体 */
+.f_30{font-size:30rpx;}
+.f_60{font-size:60rpx;}
+
+/* 边剧 */
+.pd_top34{padding-top:34rpx;}
+.pd_top40{padding-top:40rpx;}
+.pd_bto40{padding-bottom:40rpx;}
+.pd_t_b56{padding-top:56rpx;padding-bottom:56rpx;}
+
+
+
+
+
+
+/*border 线快*/
+.border1e6{border-bottom:1rpx solid #E6E6E6;}
+

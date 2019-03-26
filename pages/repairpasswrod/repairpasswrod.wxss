@@ -1,0 +1,71 @@
+/* pages/Sign/Sign.wxss */
+.position_re{
+  position: relative;
+}
+.mg_0_31{margin:0px 31rpx;}
+.pd_pt41_pt41{padding-bottom:41rpx;padding-top:42rpx;}
+.f_30{font-size:30rpx;}
+.c_99{color: #999999;}
+.co_f7{color:#f75757;}
+.lettr1{letter-spacing: 1rpx;}
+.bor_1_coe6{border-bottom:1rpx solid #e6e6e6;}
+
+.box_between{display: flex;flex-wrap:wrap;} 
+
+.w_20{width:22%;}
+.w_30{width:30%;}
+.w_250r{width:250rpx;}
+
+
+.pd_lf50{padding-left:50rpx;}
+.pd_lf93r{padding-left:78rpx;}
+.pd_top70r{padding-top:70rpx;}
+
+.al_rt{text-align: right}
+
+.f_26{font-size: 26rpx;}
+.f_32{font-size: 32rpx;}
+
+.bth{
+  padding: 3rpx 14rpx;
+	background-color: #f5abad;
+	border-radius: 10rpx;
+  border:none;
+  color:#fff;
+  }
+
+  .bth_tj{
+    font-size: 32rpx;
+  padding:6rpx 0px;
+	background-color: #f5abad;
+	border-radius: 10px;
+  width:60%;
+  color: #fff;
+  }
+
+  .bth_tj42{
+    font-size: 32rpx;
+  padding:6rpx 0px;
+	background-color: #e52e31;
+	border-radius: 10px;
+  width:60%;
+  color: #fff;
+  }
+  .code_box{
+    width: 65px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+  }
+
+  .getPhoneNumber{
+    position: absolute;
+    top: 40rpx;
+    right: 0;
+    z-index: 99;
+    background: none;
+    font-size: 22rpx;
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }

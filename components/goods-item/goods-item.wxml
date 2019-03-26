@@ -1,0 +1,20 @@
+<view class="mg_30 pd_30 bor_btf0  relative">
+    <view class="flex">
+        <view class="w_148_h148">
+            <image class="w_148_h148 bor5" lazy-load="{{true}}" src="{{item.store_heard}}"></image>
+        </view>
+        <view class="pd_l23 ">
+            <view class="let1 f_30 c_00 f_bold w_490ellipsis">{{item.store_name}}</view>
+            <view class="row-info dis-flex">
+                <div class="good-comment r-fontcolor">
+                    <image class="icon" src="https://sp.lion-mall.com/miniprogram/images/icon-good-list.png" />
+                    <text class="text">好评{{item.haoping}}</text>
+                </div>
+                <div class="average">人均 {{item.renjun}}</div>
+            </view>
+            <view class="let1 f_22 c_33 tags w_490ellipsis">{{item.store_tag === null ? '' : item.store_tag}}</view>
+        </view>
+        <view class="f_22  c_33  distance">{{item.distance}}</view>
+        <navigator class="on-line-buy" wx:if="{{item.pay_online == 1}}">在线购买</navigator>
+    </view>
+</view>

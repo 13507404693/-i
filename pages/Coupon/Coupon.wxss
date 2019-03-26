@@ -1,0 +1,18 @@
+/* pages/Coupon/Coupon.wxss */
+
+.w_120_h120{	
+  width: 120rpx;
+	height: 120rpx;}
+
+.f_34{font-size: 34rpx;}
+
+.co_66{color:#666}
+
+.center{text-align: center;}
+
+.box{ 
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left:-10%;
+  margin-top:-25%;}

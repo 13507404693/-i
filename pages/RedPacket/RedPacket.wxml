@@ -1,0 +1,34 @@
+<view class="redpacket-container" wx:if="{{!isOpenRedPacket}}">
+    <view class="mask" animation="{{maskAnimationData}}"></view>
+    <view class="redpacket-wrap">
+        <view class="top" animation="{{topAnimationData}}"></view>
+        <view class="bottom" animation="{{bottomAnimationData}}"></view>
+        <button wx:if="{{isShowgRedPacket}}" class="open-redpacket con_listbox {{isLoadingRedPacket ? 'active' : ''}}" bindtap="tapOpenRedPacket"></button>
+    </view>
+</view>
+
+<view class="redpacketRes-container {{isOpenRedPacket ? 'active':''}}">
+    <view class="result-wrap">
+        <view class="no-prize-box" wx:if="{{redPacketSum <= 0}}">
+            <image class="icon-weep" src="https://sp.lion-mall.com/miniprogram/images/icon-kk.png"></image>
+            <view class="tips" style="color:#333;">本次未中奖，期待您下次获得免单大奖</view>
+        </view>
+        <image wx:if="{{redPacketSum > 0}}" class="redpack-head active" src="https://sp.lion-mall.com/miniprogram/images/RedPacket/head.png"></image>
+        <view class="yes-prize-box" wx:if="{{redPacketSum > 0}}">
+            <view class="title">您的账户剩余
+                <label class="f_36">{{memberinfo.member_points || 0}}</label> 积分
+            </view>
+            <text class="sum">{{redPacketSum}}</text><text class="unit">元</text>
+            <view class="tips">红包已存入余额,可进行消费和提现</view>
+        </view>
+    </view>
+
+    <view class="goods-list dis-flex">
+        <image class="icon-recommend" src="https://sp.lion-mall.com/miniprogram/images/icon-recommend.png"></image>
+        <shop-goods-item goodsList="{{list}}"></shop-goods-item>
+    </view>
+
+    <navigator class="toShop-btn" url="/pages/Shop/Shop" hover-class="none" open-type="switchTab">
+        <image style="width:100%; height:100%;" src="https://sp.lion-mall.com/miniprogram/images/icon-toShop.png?time=2018"></image>
+    </navigator>
+</view>

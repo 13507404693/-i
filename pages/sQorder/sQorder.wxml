@@ -1,0 +1,172 @@
+<view class='margin-30'>
+  <!-- statr -->
+  <view>
+    <view class='f_34 pdtopbto30 f_bold' wx:if="{{strOff}}"> 今日订单</view>
+    <view class='{{item.isTouchMove?"item-active":" "}}  mg_bto20 dis-flex flex-justify  bgff pd30 bor_radius4' wx:for="{{Todaylist}}"
+      bindtouchstart="touchstart" bindtouchmove='touchmove' data-index="{{index}}">
+      <navigator class='w_100' url='/pages/sQorderCancellation/sQorderCancellation?order_id={{item.order_id}}&istoday=1'
+        hover-class='none'>
+        <view class='dis-flex flex-justify'>
+          <view class='dis-flex'>
+            <view class='w_102h99 box_show'>
+              <image class='w_102h99' src='{{item.goods[0].good_info.goods_image?"https://img.lion-mall.com/"+item.goods[0].good_info.goods_image:item.goods[0].good_info.goods_image}}'></image>
+            </view>
+
+            <view class='pd_left20'>
+              <view class='f_32 text-ellipsis '>
+                <navigator class='text-ellipsis maxw320'>{{item.store_name}}</navigator>
+              </view>
+              <view class='f_28 pdtop20 pd_bto20 dis-flex'>
+                <view class='text-ellipsis maxw116'>{{item.goods[0].good_info.goods_title}}</view>
+                <view class='f_24 c_99 pd_left20 pr8' wx:if="{{item.goods.length ==1}}">x{{item.goods.length || 0}}
+                </view>
+                <view class='f_24 pr8 pd_left20' wx:if="{{item.goods.length >1}}"> 等{{item.goods.length}}件商品</view>
+
+              </view>
+
+              <view class='pd_bto30 f_24 ' wx:if="{{item.order_state ==10}}">剩余支付时间:
+                <label class='c_e5'>{{filter.datetime(item.offtime.msg)}}</label>
+              </view>
+
+
+              <view class='f_24 c_99 pr8' wx:if="{{item.order_state ==0||item.order_state==50||item.order_state==40}}">{{item.create_time}}</view>
+
+            </view>
+          </view>
+          <view>
+            <view class='f_26 right' wx:if="{{item.order_state==10}}">待付款</view>
+            <view class='f_26 right' wx:if="{{item.order_state==0}}">已取消</view>
+            <view class='f_26 right' wx:if="{{item.order_state==20||item.order_state==50}}">已完成</view>
+            <view class='pdtop20 f_32 f_bold right'><label class='f_24'>￥</label>{{item.goods[0].good_info.goods_price}}</view>
+          </view>
+        </view>
+
+        <view class='flex-right f_30 bortopee' wx:if="{{item.order_state ==10 || item.order_state ==20  ||  item.order_state ==40}}">
+
+          <view class='bor_99 mr_top30 bortopee' wx:if="{{item.order_state ==50}}">
+            已评价
+          </view>
+
+          <view catchtap='cancel' data-orderid="{{item.order_id}}" class='bor_99 mr_top30' wx:if="{{item.order_state ==10}}">
+            取消订单
+          </view>
+
+          <view class='bor_e5 c_e5 mg_left30 mr_top30' wx:if="{{item.order_state ==10}}">
+            去支付
+          </view>
+
+          <view class='bor_e5 c_e5 mg_left30 mr_top30' wx:if="{{item.order_state ==20}}">
+            待收货
+          </view>
+
+          <view class='bor_e5 c_e5 mg_left30 mr_top30' wx:if="{{item.order_state ==40}}">
+
+            立即评价
+
+
+          </view>
+
+        </view>
+      </navigator>
+
+      <view wx:if="{{item.isTouchMove}}" class='transition2s'>
+        <view class='bor_edbgred' catchtap="orderRmover" data-orderid="{{item.order_id}}" data-index="{{index}}">
+          删除
+        </view>
+      </view>
+
+    </view>
+    <!-- end -->
+  </view>
+
+  <view>
+    <view class='f_34 pd_bto30 pd_top10 f_bold mr_top20' wx:if="{{strOfftwo}}">历史订单</view>
+
+    <!-- statr -->
+    <view>
+      <view class='{{item.isTouchMove?"item-active":" "}}  bgff pd30 bor_radius4 mg_bto20 dis-flex flex-justify' wx:for="{{Historicallist}}"
+        bindtouchstart="touchstart_Two" bindtouchmove='touchmove_Two' data-index="{{index}}">
+        <navigator class='w_100' url='/pages/sQorderCancellation/sQorderCancellation?order_id={{item.order_id}}&istoday=0'
+          hover-class='none'>
+          <view class='dis-flex flex-justify  '>
+            <view class='dis-flex'>
+              <view class='w_102h99 box_show'>
+                <image class='w_102h99' src='{{item.goods[0].good_info.goods_image?"https://img.lion-mall.com/"+item.goods[0].good_info.goods_image:item.goods[0].good_info.goods_image}}'></image>
+              </view>
+
+              <view class='pd_left20'>
+                <view class='f_32 text-ellipsis '>
+                  <navigator class='text-ellipsis maxw320'>{{item.store_name}}</navigator>
+                </view>
+                <view class='f_28 pdtop20 dis-flex'>
+                  <view class='text-ellipsis maxw116'>{{item.goods[0].good_info.goods_title}}</view>
+                  <view class='f_24 c_99 pd_left20 pr8' wx:if="{{item.goods.length ==1}}">x{{item.goods.length || 0}}
+                  </view>
+
+                  <view class='f_24 pr8' wx:if="{{item.goods.length >1}}"> 等{{item.goods.length}}件商品</view>
+
+                </view>
+
+                <view class='pd_bto30 f_24 pdtop20' wx:if="{{item.order_state ==10}}">剩余支付时间:
+                  <label class='c_e5'>{{item.offtime.msg}}</label>
+                </view>
+
+
+                <view class='f_24 c_99 pr8' wx:if="{{item.order_state ==0||item.order_state==50||item.order_state==40}}">{{item.create_time}}</view>
+
+              </view>
+            </view>
+            <view>
+              <view class='f_26 right' wx:if="{{item.order_state==0}}">已取消</view>
+              <view class='f_26 right' wx:if="{{item.order_state==20||item.order_state==50}}">已完成</view>
+              <view class='pdtop20 f_32 f_bold'>￥{{item.goods[0].good_info.goods_price}}</view>
+            </view>
+
+          </view>
+
+          <view class='flex-right f_30 pd_top30 ' wx:if="{{item.order_state ==10 || item.order_state ==20  ||  item.order_state ==40}}">
+
+            <view class='bor_e5 c_e5 mg_left30 ' wx:if="{{item.order_state ==40}}">
+              <navigator url='/pages/BusinessComment/BusinessComment?id={{item.store_id}}'>
+                去评论
+              </navigator>
+            </view>
+
+            <view class='bor_99' wx:if="{{item.order_state ==50}}">
+              已评价
+            </view>
+
+          </view>
+        </navigator>
+
+        <view wx:if="{{item.isTouchMove}}" class='transition2s'>
+          <view class='bor_edbgred' catchtap="orderRmover" data-orderid="{{item.order_id}}" data-index="{{index}}">
+            删除
+          </view>
+        </view>
+
+      </view>
+      <!-- end -->
+    </view>
+
+  </view>
+
+</view>
+
+<view wx:if="{{empty && emptytwo}}" class='flex_itemscont'>
+  <view>
+    <image class='w_300' src='http://m2.lion-mall.com/miniprogram/images/upemty.png'></image>
+    <view class='pd_bto30 pd_top20 center'>暂无订单</view>
+    <view class='c_66 f_26'>可以去看看有哪些想买的</view>
+  </view>
+
+</view>
+
+<wxs module="filter">
+  var datetime= function(times){
+
+  var min = Math.floor(times / 60);
+  var sec = Math.floor(times % 60);
+  min = min < 10 ? '0' + min : min; sec=sec < 10 ? '0' + sec : sec; times=min + ':' + sec; return times }
+    module.exports.datetime=datetime; 
+    </wxs>

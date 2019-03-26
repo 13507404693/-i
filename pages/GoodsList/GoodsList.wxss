@@ -1,0 +1,81 @@
+/* pages/GoodsList/GoodsList.wxss */
+page{
+    background: #fff;
+}
+.pd-top-166{
+    padding-top:150rpx;
+}
+.position_fixed{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.top-region{
+    background: #fff;
+}
+.search{
+    position: relative;
+    border-radius: 100rpx;
+    padding-right: 28rpx;
+    margin:0 32rpx;
+    padding-top: 20rpx;
+}
+.search .search-input{
+    width:614rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    border-radius: 100rpx;
+    background:rgb(246,246,246);
+    font-size: 22rpx;
+    color: #ddd;
+    padding-left: 72rpx;
+}
+.search .search-icon{
+    position: absolute;
+    top: 50%;
+    left: 26rpx;
+    margin-top: -6rpx;
+    width: 28rpx;
+    height: 28rpx;
+    z-index: 10;
+}
+
+.sort-class{
+    top: 76rpx !important;
+}
+
+.goods-list{
+    margin-top: 8rpx;
+    flex-wrap: wrap;
+    padding: 0 33rpx;
+}
+
+.no-goods-msg{
+    padding:20rpx 0;
+    width:100%;
+    text-align:center;
+    color:#ccc;
+    font-size:28rpx;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    -webkit-transition:transform 1s;
+    -moz-transition: transform 1s;
+    transition: transform 1s;
+}
+.header.up{
+    transform: translateY(-100rpx);
+}
+.header.down{
+    transform: translateY(0);
+}
+
+.activity-img{
+    width:100%;
+    height:320rpx;
+}

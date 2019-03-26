@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "商家详情",
+    "usingComponents": {
+        "loading": "../../components/loading/loading",
+        "canvasdrawer": "/components/canvasdrawer/canvasdrawer"
+    }
+}

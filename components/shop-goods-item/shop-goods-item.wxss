@@ -1,0 +1,64 @@
+/* components/shop-goods-item/shop-goods-item.wxss */
+.dis-flex{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+}
+.goods-item{
+    width:328rpx;
+    padding-right: 30rpx;
+    padding-bottom: 24rpx;
+    padding-top: 28rpx; 
+    border-bottom:2rpx solid rgb(238,238,238);
+    position: relative;
+}
+.goods-item:nth-child(2n){ 
+    padding-right: 0
+}
+.goods-item:nth-child(2n) .add-cart{
+    right: 20rpx;
+}
+.goods-img{
+    width: 100%;
+	height: 345rpx;
+}
+.goods-title{
+    font-size: 24rpx;
+    color: #333;
+    padding-top: 12rpx;
+}
+.goods-change{
+    margin-top: 6rpx;
+    position: relative;
+}
+.price{
+    font-size: 22rpx;
+    color: #333;
+}
+.integral-price{
+    font-size: 22rpx;
+    color: #E52E31;
+    font-weight: bold;
+}
+.integral-price .num{
+    font-size: 26rpx;
+    font-weight: bold;
+}
+.integral-price text{
+    margin-right: 20rpx;
+    font-weight: 300;
+}
+.add-cart{
+    position: absolute;
+    bottom:32rpx;
+    right:46rpx;
+    z-index: 1;
+}
+
+
+/* 单行文本省略号 */
+.text-ellipsis{
+    white-space:nowrap;/* 文本不换行显行 */
+    overflow:hidden;/* 超出隐藏 */
+    text-overflow:ellipsis;/* 文本超出省略号显行 */
+}

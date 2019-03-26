@@ -1,0 +1,13 @@
+<!--components/upload-image/upload-image.wxml-->
+<view class="upload-container">
+    <view class="image-list dis-flex">
+        <view class="img-item" data-index="{{index}}" wx:for="{{images}}" wx:key="{{index}}">
+            <image src="{{item.path}}"></image>
+            <view class="mask" style="height: {{ item.progress }}%" wx:if="{{!item.isUpload}}"></view> 
+            <view class="remove"  data-index="{{index}}" bindtap="_remove">
+                <image  class="remove-btn" src="https://sp.lion-mall.com/miniprogram/images/icon-remove.png" />
+            </view>
+        </view>
+        <view wx:if="{{images.length <= imgNum}}" class="add" bindtap="_addImage"></view>
+    </view>
+</view>

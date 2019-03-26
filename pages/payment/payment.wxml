@@ -1,0 +1,71 @@
+<view class="pay-container">
+  <view class="header">
+    <image class="head" src="{{store_heard ? 'http://img.lion-mall.com/'+store_heard : 'https://sp.lion-mall.com/miniprogram/images/ic_dianppu@2x.png'}}"></image>
+    <view class="store-name">{{store_name}}</view>
+  </view>
+
+  <form bindsubmit="submitForm" report-submit>
+    <view class="form-wrap">
+
+      <view class="form-tabs dis-flex">
+        <view class="tab-item {{ payMode == '1' ? 'active' : '' }}" data-payMode="1" bindtap="tapPayMode">
+          <image class="icon-check" src="https://sp.lion-mall.com/miniprogram/images/icon-check.png"></image>
+          全款支付
+        </view>
+        <view class="tab-item {{ payMode == '0' ? 'active' : '' }}" data-payMode="0" bindtap="tapPayMode">
+          <image class="icon-check" src="https://sp.lion-mall.com/miniprogram/images/icon-check.png"></image>
+          积分折扣
+        </view>
+      </view>
+
+      <view class="form-item sum-item">
+        <view class="form-label">消费金额</view>
+        <input type="digit" bindinput="onInput" class="form-input" placeholder="0.00" focus="{{isFocus}}" disabled="{{submitState}}" bindblur="focusMoneyInput" maxlength='8'></input>
+      </view>
+
+      <view class="form-item" wx:if="{{payMode == '0'}}">
+        <view class="form-label">品兑优惠</view>
+        <view class="form-val">{{sjzks || '暂无活动'}}</view>
+      </view>
+
+      <!--  TODO 暂无接口  -->
+      <!-- <view class="form-item" bindtap="redPacketChange" data-state="{{true}}">
+        <view class="form-label">红包抵扣</view>
+        <view class="form-val">0元 <image class="icon-awrow" src="https://sp.lion-mall.com/miniprogram/images/icon-awrow3.png"></image></view>
+      </view>  -->
+
+      <view class="form-item">
+        <view class="form-label">实付金额：</view>
+        <view class="form-val real-price">{{'￥'+ price || 0}}</view>
+      </view>
+    </view>
+
+    <button form-type="submit" disabled="{{ money === '' || submitState}}" loading="{{submitStateloading}}" class="submit con_listbox">
+      确认支付
+    </button>
+    <view class="tips {{ money === '' || submitState ? 'disabled' : ''}}" >全款支付后点击【完成】获得现金红包</view>
+  </form>
+
+  <wxAuth-popup state="{{isOpenAuthLoginGetUserInfo}}" bind:onAuthSuccess="onAuthLoginGetUserInfo"> </wxAuth-popup>
+
+  <navigator class="toShop-btn" url="/pages/Shop/Shop" hover-class="none" open-type="switchTab">
+    <image style="width:100%; height:100%;" src="https://sp.lion-mall.com/miniprogram/images/icon-toShop.png?time=2018"></image>
+  </navigator>
+
+  <!-- <picker-popup title="我的钱包" state="{{isShowRedPacketPopup}}" bindcancel="redPacketChange">
+     <view class="popup-wrap">
+
+      <view class="picker-item dis-flex">
+        <view class="label">钱包余额</view>
+        <view class="val">￥0.00</view>
+      </view>
+      <view class="picker-item dis-flex picker-input-item">
+        <view class="label">本次抵扣</view>
+        <input type="digit" class="picker-input" placeholder="请输入少于您钱包余额的数字" />
+      </view>
+
+      <button class="confirm con_listbox">确定</button>
+    </view>
+  </picker-popup> -->
+
+</view>

@@ -1,0 +1,224 @@
+page{
+  background: #fff;
+}
+.h_30{height:30rpx;}
+
+.c_33{color: #333333;}
+.c_66{color: #666666;}
+.c_e5{	color: #e52e31;}
+
+.f_24{	font-size: 28rpx;}
+.f_28{	font-size: 28rpx;}
+.f_26{	font-size: 26rpx;}
+.f_34{	font-size: 34rpx;}
+.f_36{font-size:36rpx;}
+.f_30{	font-size: 30rpx;}
+.f_38{	font-size: 38rpx;}
+.f_42{	font-size: 42rpx;}
+
+
+.w_100{width:100%;}
+.w_220{width:220rpx;}
+.w_506{width:506rpx;}
+.w_418{width:418rpx;}
+.w_480{width:480rpx;}
+.w_244{width:244rpx;}
+.w_240_h240{
+  width: 240rpx;
+	height: 240rpx;
+  background:#ccc;
+  }
+
+.line36{	line-height: 36rpx;}
+.pd_20{padding:20rpx;}
+.pd_30{padding:30rpx;}
+.pd_42_0{padding:30rpx 0rpx;}
+.pd_40_0{padding:40rpx 0rpx;}
+.pd_top30{padding-top:30rpx;}
+.pd_top20{padding-top:20rpx;}
+.pd_top40{padding-top:40rpx;}
+.pd_letf39{padding-left:39rpx;}
+.pd_top20bto_80{padding-top:20rpx;padding-bottom:80rpx; }
+.pd_left15{padding-left:15rpx;}
+.pd_left30{padding-left:30rpx;}
+.pd_r_68{padding-right:68rpx;}
+.pd-b-28{padding-bottom: 28rpx;}
+.pd-r-40{padding-right: 40rpx;}
+.pd-b-40{padding-bottom: 40rpx;}
+
+.mg_btom200{margin-bottom:150rpx;}
+
+.pd_bto30{padding-bottom:40rpx;}
+
+.ellipsis{
+overflow: hidden;
+text-overflow:ellipsis;
+white-space:nowrap;}
+
+
+.borde_bto14{border-bottom:14px solid #f0f0f0  }
+.bor_bto1px{border-bottom:1px solid #f0f0f0; }
+.bor_btom1px{border-top:1px solid #f0f0f0; }
+.img_wh{	
+  width: 18rpx;
+	height: 33rpx;
+  }
+.textarea_style{height:72rpx;border:1px solid #e6e6e6;width:647rpx;border-radius:5px;padding-top: 0;padding-bottom: 0;font-size:28rpx;}
+
+.boder_btm{border-top: 2rpx solid #F0F0F0;}
+
+.po_fxd{position:fixed;bottom:0rpx;left:0rpx;background: #fff;z-index: 99;}
+
+.bth_red{background-color: #e52e31;color:#fff;text-align:center;
+  padding:0;
+  line-height:110rpx;
+}
+.po_relative{position: relative;}
+.padding32-30{
+  padding:32rpx 30rpx;
+}
+.pd_top_22{
+  padding-top: 20rpx;
+}
+
+.goods-title{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  max-height: 74rpx;
+}
+
+.address-name{
+  padding-bottom: 0;
+}
+.icon-arrow{
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  margin-top: -34rpx;
+}
+.icon-business{
+  width:32rpx;
+  height:32rpx;
+  margin-right: 10rpx;
+  position:relative;
+  top:7rpx;
+}
+.business-info{
+  padding-bottom: 32rpx;
+}
+.business-name{
+  font-size:26rpx;
+  color:rgb(51,51,51);
+  line-height:32rpx;
+  display: inline-block;
+  position: relative;
+}
+.business-name .icon-arrow{
+  width:12rpx;
+  height:20rpx;
+  right: -26rpx;
+  margin-top: -10rpx;
+}
+.price{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.detail-item{
+  font-size: 30rpx;
+  color: #333;
+  padding-top: 28rpx;
+  position: relative;
+}
+.detail-item.first-of-type{
+  padding-top: 40rpx;
+}
+.detail-item .val{
+  font-size:28rpx;
+}
+.detail-item .val .num{
+  font-size:32rpx;
+}
+
+.no-address-wrap{
+  position: relative;
+}
+.no-address-wrap navigator{
+  padding-bottom:74rpx;
+  padding-top:78rpx;
+  padding-left:30rpx;
+}
+.no-address-wrap .icon-add{
+  width:34rpx;
+  height:34rpx;
+  vertical-align:text-top;
+  padding-right:24rpx;
+}
+.no-address-wrap .icon-arrow{
+  margin-top:-44rpx;
+}
+.no-address-wrap .tips{
+  font-size:32rpx;
+  color:#333;
+}
+.icon-baock{
+  position: absolute;
+  top: 47rpx;
+  right: 0;
+  width:14rpx;
+  height:24rpx;
+
+}
+.posi-ab-t35{top: 35rpx;}
+.posi-ab-t50{top: 50rpx;}
+.pd-t-0{padding-top: 0;}
+.pd-t-28{padding-top: 28rpx;}
+
+
+.popup-wrap{
+  margin-top: 24rpx;
+  height: 640rpx;
+}
+.picker-item .label,.picker-item .val{
+  font-size:26rpx;
+  color: #333;
+}
+.picker-item .label{
+  margin-right: 53rpx;
+}
+.picker-input{
+  font-size:26rpx;
+  color: #999;
+}
+.picker-input-item{
+  position: relative;
+  margin-top: 40rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+.picker-input-item .label{
+  position: absolute;
+  top:50%;
+  transform:translate(0,-50%);
+}
+.picker-input-item .picker-input{
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 156rpx;
+}
+.popup-wrap .confirm{
+  position: absolute;
+  bottom: 31rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 309rpx;
+  border-radius:50rpx;
+  background: #E52E31 !important;
+  color: #fff;
+  font-size:28rpx;
+  height:70rpx;
+  line-height:70rpx !important;
+  padding: 0;
+}

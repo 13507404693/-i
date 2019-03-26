@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "品兑红包",
+    "usingComponents": {
+        "shop-goods-item": "../../components/shop-goods-item/shop-goods-item"
+    }
+}

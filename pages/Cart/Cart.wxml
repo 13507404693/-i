@@ -1,0 +1,117 @@
+<!--pages/Cart/Cart.wxml-->
+<block wx:if="{{isLogin}}">
+    <view class="cart-container" wx:if="{{canuse.length >= 1 || nouse.length >= 1}}">
+        <view class="top">
+            <view class="edit" bindtap="tapEdit">{{isOpenEdit?'完成' : '编辑'}}<image class="icon-arrow" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-arrow.png" /></view>
+        </view>
+
+        <view class="top top-fixed" wx:if="{{isOpenEdit}}">
+            <view class="edit" bindtap="tapEdit">{{isOpenEdit?'完成' : '编辑'}}<image class="icon-arrow" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-arrow.png" /></view>
+        </view>
+
+        <view class="goods-list">
+            <view class="goods-item" wx:for="{{canuse}}" wx:for-item="storeItem" wx:key="{{storeItem.store_id}}" wx:for-index="storeIndex">
+                <view class="business-info">
+
+                    <view 
+                        class="checkout {{storeItem.isCheck ? 'active' : ''}}" 
+                        data-storeId="{{storeItem.store_id}}"
+                        data-checkType="store"
+                        bindtap="tapCheck">
+                    </view>
+                    <navigator url="{{'/pages/ShopBusiness/ShopBusiness?storeId='+ storeItem.store_id}}" hover-class="none">
+                        <image class="icon-business" src="https://sp.lion-mall.com/miniprogram/images/icon-business.png" />
+                        <text class="business-name">{{storeItem.store_name}}</text>
+                    </navigator>
+                </view>
+                <view class="goods-box" wx:for="{{storeItem.list}}" wx:for-item="goodsItem" wx:key="{{goodsItem.goods_id}}" wx:for-index="goodsIndex">
+                    
+                    <view 
+                        class="checkout {{goodsItem.isCheck ? 'active' : '' }}"
+                        data-goodsId="{{goodsItem.goods_id}}"
+                        data-checkType="goods"
+                        bindtap="tapCheck">
+                    </view>
+
+                    <view class="box-style">
+                        <navigator class="dis-flex" style="width:100%;" url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+  goodsItem.model_id}}" hover-class="none"> 
+                            <image class="goods-image" src="{{goodsItem.goods_image}}" />
+                            <view class="goods-info">
+                                <view class="goods-title">{{goodsItem.goods_name}}</view>
+                                <text class="spec">{{goodsItem.spec1_value}} {{goodsItem.spec2_value}}</text>
+                                <view class="price">
+                                    ￥<text class="num">{{goodsItem.goods_price}}</text>
+                                    <text class="integral" wx:if="{{goodsItem.goods_points >= 1}}">+<text class="points-num">{{goodsItem.goods_points}}</text>积分</text>
+                                </view>
+                            </view>
+                        </navigator>
+
+                        <view class="cart-numbox dis-flex">
+                            <button disabled="{{goodsItem.isDisabled}}" data-storeIndex="{{storeIndex}}" data-goodsIndex="{{goodsIndex}}" class="reduce con_listbox" bindtap="reduceGoodsNum">
+                                <image src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-reduce.png" />
+                            </button>
+                            <input class="num-input" disabled="{{true}}" type="number" value="{{goodsItem.goods_num}}"  />
+                            <button data-storeIndex="{{storeIndex}}" data-goodsIndex="{{goodsIndex}}" class="add con_listbox" bindtap="addGoodsNum">
+                                <image src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-add.png" />
+                            </button>
+                        </view>
+                    
+                    </view>
+                
+                </view>
+            </view>
+        </view>
+
+        <view class="invalid-wrap" wx:if="{{nouse.length}}">
+            <view class="top-column dis-flex flex-justify">
+                <view class="title">失效宝贝{{nouse.length}}件</view>
+                <view class="empty-btn" bindtap="emptyInvalidGoods">清空失效宝贝</view>
+            </view>
+            <view class="invalid-goods-list">
+                <view class="goods-item" wx:for="{{nouse}}" wx:key="{{item.goods_id}}">
+                    <view class="goods-box">
+                        <view class="box-style">
+                            <navigator class="dis-flex" style="width:100%;" url="{{'/pages/Commoditydetails/Commoditydetails?goodsId='+item.model_id}}" hover-class="none"> 
+                                <image class="goods-image" src="{{item.goods_image}}" />
+                                <view class="goods-info">
+                                    <view class="goods-title">{{item.goods_name}}</view>
+                                    <text class="spec" decode="{{true}}">{{item.spec1_value}}&nbsp;&nbsp;{{item.spec2_value}}</text>
+                                    <view class="price">
+                                        ￥<text class="num">{{item.goods_price}}</text>
+                                    </view>
+                                </view>
+                            </navigator>
+                        </view>
+                        <view class="invalid-tips">失效</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="footer dis-flex flex-justify">
+            <view class="dis-flex">
+                <view class="check-all" bindtap="tapAllCheck"><view class="checkout {{allCheck ? 'active' : ''}}"></view>全选</view>
+                <view class="total-price" wx:if="{{!isOpenEdit}}">合计：<text class="num">￥{{totalPrice}}</text></view>
+            </view>
+            <button class="settlement " disabled="{{checkGoods.length < 1 ? true : false }}" wx:if="{{!isOpenEdit}}" bindtap="submitCheckGoods" >结算({{checkGoods.length}})</button>
+            <button bindtap="tapDeleteGoods" class="delete" wx:if="{{isOpenEdit}}">删除</button>
+        </view>
+
+    </view>
+    
+    <view class="no-goods" wx:if="{{canuse.length < 1 && nouse.length < 1}}">
+        <image class="icon-cart" src="https://miniprogram-1254407033.cos.ap-guangzhou.myqcloud.com/icon-cart.png" />
+        <view>居然还没有商品</view>
+        <view>好东西 手慢无</view>
+        <navigator class="r-bg" open-type="switchTab" url="/pages/Shop/Shop">去逛逛</navigator>
+    </view>
+</block>
+
+<view class="no-login" wx:if="{{!isLogin}}">
+    <view>登录后可查看购物车信息</view>
+    <view class="r-bg navigator" bindtap="tapToLogin" data-url="/pages/my/my">去登录</view>
+</view>
+
+<view class="loading-wrap" wx:if="{{isShowLoading}}">
+    <loading state="{{true}}"></loading>
+</view>

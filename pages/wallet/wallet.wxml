@@ -1,0 +1,83 @@
+<view class="padding-30 bg_f7"> 
+    <view class='dis-flex flex-justify pd_top30 '>
+      <view bindtap='tap_moble'>
+      <image class='top_logewh33' src='https://sp.lion-mall.com/miniprogram/images/riqi.png'></image>             </view>  
+      <view class='f_28 c_ff '><navigator url='/pages/WebView/WebView?url={{url}}&title={{title}}' hover-class='none'><image class='top_logewh33 midden'  src='https://sp.lion-mall.com/miniprogram/images/tixian.png'></image><label class='top_log_pdf13'>提现</label></navigator></view>
+    </view>
+    <view class='c_ff f_32 let1 center pd_top41_bt35'>可提现红包(元)</view>
+    <view class='c_ff f_54 center pd_bottom64 mg_bto10'>{{amount.cash_amount || 0}}</view>
+</view>
+<view class='padding-30'> 
+    <view class='pa_top40_bto40 pr pa_let30_rit30'>
+        <view class='bg_1_e6'></view>
+        <view class='f_28 po bg_ffpd money_style'>红包记录</view>
+    </view>
+
+<view wx:for="{{listData}}">
+    <navigator url='/pages/walletDetails/walletDetails?type={{item.type}}&id={{item.id}}'  hover-class='none'> 
+    <view class='pa_top23_bto23 border1e6'>
+      <view class='dis-flex flex-justify c_33'>
+        <view class='f_28 text-ellipsis w_50'>{{item.from}}</view>
+        <view class='f_28 text-ellipsis w_50 text_r'>{{item.amount}}元</view>
+      </view>
+
+    <view class='dis-flex flex-justify pd_top64 c_66'> 
+          <view class='f_26 text-ellipsis w_50'>{{item.add_time}}</view>
+          <view class='f_26 text-ellipsis w_50 text_r' wx:if="{{item.order_amount}}">{{item.order_amount  || 0}}元</view>
+      </view>
+    </view>
+    </navigator>
+</view>
+
+
+<view wx:if="{{is_tf}}" class='f_26 center pd_top100'>
+  <image class="w280_h182" src='https://sp.lion-mall.com/miniprogram/images/moneyjj.png'></image>
+  <view class="f_28 c_f6 pd_top30">暂无红包数据</view>
+</view>
+
+</view>
+
+<!-- 模板 -->
+<view class="fxid pr" wx:if="{{is_off}}">
+  <form bindsubmit="formSubmit">
+    <view class="time_bg time_bg"> 
+        <view class='center f_30 pa_top23_bto23 bg_f7 c_ff'>红包记录查询</view>
+        <view class="f_30">
+
+          <view class='dis-flex border1e6 pa_top30_bto30 pa_let30_rit30'>
+            <label class='pr_top3'>开始时间:</label>
+              <picker 
+                  mode="date" 
+                  value="{{date}}" 
+              
+                  bindchange="bindDateChangeStar">
+                  <view class="picker">
+                  <input type='text' disabled="false" class='top_log_pdf20' name="timeStar" value='{{time_star}}' placeholder='请选择开始时间'></input>
+                </view>
+              </picker>
+          </view>
+          
+          <view class='dis-flex border1e6 pa_top30_bto30 pa_let30_rit30 '>
+            <label class='pr_top3'>结束时间:</label>
+
+              <picker 
+              mode="date"
+              value="{{date}}"
+              bindchange="bindDateChangeEed">
+                <view class="picker">
+                <input type='text'  disabled="false" class='top_log_pdf20'  name="timeEnd" value='{{time_end}}' placeholder='请选择结束时间'></input> 
+                </view>
+              </picker>
+          </view>
+       
+        </view>
+
+        <view class='dis-flex mg_30_0'> 
+            <button formType="submit" style='width:40%;color:#fff;background:#e52e31;'>确定</button>
+            <button bindtap='cancel' style='width:40%;' >取消</button>
+        </view>
+
+    </view>
+</form>
+</view>
+

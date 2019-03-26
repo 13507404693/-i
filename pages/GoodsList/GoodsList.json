@@ -1,0 +1,11 @@
+{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商品列表",
+    "usingComponents": {
+        "shop-goods-item": "../../components/shop-goods-item/shop-goods-item",
+        "loading": "../../components/loading/loading",
+        "touch-gesture": "../../components/touch-gesture/touch-gesture",
+        "list-sort": "../../components/list-sort/list-sort"
+    }
+}

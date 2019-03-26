@@ -1,0 +1,103 @@
+<view>
+<view class='padding-30'>  
+
+    <view class='f_30 dis-flex pd_top30_btn20'>
+      <view class='w_50f center' bindtap='tab_active' data-active='1'>
+        <view class='pdbtn10 {{active==1?"c_e8":""}}  f_wei500'>门店消费</view>
+        <view wx:if="{{active==1}}" class='tab_active mg_0auto'></view>
+      </view>
+      <view class='w_50f center' bindtap='tab_active' data-active='2'>
+        <view class='pdbtn10 {{active==2?"c_e8":""}}  f_wei500'>商圈消费</view>
+        <view wx:if="{{active==2}}" class='tab_active mg_0auto'></view>
+      </view>
+    </view>
+</view> 
+
+<view class='time_bg'>
+  <view class='dis-flex flex-justify pd26_30'>
+      <view bindtap='modalDlg'>
+          <label>{{start_time}}</label> 至 <label>{{end_time}}</label>
+          <image class='w_24h16 pdleft15' src='/https://sp.lion-mall.com/miniprogram/images/baock.png'></image>
+      </view>
+      <view>合计：{{tongji.zonghe}}元</view>
+  </view>
+</view>
+
+<view class='padding-30'>
+
+  <view  class=' pd_top30_btn26 bor_ee' wx:for="{{Tostlist}}">
+      <navigator url='/pages/DetailsBill/DetailsBill?store_name={{item.store_name}}&order_amount={{item.order_amount}}&order_pointscount={{item.order_pointscount}}&order_come={{item.order_come}}&create_time={{item.create_time}}&order_id={{item.order_id}}&voucher_price={{item.voucher_price}}' class='dis-flex  flex-justify' hover-class='none'>
+      <view class='dis-flex'>
+          <!-- <view class='pdtop20'>
+              <image src='{{item.goods["0"].good_info.goods_image?"https://img.lion-mall.com/"+item.goods["0"].good_info.goods_image:item.goods["0"].good_info.goods_image}}' class='w60h60 border100'></image>
+          </view>  -->
+          <view class=''>
+              <view class='f_30 pdbtn30'>{{item.store_name}}</view>
+              <view class='f_26 c_66'>{{item.create_time}}</view>
+           </view>    
+      </view>
+
+      <view class='right'>
+          <view class='f_30 pdbtn30'>+{{item.order_amount}}元</view>
+          <view class='f_26'>+{{item.order_pointscount}}积分</view>
+      </view>
+    </navigator>
+<!-- end -->
+</view>
+  
+
+<view class="fxid pr" wx:if="{{showModal}}">
+<!-- 开始 -->
+  <form bindsubmit="formSubmit">
+    <view class="time_bg "> 
+        <view class='center f_30 pa_top23_bto23 bg_f7 c_ff'>账单查询</view>
+        <view class="f_30">
+
+          <view class='dis-flex border1e6 pa_top30_bto30 pa_let30_rit30'>
+            <label class='pr_top3'>开始时间:</label>
+              <picker 
+                  mode="date" 
+                  value="{{date}}" 
+              
+                  bindchange="bindDateChangeStar">
+                  <view class="picker">
+                  <input type='text' disabled="false" class='top_log_pdf20' name="timeStar" value='{{time_star}}' placeholder='请选择开始时间'></input>
+                </view>
+              </picker>
+          </view>
+          
+          <view class='dis-flex border1e6 pa_top30_bto30 pa_let30_rit30 '>
+            <label class='pr_top3'>结束时间:</label>
+
+              <picker 
+              mode="date"
+              value="{{date}}"
+              bindchange="bindDateChangeEed">
+                <view class="picker">
+                <input type='text'  disabled="false" class='top_log_pdf20'  name="timeEnd" value='{{time_end}}' placeholder='请选择结束时间'></input> 
+                </view>
+              </picker>
+          </view>
+       
+        </view>
+
+        <view class='dis-flex mg_30_0'> 
+            <button formType="submit" style='width:40%;color:#fff;background:#e52e31;'>确定</button>
+            <button bindtap='cancel' style='width:40%;' >取消</button>
+        </view>
+
+    </view>
+  </form>
+<!-- 结束 -->
+</view>
+</view>
+
+
+<view  class='center pdtop150' wx:if="{{offbottom}}"> 
+    <image class='w280_h182' src='https://sp.lion-mall.com/miniprogram/images/moneyjj.png'></image>
+    <view class="f_28 c_f6 pd_top30">暂无账单数据</view>
+</view>
+
+</view> 
+
+

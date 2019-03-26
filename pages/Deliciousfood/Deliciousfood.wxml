@@ -1,0 +1,29 @@
+  <view class="pd_30 flex_wrap h130_hidden" wx:if="{{show_hide}}">
+    <block wx:if="{{!storeListNoState}}">
+        <view class="f_28 r-fontcolor mr_right20 h58">
+
+          <view bindtap='tap_whole'  class="{{sh_tf ? 'atc r-bg' : ''}} let1 pd_10_13  bor_rad5 r-bordercolor ">
+            全部
+          </view>
+
+        </view>
+        <view class="f_28 r-fontcolor mr_right20 h58" wx:for="{{secend_classify}}" data-key="{{index}}" wx:key="{{idx}}" wx:for-item="classifyitem" wx:for-index="idx">
+
+
+          <view data-id="{{idx}}" id="{{classifyitem.name}}" bindtap="tap" class="{{classifyitem.state ? 'atc r-bg' : ''}} let1 pd_10_13  bor_rad5 r-bordercolor" wx:if="{{classifyitem.name !== ''}}">
+            {{classifyitem.name}}
+          </view>
+        </view>
+    </block>
+  </view>
+<view class="bgee_h16"  wx:if="{{!storeListNoState}}"></view>
+<view>
+  <view wx:for="{{storeList}}" wx:key="{{item.store_id}}">
+    <navigator url="{{'/pages/Business/Business?id='+ item.store_id }}" hover-class="diy-navigator-hover">
+      <goods-item goodsItem="{{item}}"></goods-item>
+    </navigator>
+  </view>
+  <loading state="{{businessListLoadingState}}"></loading>
+  <image class="default-img" wx:if="{{storeListNoState}}" src="https://sp.lion-mall.com/miniprogram/images/business/default_head.png" />
+  <view class="err-msg" wx:if="{{isShowbottomMsg}}">{{bottomMsg}}</view>
+</view>

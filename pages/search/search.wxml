@@ -1,0 +1,81 @@
+<!--pages/ShopSearch/ShopSearch.wxml-->
+<view class="search-container {{searchSwitchState === 'search' || searchSwitchState === 'storeList' ? 'pd-top-90' : 'pd-top-166'}}">
+    <view class="header">
+        <view class="top-region dis-flex position_fixed">
+            <view class="search">
+
+                <image class="search-icon" src="https://sp.lion-mall.com/miniprogram/images/icon-search2.png" />
+                
+                <input type="text" maxlength="20" bindfocus="searchInputfocus" bindconfirm="submitSearch" bindinput="searchChanging" value="{{searchWord}}" confirm-type="搜索" class="search-input" placeholder="搜索您感兴趣的生活周边" />
+                
+                <view class="remove-inputbtn" wx:if="{{isShowInputBtnRemove}}" bindtap="tapEmptySearchInput">
+                    <image class="icon-input-remove" src="https://sp.lion-mall.com/miniprogram/images/icon-remove-min.png" />
+                </view>
+
+            </view>
+            <navigator class="go-back" open-type="navigateBack" hover-class="none">取消</navigator>
+        </view>
+
+    </view>
+
+    <view class="search-info-wrap" wx:if="{{searchSwitchState === 'search'}}">
+        <view class="search-type-wrap padding-30 dis-flex">
+            <view bindtap="tapSwitchSearchType" data-searchType="goods" class="search-type {{searchType ===  'goods' ? 'active' : ''}}">商品</view>
+            <view bindtap="tapSwitchSearchType" data-searchType="store" class="search-type {{searchType ===  'store' ? 'active' : ''}}">店铺</view>
+        </view>
+
+        <view class="historysearch-wrpa padding-30">
+            <view class="wrap-top dis-flex flex-justify">
+                <view class="title">历史搜索</view>
+                <image bindtap="tapEmptyHistory" class="icon-litter" src="https://sp.lion-mall.com/miniprogram/images/icon-remove-all.png" />
+            </view>
+
+            <view class="record-list dis-flex ">
+                <view class="list-item" 
+                    bindlongpress="longpressHistory"
+                    wx:for="{{searchHistory}}" 
+                    data-index="{{index}}"
+                    wx:key="{{index}}">
+                    <view class="item-content"
+                        bindtap="tapHistory"
+                        data-index="{{index}}"
+                        data-word="{{item.name}}">{{item.name}}</view>
+                    <image bindtap="tapDeleteHistory" data-index="{{index}}" class="icon-removemin" wx:if="{{item.isShowDeteBtn}}" src="https://sp.lion-mall.com/miniprogram/images/icon-remove-min.png" />
+                </view>
+                <view class="no-history" wx:if="{{searchHistory.length < 1}}">暂无历史记录~_~</view>
+            </view>
+        </view>
+
+        <!-- <view class="hotsearch-wrpa padding-30">
+            <view class="wrap-top dis-flex flex-justify">
+                <view class="title">推荐搜索</view>
+            </view>
+
+            <view class="record-list dis-flex ">
+                <view bindtap="tapHistory" class="list-item item-content" wx:for="{{hotWords}}" wx:key="{{index}}" data-word="{{item.keyword}}">{{item.keyword}}</view>
+            </view>
+        </view> -->
+    </view>
+
+    <view class="search-goods-wrap" wx:if="{{searchSwitchState === 'goodsList'}}">
+        <list-sort bindonSort="tapSort" ></list-sort>
+        <block wx:for="{{goodsList}}" wx:key="{{index}}">
+            <commodity commodity="{{item}}"></commodity>
+        </block>
+        
+        <view wx:if="{{goodsList.length < 1}}" style="height:  80px;"></view>
+    </view>
+
+    <view class="search-store-wrap" wx:if="{{searchSwitchState === 'storeList'}}">
+        <block wx:for="{{storeList}}" wx:key="{{item.store_id}}" data-storeId="{{item.store_id}}">
+            <navigator class="dis-flex" url="{{'/pages/Business/Business?id='+ item.store_id }}" hover-class="none">
+                <goods-item goodsItem="{{item}}"></goods-item>
+            </navigator>
+        </block>
+        <view wx:if="{{storeList.length < 1}}" style="height:  80px;"></view>
+    </view>
+
+    <loading state="{{loadingState}}"></loading>
+    <view class="no-goods-msg" wx:if="{{noGoodsMsgState && searchSwitchState === 'goodsList'}}">更多商品正在录入，敬请期待！</view>
+    <view class="no-goods-msg" wx:if="{{noStoreMsgState && searchSwitchState === 'storeList'}}">正在全力拓展商家，敬请期待！</view>
+</view>

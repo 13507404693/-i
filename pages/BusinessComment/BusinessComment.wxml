@@ -1,0 +1,30 @@
+<view class="pd_30">
+    <view class="f_32 c_33">商家评价</view>
+    <view class="flex_btween pd_42_177">
+        <view class="f_28 cenetr {{score ===  5? 'active' : ''}}" bindtap="tapEvaluate" data-evaluate="5">
+            <image class="w_36_h36" src="{{score ===  5 ? 'https://sp.lion-mall.com/miniprogram/images/good_active.png' : 'https://sp.lion-mall.com/miniprogram/images/good.png'}}"></image>
+            <view class="pd_top26">满意</view>
+        </view>
+        <view class="f_28 cenetr {{score  ===  1? 'active' : ''}}" bindtap="tapEvaluate" data-evaluate="1">
+            <image class="w_36_h36" src="{{score  ===  1 ?'https://sp.lion-mall.com/miniprogram/images/bad_active.png' : 'https://sp.lion-mall.com/miniprogram/images/bad.png'}}"></image>
+            <view class="pd_top26">不满意</view>
+        </view>
+    </view>
+    <view class="pr">
+        <view class="po b20_r_20">
+            <label class="f_28 c_99">
+                {{num}} /
+                <text>150</text>
+            </label>
+        </view>
+        <textarea adjust-position="true" cursor-spacing="50rpx" adjust-position="true" class="bor_1_5rpx pd_17 f_30 let1" bindinput="bindiupt" maxlength="150" bindblur="bindTextAreaBlur" placeholder="评论超过10个字有机会获得平台奖励..." />
+    </view>
+</view>
+<view class="bgee_h16"></view>
+<view class="pd_30 f_32 ">
+    <view>评论图片（最多8张）</view>
+    <view class="image-container">
+        <upload-image bind:onSuccess="imageloadSuccess"></upload-image>
+    </view>
+    <button class="mg_top100 con_listbox r-bg bg43_c_ff f_34" bindtap="submit" disabled="{{submitBtnState}}" loading="{{submitBtnState}}">完成</button>
+</view>

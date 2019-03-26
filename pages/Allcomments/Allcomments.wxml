@@ -1,0 +1,56 @@
+<view class="padding-30 bor_bt14rpx" id="list1">
+  <view class="pd_40_0">
+    <label class="pd_14_18 {{geval_scores==0?'acth_bg1':'acth_bg2'}} f_26 c_ff" bindtap="tap_czc" data-caz="0" >
+     <image wx:if="{{geval_scores==0}}" class='pr_wh15' src='https://sp.lion-mall.com/miniprogram/images/gooddg.png'></image>
+      全部 {{count}}
+    </label>
+    <label class="pd_14_18 {{geval_scores==2?'acth_bg1':'acth_bg2'}} f_26 c_ff mg_left25" bindtap="tap_czc" data-caz="2">
+
+         <image  wx:if="{{geval_scores==2}}" class='pr_wh15' src='https://sp.lion-mall.com/miniprogram/images/gooddg.png'></image>
+      好评 {{goodst.allzan.zan || 0}}
+    </label>
+    <label class="pd_14_18 {{geval_scores==1?'acth_bg1':'acth_bg2'}} f_26 c_99 mg_left25" bindtap="tap_czc" data-caz="1">
+         <image  wx:if="{{geval_scores==1}}" class='pr_wh15' src='https://sp.lion-mall.com/miniprogram/images/gooddg.png'></image>
+      差评 {{goodst.allzan.cai || 0}}
+    </label>
+
+        <label class="pd_14_18 {{geval_scores==3?'acth_bg1':'acth_bg2'}} f_26 c_99 mg_left25" bindtap="tap_czc" data-caz="3">
+             <image  wx:if="{{geval_scores==3}}" class='pr_wh15' src='https://sp.lion-mall.com/miniprogram/images/gooddg.png'></image>
+    有图 {{goodst.allzan.imgs || 0}}
+    </label>
+
+  </view>
+  <view class="bor_bto1px mg_bto25" wx:for="{{goodsList}}">
+    <view class="dis-flex flex-justify">
+      <view class="w_94_h94 bor_rad5 bor_bto1px">
+        <image src="{{item.member_avatar?'https://img.lion-mall.com/'+item.member_avatar:'https://sp.lion-mall.com/miniprogram/images/douxiang.jpg'}}" data-errorimg="{{index}}" class="w_94_h94 bor_rad5"></image>
+      </view>
+      <view class="wh_570">
+        <view class="dis-flex flex-justify">
+          <view class="f_28 c_33">{{item.geval_frommembername}}</view>
+          <view class="f_22 c_99">{{item.geval_addtime}}</view>
+        </view>
+        <view class="f_26 c_e5 pd_b39_tp35" wx:if="{{geval_scores==0}}">赞了该商品</view>
+        <view class="f_26 c_e5 pd_b39_tp35" wx:if="{{geval_scores==2}}">赞了该商品</view>
+        <view class="f_26 c_e5 pd_b39_tp35" wx:if="{{geval_scores==1}}">踩了该商品</view>
+      </view>
+    </view>
+    <view class="f_28 c_33 pd_bto30">{{item.geval_content}}</view>
+    <view class="dis-flex">
+      <image wx:if="{{geval_index}}" wx:for="{{item.geval_image}}" wx:for-item="geval_index" src="https://img.lion-mall.com/{{geval_index}}" data-src="https://img.lion-mall.com/{{geval_index}}" data-indexs="{{index}}" data-images="{{item.geval_image}}" bindtap="tapPreviewImage" class="img-item bor_rad5 "></image>
+    </view>
+    <view class="operation">
+      <view class="praise" bindtap='dianzan' data-index="{{index}}" >
+          <image class="img"  src="{{item.iszan==1?'https://sp.lion-mall.com/miniprogram/images/red_dianzan.png':'https://sp.lion-mall.com/miniprogram/images/icon-praise.png'}}"></image>
+          <label>{{item.zannum}}</label>
+      </view>
+      <view class="consult" data-receiveUser="{{item}}" bindtap="clickIm">
+          <image  class="img" src="https://sp.lion-mall.com/miniprogram/images/icon-consult.png"></image>咨询买家
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{isShowSwipreLoading}}" class="err-msg mg_top300">
+  <image class="w_396_h_292" src="https://sp.lion-mall.com/miniprogram/images/wx_none%20(2).png"></image>
+  <view class="center c_f6 f_26 pd_top10">暂无更多</view>
+</view>

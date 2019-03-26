@@ -1,0 +1,2 @@
+<!--pages/Discovery/Discovery.wxml-->
+<web-view wx:if="{{isOpen}}" src="{{url}}" bindmessage="onMessage"></web-view>

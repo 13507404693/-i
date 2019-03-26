@@ -1,0 +1,1007 @@
+/* pages/Business/Business.wxss */
+page{
+    background: #fff;
+    height: 100%;
+}
+.business-container{
+    padding-bottom: 100rpx;
+    transform:none;
+    transition:.4s;
+    background: #fff;
+}
+
+.c_red{color:red!important;}
+
+.header{
+    text-align: center;
+}
+.header .head-box{
+    position: relative;
+}
+.header .head-box::before{
+    content: '';
+    display: block;
+    height: 100rpx;
+}
+.header .head{
+    position: absolute;
+    top: -90rpx;
+    right: 0;
+    left: -90rpx;
+    margin: auto;
+    width: 180rpx;
+	height: 180rpx;
+	background-color: #fff;
+	box-shadow: 0px 5px 5px 0px 
+		rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.header .img{
+    width: 100%;
+    height: 100%;
+}
+
+.header .title{
+    margin-top: 110rpx;
+	font-size: 36rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+    color: #000000;
+    padding-bottom: 16rpx;
+}
+.header .comment-box {
+    padding-top: 0;
+}
+.header .comment-box text{
+    font-size: 26rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+    color: #333;
+    margin: 0 23rpx;
+}
+.share-business{
+    position: absolute;
+    top: 8rpx;
+    right: 30rpx;
+    width: 38rpx;
+    height: 38rpx;
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-share2.png) no-repeat center/100% 100%;
+}
+.integral{
+    font-size: 28rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+    color: #333;
+    margin-top: 16rpx;
+}
+.integral .strorg{
+    color: #000;
+}
+.tag-box{
+    max-height: 98rpx;
+    overflow: hidden;
+    -webkit-transition: all .6s;
+    -moz-transition: all .6s;
+    transition: all .6s;
+}
+.tag-box.active{
+    height: auto;
+}
+.tag-box .full-reduce .label{
+    background-color: #e52e31;
+}
+.tag-box .new-discount .label{
+    background-color: #fe9271;
+}
+.tag-box .label{
+    width: 32rpx;
+    height: 28rpx;
+    border-radius: 3rpx;
+    font-size: 22rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+    color: #fff;
+    padding: 4rpx;
+    text-align: center;
+    padding-left: 6rpx;
+    margin-right: 20rpx;
+}
+.tag-box .tag-item{
+    width: 522rpx;
+    font-size: 24rpx;
+	line-height: 36rpx;
+	letter-spacing: 2rpx;
+    color: #333;
+    margin: auto;
+    text-align: center;
+    margin-top: 10rpx;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.tag-box.active .tag-item{
+    white-space:normal;
+    overflow:auto;
+    text-overflow:none;
+}
+/********* 滑块 **********/
+.slide-toggle::after{
+    content: '';
+    display: inline-block;
+    background: url(http://p95rpx4s7.bkt.clouddn.com/arrow.png) no-repeat top center/100% 100%;
+    width: 28rpx;
+	height: 26rpx;   
+}
+.slide-toggle{
+    width: 84rpx;
+    height: 28rpx;
+    margin: auto;
+    -webkit-transition: transform .4s;
+    -moz-transition: transform .4s;
+    transition: transform .4s; 
+    transform: rotate(0);
+    transform-origin: center center;
+    -webkit-transform-origin: center center;
+}
+.slide-toggle.active{
+    transform-origin: center center;
+    -webkit-transform-origin: center center;
+    transform: rotate(-180deg);
+}
+
+
+.swiper-indicator{
+    position: relative;
+    border-bottom: 2rpx solid #f0f0f0;
+}
+.swiper-indicator.active{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    z-index:999;
+    background:#fff;
+    margin-top: 0;
+    z-index: 99;
+    /* opacity: 0;
+    animation: indicatorActive .8s;
+    animation-fill-mode: forwards; */
+}
+@keyframes indicatorActive{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.swiper-indicator .indicator-item{
+    display: inline-block;
+    width: 33.33%;
+    color: #333;
+    text-align: center;
+    transition:  .6s;
+    -webkit-transition:  .6s;
+    font-size: 32rpx;
+    line-height: 36rpx;
+    padding-bottom: 22rpx;
+}
+
+.swiper-item{
+    width: 100%;
+    background: #fff;
+    overflow: auto;
+}
+
+
+.slider-line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60rpx;
+    height: 5rpx;
+    background: #58a4f8;
+    transition: transform .6s;
+    -webkit-transition: transform .3s;
+    transform: translateX(155%);
+}
+
+/****  商品列表  ****/
+.swiper-title{
+    padding: 40rpx 0;
+    padding-left: 30rpx;
+    font-size:30rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.occupy{
+    height: 26rpx;
+}
+.recommend-goods .goods-item{
+    width: 301rpx;
+}
+.recommend-scroll{
+    white-space:nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+.goods-item {
+    border-radius:4rpx;
+    box-shadow:0px 4px 8px 0px rgba(0,0,0,0.1);
+    margin-left: 22rpx;
+    padding-bottom: 22rpx;
+    display: inline-block;
+    position: relative;
+}
+.goods-item:last-child{
+    margin-right: 30rpx;
+}
+.goods-item .goods-title{
+    font-size:30rpx;
+    color: #333;
+    padding-top: 6rpx;
+    padding-bottom: 12rpx;
+}
+.goods-item .goods-info{
+    padding-left: 14rpx;
+}
+.goods-item:nth-child(1){
+    margin-left: 30rpx;
+}
+.goods-item .goods-change{
+    font-size:24rpx;
+    color: #999;
+}
+.goods-item .goods-change text{
+    padding-right: 30rpx;
+}
+.goods-item .goods-img{
+    width: 100%;
+    height:187rpx;
+    border-radius:4rpx;
+}
+.goods-item .goods-spec{
+    padding-top: 30rpx;
+    max-width:242rpx;
+}
+.goods-item .price{
+    font-size:30rpx;
+    font-weight: bold;
+    margin-right: 8rpx;
+}
+.goods-item .unit{
+    font-size:24rpx;
+    font-weight: 500;
+}
+.goods-item .original-price{
+    font-size:22rpx;
+    color: #999;
+    text-decoration: line-through;
+}
+.goods-item .original-price .unit{
+    font-size:18rpx;
+}
+.goods-item .add-cart{
+    position: absolute;
+    bottom: 20rpx;
+    right: 16rpx;
+    width: 40rpx;
+    height: 40rpx;
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-add-cart.png) no-repeat center/100% 100%;
+}
+
+.classify-list{
+    width:148rpx;
+    height:1026rpx;
+    background: #F5F5F5;
+}
+.classify-list.active{
+    position:fixed;
+    top:97rpx;
+    left:0;
+    z-index:99;
+    width:148rpx;
+    height:84% !important;
+}
+.classify-list .classify-item{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 29rpx 0;
+    padding-left: 30rpx;
+    padding-right: 20rpx;
+    font-size:24rpx;
+    color: #333;
+}
+.classify-list .classify-item.active{
+    background: #fff;
+    font-weight:bold;
+}
+.classify-goodslist{
+    width:602rpx;
+}
+.classify-scroll{
+    height:1026rpx;
+}
+.classify-goodslist .goods-item{
+    display: block;
+    width:552rpx;
+    margin-left: 20rpx;
+    margin-right: 30rpx;
+    margin-bottom: 0;
+    padding-bottom:32rpx;
+    box-shadow: none;
+}
+.classify-goodslist .goods-item .goods-spec{
+    padding-top: 16rpx;
+    max-width:480rpx;
+}
+.classify-goodslist .goods-item .volume{
+    margin-left: 38rpx;
+    color: #999;
+}
+.classify-goodslist .goods-item .original-price,.classify-goodslist .goods-item .volume{
+    font-size:24rpx;
+}
+
+.classify-goodslist .goods-item .goods-img{
+    width:552rpx;
+    height:345rpx;
+}
+.classify-goodslist .add-cart {
+    bottom:32rpx;
+}
+.classify-goodslist .classify{
+    padding: 18rpx 0;
+    padding-left: 20rpx;
+    font-size:26rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+/*********** 评论 ************/
+.comment-box{
+    padding-top: 41rpx;
+}
+.comment-box .comment-top{
+    position: relative;
+}
+.comment-box .comment-btn{
+    border-radius: 5rpx;
+    font-size: 26rpx;
+    text-align: center;
+    padding: 0 14rpx;
+    margin: 0;
+    margin-right: 22rpx;
+    background-color: #f5f5f5;
+    color: #999;
+    position: relative;
+}
+.comment-box .comment-btn.active{
+    background: #58a4f8;
+    color: #fff;
+}
+.comment-box .comment-btn::after{
+    content: '';
+    border: none;
+}
+.comment-box .btn-bad{
+    background-color: #f5f5f5;
+    color: #999;
+}
+.comment-box .new-comment{
+    position: absolute;
+    right: 30rpx;
+    top: 0;
+    width: 148rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+	border-radius: 5rpx;
+    font-size: 26rpx;
+    text-align: center;
+}
+.comment-box .comment-list{
+    margin-top: 42rpx;
+}
+.comment-box .commit-item:nth-child(1){
+    margin-top: 0;
+}
+.comment-box .commit-item{
+    border-bottom: 2rpx solid #f0f0f0;
+    padding-bottom: 32rpx;
+    margin-top: 40rpx;
+}
+.comment-box .head{
+    width: 88rpx;
+	height: 88rpx;
+	background-color: #e6e6e6;
+    border-radius: 5rpx;
+    overflow: hidden;
+    margin-right: 36rpx;
+}
+.comment-box .head image,.comment-box .image-container .img-item image{
+    width: 100%;
+    height: 100%;
+}
+.comment-box .comment-info{
+    width: 590rpx;
+}
+.comment-box .author-info{
+    margin-bottom: 38rpx;
+}
+.comment-box .author-info .name{
+    font-size: 26rpx;
+	color: #333;
+}
+.comment-box .author-info .date{
+    font-size: 22rpx;
+	color: #999;
+}
+.comment-box .comment-info .handle{
+    font-size: 26rpx;
+    color: #58a4f8;
+    margin-bottom: 38rpx;
+}
+.comment-box .comment-info .com-content{
+    font-size: 26rpx;
+	line-height: 36rpx;
+	letter-spacing: 2rpx;
+    color: #333;
+    margin-bottom: 40rpx;
+}
+.comment-box .image-container{
+    flex-wrap: wrap;
+}
+.comment-box .image-container .img-item{
+    width: 165rpx;
+	height: 165rpx;
+    border-radius: 5rpx;
+    overflow: hidden;
+    margin-right: 10rpx;
+    margin-bottom: 10rpx
+}
+.comment-box .image-container .img-item:nth-child(4n){
+    margin-right: 0;
+}
+
+.diy-navigator-hover::before{
+    background:rgba(88,164,248, .1);
+}
+.operation{
+    font-size:26rpx;
+    color: #333;
+    text-align: right;
+    padding-top: 20rpx;
+}
+.operation>view{
+    display: inline-block;
+}
+.operation .praise {
+    margin-right: 28rpx;
+}
+.operation .praise .img{
+    width: 31rpx;
+    height: 31rpx;
+    margin-right: 12rpx;
+    vertical-align:sub;
+}
+.operation .consult .img{
+    width: 34rpx;
+    height: 34rpx;
+    margin-right: 16rpx;
+    vertical-align:sub;
+}
+
+/******** 商家 ********/
+.business-box {
+    background: #e6e6e6
+}
+.business-box>view{
+    background: #fff;
+}
+.business-box .title{
+    font-size: 34rpx;
+    color: #333;
+    margin-bottom: 30rpx;
+}
+.business-box .environment{
+    flex-wrap: wrap;
+    padding-bottom: 26rpx;
+    padding-top:36rpx;
+}
+.business-box .img-item image{
+    width: 100%;
+    height: 100%;
+}
+.business-box .image-container{
+    flex-wrap: wrap;
+}
+.business-box .environment .img-item{
+    width: 222rpx;
+    height: 188rpx;
+    margin-right: 9rpx;
+    margin-bottom:10rpx;
+}
+.business-box .environment .img-item :nth-child(3n){
+    margin-right:0;
+}
+.synopsis .synopsis-con{
+    font-size: 26rpx;
+	line-height: 40rpx;
+	letter-spacing: 1rpx;
+    color: #666;
+    padding-bottom: 28rpx;
+}
+.margin-top-16{
+    margin-top: 16rpx;
+}
+.business-box .aptitude{
+    padding-bottom: 18rpx!important;
+}
+.business-box .aptitude .title{
+    padding-top: 31rpx;
+}
+.business-box .aptitude .img-item{
+    width: 222rpx;
+	height: 188rpx;
+    margin-right: 9rpx;
+    margin-bottom:10rpx;
+}
+.business-box .info-item {
+    padding: 40rpx 0;
+    border-bottom:2rpx solid #e6e6e6;
+}
+.business-box .info-item .major{
+    font-size: 34rpx;
+	color: #333;
+}
+.business-box .info-item .value{
+    width: 345rpx;
+    text-align: right;
+    font-size: 28rpx;
+	line-height: 36rpx;
+	letter-spacing: 1rpx;
+    color: #333;
+}
+
+.loading-mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    /* padding-top: 50%;  */
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+
+.business-footer{
+    padding:90rpx 0 70rpx;
+}
+.business-footer .complaint-btn{
+    display: block;
+    margin: auto;
+    width: 300rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+	background-color: #e6e6e6;
+    border-radius: 6rpx;
+    font-size: 34rpx;
+    color: #333;
+    text-align: center;
+}
+
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: #000;
+    opacity: 0;
+    z-index: 100;
+    transition: opacity .3s;
+}
+.mask.active{
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+}
+/*********  购物车 ***********/
+.footer-cart{
+    position: fixed;
+    bottom: -8rpx;
+    left: 0;
+    z-index: 102;
+    width: 100%;
+}
+.cart-bar{
+    width: 100%;
+    height:100rpx;
+    line-height:100rpx;
+    background: #4D4B4B;
+    position: relative;
+    z-index: 2;
+}
+.cart-bar .price{
+    float: left;
+    font-size:40rpx;
+    color: #fff;
+    font-weight: bold;
+}
+.cart-bar .price .unit{
+    font-weight: 100;
+    font-size:34rpx;
+}
+.cart-bar .settlement-btn,.cart-bar .settlement-btn[disabled]:not([type]) {
+    float: right;
+    padding: 0;
+    margin: 0;
+    width:240rpx;
+    height:100%;
+    line-height:100rpx;
+    background:rgba(128,128,128,1);
+    border-radius: 0;
+    font-size:34rpx;
+    color: #fff;
+    font-weight:400;
+}
+.cart-bar .settlement-btn.active{
+    background:linear-gradient(180deg,rgba(254,109,66,1) 0%,rgba(229,46,49,1) 100%);
+}
+.cart-bar .cart-btn{
+    float: left;
+    width: 108rpx;
+    height: 108rpx;
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-business-cart-no.png) no-repeat center/100% 100%;
+    margin-left: 42rpx;
+    margin-right: 14rpx;
+    position: relative;
+    top: -41rpx;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+}
+.cart-bar .cart-btn.cart-btn-hover::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .4;
+    border-radius: 50%;
+}
+.cart-bar .cart-btn.active{
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-business-cart-active.png) no-repeat center/100% 100%;
+}
+.cart-bar .cart-btn .badge{
+    position: absolute;
+    top:-10rpx;
+    right: 0;
+    display:inline-block;
+    min-width:22rpx;
+    line-height: 22rpx;
+    padding: 6rpx;
+    border:2rpx solid rgba(255,255,255,1);
+    background:linear-gradient(180deg,rgba(254,109,66,1) 0%,rgba(229,46,49,1) 100%);
+    border-radius:18rpx;
+    color: #fff;
+    font-size:26rpx;
+    text-align:center;
+    z-index: 2;
+}
+
+
+.cart-list-wraper{
+    background: #fff;
+    padding: 30rpx 30rpx 86rpx;
+    animation: cartList .288s forwards ease;
+    transform: translateY(100%);
+    opacity: 0;
+}
+@keyframes cartList{
+    0%{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.cart-list-wraper .cartlist-hd{
+    color: #666;
+    font-size:28rpx;
+    padding-bottom: 52rpx;
+}
+.empty .icon-empty{
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 10rpx;
+}
+.cart-list .item{
+    padding: 20rpx 0;
+}
+.cart-list .item .name{
+    font-size:28rpx;
+    color: #333;
+    width: 378rpx;
+    font-weight: 700;
+}
+.cart-list .item .price{
+    font-size:32rpx;
+    color:#E84540;
+    font-weight:bold;
+    text-align:right;
+    width:118rpx;
+}
+.cart-list .item .price .unit{
+    font-size:24rpx;
+    font-weight: 500;
+}
+.cart-list .operate-box{
+    padding-left: 60rpx;
+}
+.cart-list .operate-box .increase,.cart-list .operate-box .reduce{
+    width:40rpx;
+    height:40rpx;
+    padding: 0;
+    margin: 0;
+}
+.cart-list .operate-box .increase{
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-business-increase.png) no-repeat center/100% 100%;
+}
+.cart-list .operate-box .reduce{
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-business-reduce.png) no-repeat center/100% 100%;
+}
+.cart-list .operate-box .amount{
+    font-size:28rpx;
+    color: #333;
+    font-weight: 700;
+    min-width: 60rpx;
+    text-align: center;
+    line-height:40rpx;
+}
+.cart-list .trait{
+    font-size:20rpx;
+    color: #999;
+    max-width: 378rpx;
+}
+
+/*************  商品详情弹窗  ***************/
+.goods-details-popup{
+    position: fixed;
+    bottom: -8rpx;
+    left: 0;
+    z-index: 105;
+    width: 100%;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: cartList .5s forwards ease;
+}
+.goods-details-popup .goods-item {
+    padding: 0;
+    margin: 0;
+}
+.goods-details-popup .goods-img{
+    width:750rpx;
+    height:469rpx;
+    vertical-align: middle;
+    border-radius: 0;
+}
+.goods-details-popup .goods-info {
+    background: #fff;
+    padding-left: 30rpx;
+    padding-top: 22rpx;
+}
+.goods-details-popup .goods-title {
+    font-size:32rpx;
+}
+.goods-details-popup  .price{
+    font-size: 40rpx;
+}
+.goods-details-popup  .price .unit-text{
+    font-size:26rpx;
+    font-weight: 500;
+    padding-left: 8rpx;
+}
+.goods-details-popup .original-price {
+    font-size:26rpx;
+    padding-left: 32rpx;
+}
+.goods-details-popup .desc{
+    padding-top: 44rpx;
+    font-size:26rpx;
+    color: #333;
+    padding-right: 30rpx;
+    line-height:36rpx;
+    font-weight:400;
+    height: 314rpx;
+    padding-bottom: 20rpx;
+    overflow: hidden;
+}
+.goods-details-popup .goods-spec{
+    max-width: 514rpx;
+}
+.goods-operate .share,.goods-operate .close{
+    width: 70rpx;
+    height: 70rpx;
+}
+.goods-operate {
+    position: absolute;
+    top: 43rpx;
+    right: 30rpx;
+}
+.goods-operate .share{
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-share-goods.png) no-repeat center/100% 100% !important;
+    background:none;
+    padding:0;
+    margin:0;
+    margin-right: 40rpx;
+}
+.goods-operate .close{
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-close-goods.png) no-repeat center/100% 100%;
+}
+
+
+/**************  规格选择 弹窗  *****************/
+.spec-popup{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 105;
+    width: 100%;
+    background: #fff;
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+    padding-bottom: 20rpx;
+    box-sizing: border-box;
+    
+    transform: translateY(100%);
+    opacity: 0;
+    animation: cartList .28s forwards ease;
+}
+.spec-popup .goods-img{
+    width:190rpx;
+    height:190rpx;
+    border-radius:5rpx;
+    padding-left: 8rpx;
+}
+.spec-popup .goods-change{
+    padding-left: 40rpx;
+}
+.spec-popup .title{
+    font-size:32rpx;
+    color: #333;
+    margin-top: 42rpx;
+}
+.spec-popup .goods-rwa{
+    padding-top: 40rpx;
+}
+.spec-popup .price{
+    font-size:38rpx;
+    font-weight:bold;
+    padding-right: 30rpx;
+}
+.spec-popup .price .unit{
+    font-size:24rpx;
+    font-weight: 400;
+}
+.spec-popup .org-price{
+    font-size:30rpx;
+    color: #999;
+}
+.spec-popup .org-price .unit{
+    font-size:18rpx;
+}
+.spec-popup .spec-wraper{
+    padding-top: 48rpx;
+}
+.spec-popup .spec-wraper .sku-item{
+    padding-bottom: 20rpx;
+}
+.spec-popup .spec-wraper .sku-name{
+    font-size:26rpx;
+    color: #333;
+    font-weight: 700;
+}
+.spec-popup .spec-wraper .sku-attrs{
+    margin-top: 20rpx;
+}
+.spec-popup .sku-attrs .attr-item{
+    display: inline-block;
+    padding: 0 30rpx;
+    height:54rpx;
+    line-height:54rpx;
+    text-align: center;
+    background:#F0F0F0;
+    border-radius:25rpx;
+    font-size:26rpx;
+    color: #333;
+    margin-right: 34rpx;
+    margin-bottom: 30rpx;
+}
+.spec-popup .sku-attrs .attr-item.active{
+    color: #fff;
+    background: #E84540;
+}
+.spec-popup  .submit{
+    margin-right: 30rpx;
+    background: #E84540;
+    font-size:30rpx;
+    font-weight: bold;
+    height:80rpx;
+    line-height:80rpx;
+    color: #fff;
+    border-radius:4rpx;
+    padding: 0;
+    margin-top: 10rpx;
+    position: relative;
+}
+.spec-popup .submit.button-hover{
+    background: rgb(192, 55, 50);
+}
+.spec-popup  .close-btn{
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    background: url(https://sp.lion-mall.com/miniprogram/images/icon-close-spec.png) no-repeat center/100%;
+    width: 25rpx;
+    height: 25rpx;
+    z-index: 10;
+}
+
+
+
+@keyframes rubberBand {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, .75, 1);
+        transform: scale3d(1.25, .75, 1)
+    }
+
+    40% {
+        -webkit-transform: scale3d(.75, 1.25, 1);
+        transform: scale3d(.75, 1.25, 1)
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, .85, 1);
+        transform: scale3d(1.15, .85, 1)
+    }
+
+    65% {
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1)
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1)
+    }
+
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+
+.rubberBand {
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}

@@ -1,0 +1,40 @@
+/* pages/Deliciousfood/Deliciousfood.wxss */
+
+.f_28{	font-size: 28rpx;}
+
+.c_r58{	color: #58a4f8;}
+
+.pd_30{padding:30rpx;}
+
+.pd_10_13{padding:10rpx 13rpx;}
+
+.mr_right20{margin-right:20rpx;margin-bottom:20rpx;}
+
+.flex_wrap{display:flex;flex-wrap:wrap;}
+
+.bor_1_58{border: solid 1rpx #58a4f8;}
+
+.bor_rad5{border-radius:5rpx;}
+
+.atc{background-color: #58a4f8;color:#fff;}
+
+.bgee_h16{height:16rpx;background:#eee;}
+
+.err-msg{
+  text-align: center;
+  font-size:28rpx;
+  color: #ccc;
+  margin: 20rpx 0;
+}
+
+.h130_hidden{overflow:hidden;height:122rpx;}
+.h58{height:58rpx;}
+
+.default-img{
+  display: block;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin: auto;
+  margin-top: 210rpx;
+}

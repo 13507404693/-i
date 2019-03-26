@@ -1,0 +1,75 @@
+<view class='pr'> 
+<view class='padding-30 bg_e5'>
+  <view class='c_ff pd_60_0'>
+    <view class='f_30'>{{listData.refund_state1_name ||is_text }}</view>
+    <view class='f_26 pd_top5'>{{listData.refund_state_name}}</view>
+  </view>
+</view>
+
+<view class='padding-30 border_1f0'>
+  <view class='c_66 f_28 pd_30_0 '>
+    申请退款后，客服将在7个工作日内处理完毕；如客服拒 绝，您可以修改申请后再次发起，客服会重新处理。
+  </view>
+</view>
+
+<view class='padding-30 border_1f0 dis-flex flex-justify ' bindtap='tap_jindu'>
+  <view class='c_66 f_28 pd_30_0' >
+    <image src="https://sp.lion-mall.com/miniprogram/images/ic_jindu@2x.png" class='w_28_28 pr top5'></image>
+    进度详情
+  </view>
+  <view class='c_66 f_28 pd_30_0 '>
+    <image class='w16h23 pr top5' src='https://sp.lion-mall.com/miniprogram/images/baock.png'></image>
+  </view>
+</view>
+
+<view class='padding-30 dis-flex flex-justify c_33 border_bto8' bindtap='go_commodity'  wx:for="{{listData.goodsList}}" wx:for-item="goodSp"  data-goodsId="{{goodSp.model_id}}">
+  <view class='pd_30_0'>
+    <image class='phone_wh160' src='{{goodSp.goods_image}}'></image>
+  </view>
+
+  <view class='phone_text f_28 pd_30_0'>
+    <view>{{goodSp.goods_name}}</view>
+    <view class='c_66 pd_top16 mg_top10'>
+      <label>{{goodSp.spec1_name}}</label>
+      <label class='pd_left11'>{{goodSp.spec1_value}}</label>
+    </view>
+  </view>
+
+  <view class='pd_top68  '>
+    <view class='f_26 '>￥{{goodSp.goods_price}}</view>
+    <view class='c_99  f_26 mg_top10'>
+      <label class='f_r'>x{{goodSp.goods_num}}</label>
+    </view>
+  </view>
+</view>
+
+<view class='padding_30 border_bto8 mgbth_100'>
+    <view class='dis-flex c_66 f_26'>
+      <view>退款原因：</view>
+      <view>{{listData.reason_info}}</view>
+    </view>
+
+    <view class='dis-flex pd_top10  c_66 f_26'>
+      <view>退款金额：</view>
+      <view>¥ {{listData.refund_amount}}</view>
+    </view>
+
+    <view class='dis-flex pd_top10  c_66 f_26'>
+      <view>申请时间：</view>
+      <view>{{listData.add_time}}</view>
+    </view>
+ 
+      <view class='dis-flex pd_top10  c_66 f_26'>
+      <view>退款编号：</view>
+      <view>{{listData.refund_id}}</view>
+    </view>
+</view>
+
+<view class='po'> 
+  <view class='dis-flex flex-justify padding30  f_26'>
+    <view class='c_33 border_rad padding_18_22' bindtap='clickIm'>联系客服</view>
+    <view class='c_33 border_rad padding_18_22' bindtap='tap_apply' wx:if="{{listData.refund_state!=3}}">撤销申请</view>
+  </view>
+</view>
+
+</view>

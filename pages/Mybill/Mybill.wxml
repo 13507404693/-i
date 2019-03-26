@@ -1,0 +1,24 @@
+<view class="r-bg flex_bet pd_100_0">
+  <view class="center w_50 ">
+    <view class="f_60 co_ff">{{moneys}}</view>
+    <view class="f_30 co_ff ler_spc1">消费金额</view>
+  </view>
+  <view class="center w_50">
+    <view class="f_60 co_ff ">{{nums}}</view>
+    <view class="f_30 co_ff ler_spc1">消费次数</view>
+  </view>
+</view>
+<!-- 消费金额 -->
+<!-- 消费记录列表 -->
+<view class="pd_10_30 ">
+  <view class="flex_bet bor_bto pd_bto22" wx:key="{{index}}" wx:for="{{list}}">
+    <view>
+      <view class="co_33 f_30 pd_bto24 ler_spc1 f_web">{{item.store_name}}</view>
+      <view class="f_28 co_33 ">{{item.order_points}}积分</view>
+    </view>
+    <view class="text_r">
+      <view class="r-fontcolor f_30 pd_bto24 ler_spc1 f_web">{{item.order_amount}}元</view>
+      <view class="f_28 co_33 ">{{item.payment_time}}</view>
+    </view>
+  </view>
+</view>

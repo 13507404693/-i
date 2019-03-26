@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "投诉商家",
+    "usingComponents": {
+        "upload-image": "../../components/upload-image/upload-image"
+    }
+}

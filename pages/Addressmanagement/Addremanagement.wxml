@@ -1,0 +1,40 @@
+<view class='pr pd_bto100'>
+  <view class='padding-30 bor_bt14 pdletop_30' bindtap='AddresSwitChing' wx:for="{{data_list}}"  data-addrIndex='{{index}}'>  
+    
+    <view class="choice-box" data-address="{{item}}" bindtap="tapChoiceAddress">
+      <view class='dis-flex c_33 f_30'>
+        <view>{{item.consignee}}</view>
+        <view class='pdleft_78'>{{item.mobile}}</view>
+      </view>
+
+      <view class='f_28 c_66 pdleft_28_46_28_0 bor_bt1'>
+        {{item.pca_info}} {{item.address}}
+      </view>
+    </view>
+
+    <view class=' dis-flex  flex-justify pd_37_0'>
+    <view class='c_66 f_28 dis-flex' data-index="{{index}}" bindtap='tap_atc'> 
+        <view class='border_radis {{item.is_default==1?"bg_atc":""}}' ></view>
+        <view class='pdleft_26'>默认地址</view>
+     
+    </view>
+      <view class='c_66 f_28 dis-flex '>
+        <view > 
+          <navigator url='/pages/Modifyaddress/Modifyaddress?addrid={{item.address_id}}'>
+            <image src='https://sp.lion-mall.com/miniprogram/images/ic_bianji@2x.png' class='w_36_36 middle '></image>
+           编辑
+           </navigator>
+        </view>
+        <view class='pdleft_34' bindtap='del_addr' data-addrdel="{{item.address_id}}">
+          <image src='https://sp.lion-mall.com/miniprogram/images/ic_shanchu@2x.png' class='w_36_36 middle '></image>
+          删除
+        </view>
+      </view>
+    </view>
+  </view>
+<view>
+
+<navigator url='/pages/Addmanagement/Addmanagement' class='nav'>添加新地址</navigator>
+
+</view>
+</view>

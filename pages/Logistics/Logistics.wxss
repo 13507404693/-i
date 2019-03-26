@@ -1,0 +1,90 @@
+/* pages/Logistics/Logistics.wxss */
+page{
+    background:#F6F6F6;
+}
+.bar{
+    height: 20rpx;
+    background: #f0f0f0;
+}
+
+.goods-image{
+    width: 164rpx;
+	height: 162rpx;
+    border-radius: 5rpx;
+    margin-right: 20rpx;
+    overflow: hidden;
+}
+.goods-info{
+    padding-top: 20rpx;
+    padding-bottom: 20rpx; 
+    background: #fff;
+}
+
+.express-info{
+    font-size: 28rpx;
+    color: #333;    
+}
+.express-info .item{
+    padding: 2rpx 0;
+}
+.express-info .item:nth-child(1){
+    padding-top: 0;
+}
+.express-info .item:nth-child(1) .text-val{
+    font-size: 30rpx;
+    color: #e52f31;
+}
+
+.logistics-info-wrpa{
+    background: #fff;
+    border-radius:4rpx;
+    margin: 0 30rpx;
+    margin-top: 20rpx;
+}
+.logistics-info-wrpa .title{
+    color: #333;
+    font-size: 32rpx;
+    padding: 20rpx 0;
+    padding-left: 20rpx;
+    border-bottom: 2rpx solid #F6F6F6; 
+}
+.logistics-list{
+    padding-top: 32rpx;
+    padding-bottom: 26rpx;
+}
+.logistics-list .item{
+    padding-left: 62rpx;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 52rpx;
+}
+.logistics-list .item .speed{
+    position: absolute;
+    top: 0;
+    left: 22rpx;
+    display: inline-block;
+    width: 22rpx;
+    height: 22rpx;
+    border: 2rpx solid #666;
+    border-radius: 50%;
+}
+.logistics-list .item .speed::after{
+    content: '';
+    position: absolute;
+    top: 22rpx;
+    left: 50%;
+    width: 2rpx;
+    height: 230rpx;
+    background:url(https://sp.lion-mall.com/miniprogram/images/bg_dotted.png) no-repeat center; 
+    
+}
+.logistics-list .item .time{
+    color: #333;
+    font-size:24rpx;
+}
+.logistics-list .item .describe{
+    font-size:26rpx;
+    margin-top: 20rpx;
+    padding-right:22rpx;
+    line-height:40rpx;
+}

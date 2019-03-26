@@ -1,0 +1,197 @@
+/*商圈小程序公共样式  */
+
+/*去掉 input 边框  */
+.con_listbox::after {
+  border: 0;
+} 
+.padding-30{
+    padding: 0 30rpx;
+}
+.padding40-30{
+    padding: 40rpx 30rpx;
+}
+.dis-flex{
+    display: flex;
+    display: -webkit-flex;
+}
+.flex-justify{
+    justify-content:space-between;
+    -webkit-justify-content:space-between;
+}
+/* 单行文本省略号 */
+.text-ellipsis{
+    white-space:nowrap;/* 文本不换行显行 */
+    overflow:hidden;/* 超出隐藏 */
+    text-overflow:ellipsis;/* 文本超出省略号显行 */
+}
+.bg-58a4f8{
+    background: #58a4f8;
+}
+.flex-right{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+.flex-wrapr{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap:wrap;
+ }
+
+.flex-wrap{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap:wrap;
+    justify-content:space-between ;
+ }
+
+.flex-justify{
+    justify-content:space-between;
+    -webkit-justify-content:space-between;
+}
+
+.err-msg{
+  text-align: center;
+  font-size:28rpx;
+  color: #ccc;
+  margin: 20rpx 0;
+}
+
+.let1{letter-spacing:1rpx}
+.center{text-align: center}
+
+.diy-navigator-hover{
+    background: rgb(247, 247, 247);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.diy-navigator-hover::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    width: 20rpx;
+    height: 20rpx;
+    background:rgba(179, 179, 179, 0.1);
+    border-radius: 50%;
+    animation: navHover 0.6s;
+}
+@keyframes navHover{
+    0%{
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+    100%{
+        transform: scale(100);
+        -webkit-transform: scale(100);
+    }
+}
+@-webkit-keyframes navHover{
+    0%{
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+    100%{
+        transform: scale(100);
+        -webkit-transform: scale(100);
+    }
+}
+
+page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+.page__hd {
+    padding: 40px;
+}
+.page__bd {
+    padding-bottom: 40px;
+}
+.page__bd_spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page__ft{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+
+.flex-center{ 
+    display: flex;
+    display: -webkit-flex;
+    justify-content:center;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.box{
+  display: inline-flex;
+}
+
+
+/******  公共主题色  *******/
+.r-bg{
+    background-color:#e52e31 !important;
+}
+.r-bg-gradualchange{
+    background: #fe6d42; /* Old browsers */
+    background: -moz-linear-gradient(left, #fe6d42 0%, #e52e31 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #fe6d42 0%,#e52e31 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #fe6d42 0%,#e52e31 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe6d42', endColorstr='#e52e31',GradientType=1 ); /* IE6-9 */
+}
+.r-fontcolor{
+    color: #e52e31 !important;
+}
+.r-bordercolor{
+    border:solid 1rpx #e52e31 !important;
+}
+.r-beforebg::before{
+    content: '';
+    background-color:#e52e31 !important;
+}
+
+
+.toShop-btn{
+    position: fixed;
+    bottom: 299rpx;
+    right: 0;
+    width: 78rpx;
+    height: 80rpx;
+    opacity: .6;
+    -webkit-transition: .4s ease;
+    -moz-transition: .4s ease;
+    transition: .4s ease;
+}
+.toShop-btn.no{
+    right: -56rpx;
+}
+.toShop-btn.active{
+    right: 0;
+}

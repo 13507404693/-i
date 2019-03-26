@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "wxAuth-popup": "../../components/wxAuth-popup/wxAuth-popup"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "申请退款",
+  "usingComponents": {
+  "upload-image": "../../components/upload-image/upload-image"
+}
+
+}

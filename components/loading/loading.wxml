@@ -1,0 +1,4 @@
+<!--components/loading/loading.wxml-->
+<view class="loading-box" wx:if="{{state}}">
+    <image src="../../images/loading.png" class="loading" />
+</view>

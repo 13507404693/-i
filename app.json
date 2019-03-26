@@ -1,0 +1,103 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/Shop/Shop",
+    "pages/sQorder/sQorder",
+    "pages/my/my",
+    "pages/DetailsBill/DetailsBill",
+    "pages/Mybilltwo/Mybilltwo",
+    "pages/sQorderCancellation/sQorderCancellation",
+    "pages/payment/payment",
+    "pages/Discovery/Discovery",
+    "pages/wallet/wallet",
+    "pages/walletDetails/walletDetails",
+    "pages/RefundProcessing/RefundProcessing",
+    "pages/DetailsOfRefunds/DetailsOfRefunds",
+    "pages/Application/refund",
+    "pages/RefundRefunds/RefundRefunds",
+    "pages/wxPhoneLogin/wxPhoneLogin",
+    "pages/Commoditydetails/Commoditydetails",
+    "pages/Cart/Cart",
+    "pages/Checkout/Checkout",
+    "pages/Order/Order",
+    "pages/OrderDetails/OrderDetails",
+    "pages/orderComment/orderComment",
+    "pages/GoodsList/GoodsList",
+    "pages/Logistics/Logistics",
+    "pages/ShopBusinessInfo/ShopBusinessInfo",
+    "pages/ShopBusiness/ShopBusiness",
+    "pages/ShopSearch/ShopSearch",
+    "pages/Commodityclassification/Commodityclassification",
+    "pages/Addressmanagement/Addremanagement",
+    "pages/Modifyaddress/Modifyaddress",
+    "pages/Addmanagement/Addmanagement",
+    "pages/Allcomments/Allcomments",
+    "pages/repairpasswrod/repairpasswrod",
+    "pages/kaituoshanghu/kaituoshanghu",
+    "pages/Business/Business",
+    "pages/ShareBusiness/ShareBusiness",
+    "pages/BusinessComment/BusinessComment",
+    "pages/BusinessComplaint/BusinessComplaint",
+    "pages/BusinessCheckout/BusinessCheckout",
+    "pages/search/search",
+    "pages/Mybill/Mybill",
+    "pages/Sign/Sign",
+    "pages/Coupon/Coupon",
+    "pages/binding/binding",
+    "pages/RedPacket/RedPacket",
+    "pages/integral_sl/integral_sl",
+    "pages/Deliciousfood/Deliciousfood",
+    "pages/WebView/WebView",
+    "pages/ImDialog/ImDialog"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "品兑",
+    "navigationBarBackgroundColor": "#e52e31",
+    "backgroundColor": "#fff"
+  },
+  "tabBar": {
+    "selectedColor": "#e52e31",
+    "backgroundColor": "#f7f7f7",
+    "borderStyle": "#ccc",
+    "color": "#808080",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tab/icon1.png",
+        "selectedIconPath": "images/tab/selected-icon1.png",
+        "text": "商圈"
+      },
+      {
+        "pagePath": "pages/sQorder/sQorder",
+        "iconPath": "images/tab/icon6.png",
+        "selectedIconPath": "images/tab/selected-icon6.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/Discovery/Discovery",
+        "iconPath": "images/tab/icon5.png",
+        "selectedIconPath": "images/tab/selected-icon5.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/Shop/Shop",
+        "iconPath": "images/tab/icon2.png",
+        "selectedIconPath": "images/tab/selected-icon2.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/tab/icon4.png",
+        "selectedIconPath": "images/tab/selected-icon4.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
+}

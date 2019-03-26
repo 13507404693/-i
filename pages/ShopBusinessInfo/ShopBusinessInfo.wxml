@@ -1,0 +1,43 @@
+<!--pages/ShopBusinessInfo/ShopBusinessInfo.wxml-->
+<view class="businessinfo-container">
+    <view class="header">
+        <vie class="head-box">
+            <view class="head">
+                <image class="img" src="{{ info.store_logo || 'https://sp.lion-mall.com/miniprogram/images/default-storelogo.png'}}"></image>
+            </view>
+        </vie>
+
+        <view class="title">{{info.store_name}}</view>
+
+        <view class="btn-box">
+            <navigator open-type="navigateBack" style="display: inline-block;" hover-class="none"><view class="btn">店铺商品</view></navigator>
+            <view class="btn" bindtap="tapCollection">
+                <block wx:if="{{info.is_fav == 1}}">
+                    <image class="icon-start" src="https://sp.lion-mall.com/miniprogram/images/start-yes.png" />已收藏店铺
+                </block>
+                <block wx:else >
+                    <image class="icon-start" src="https://sp.lion-mall.com/miniprogram/images/start.png" />收藏店铺
+                </block>
+            </view>
+        </view>
+
+    </view>
+
+    <view class="synopsis">{{info.store_description || ''}}</view>
+
+    <view class="line"></view>
+
+    <view class="license">
+        <view class="top-title">
+            <image class="icon-license" src="https://sp.lion-mall.com/miniprogram/images/icon-license.png" />
+            证照信息
+        </view>
+
+        <view class="image-wrap">
+            <image class="img-item" src="{{details.store_licence}}"></image>
+            <image class="img-item" src="{{details.store_tax}}"></image>
+            <image class="img-item" src="{{details.store_institutions}}"></image>
+        </view>
+    </view>
+    
+</view>

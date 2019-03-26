@@ -1,0 +1,60 @@
+<view class="mg_0_31">
+  <view class="bor_1_coe6 box_between pd_pt41_pt41">
+    <view class="f_30 w_20 al_rt">
+      <text class="lettr1">姓名</text>
+    </view>
+    <view class="pd_lf50">
+      <input type="String" class="f_30" maxlength="6" bindinput="userName" placeholder="请输入您的姓名"></input>
+    </view>
+  </view>
+  <view class="bor_1_coe6 box_between pd_pt41_pt41 position_re">
+    <view class="f_30 w_20 al_rt">
+      <text class="co_f7 ">*</text>
+      <text class="lettr1">手机号码</text>
+    </view>
+    <view class="pd_lf50 ">
+      <input type="number" value="{{Pass}}" bindblur="focusInput" class="f_30" maxlength="11" bindinput="userPass" placeholder="请输入您的手机号"></input>
+      <!-- <button class="getPhoneNumber r-fontcolor con_listbox" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        点击获取手机号码
+      </button> -->
+    </view>
+  </view>
+  <view class="bor_1_coe6 box_between pd_pt41_pt41">
+    <view class="f_30 w_20 al_rt">
+      <text class="co_f7">*</text>
+      <text class="lettr1">短信验证</text>
+    </view>
+    <view class="pd_lf50">
+      <input type="number" class="f_30 w_250r" bindinput="userCode" maxlength="6" placeholder="请输入短信验证码"></input>
+    </view>
+    <view class="pd_lf93r">
+      <button style="background:#e52e31;" wx:if="{{isCorrectPhone}}" class="f_26 bth con_listbox" disabled="{{disabled}}" bindtap="getVerificationCode">
+        {{time}}
+      </button>
+      <view wx:else class="code_box f_26 bth con_listbox">{{time}}</view>
+    </view>
+  </view>
+  <view class="bor_1_coe6 box_between pd_pt41_pt41">
+    <view class="f_30 w_20 al_rt">
+      <text class="co_f7 ">*</text>
+      <text class="lettr1">密码</text>
+    </view>
+    <view class="pd_lf50">
+      <input type="password" class="f_30" maxlength="11" bindinput="userphonePass" placeholder="请输入密码"></input>
+    </view>
+  </view>
+  <view class="bor_1_coe6 box_between pd_pt41_pt41">
+    <view class="f_30 w_20 al_rt">
+      <text class="co_f7 ">*</text>
+      <text class="lettr1">确认密码</text>
+    </view>
+    <view class="pd_lf50">
+      <input type="password" class="f_30" maxlength="11"  bindinput="reUserphonePass" placeholder="确认密码"></input>
+    </view>
+  </view>
+  <view class="pd_top70r">
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="f_32 {{bg_bj}} con_listbox">
+      完成
+    </button>
+  </view>
+</view>
